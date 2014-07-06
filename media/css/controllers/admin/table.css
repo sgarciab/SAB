@@ -1,0 +1,44 @@
+/* 
+    Document   : table
+    Created on : Jun 19, 2013, 10:21:22 AM
+    Author     : user
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#table-report-sales_wrapper p{
+	text-align: center;
+}
+#table-report-sales_wrapper th{
+	text-align: center;
+}
+#table-dailycashouts td{
+	text-align: center;
+}
+#table-dailycashouts th{
+	text-align: center;
+}
+#export_excel{
+	margin-top: 10px;
+}
+input.span-4, textarea.span-4{
+    width: 150px !important;
+}
+
+#dates{
+	font-size: 17px;
+	
+}
+
+#dates label{
+	
+}
+
+#table-dailycashouts{
+	width: 1000px !important;
+	margin-left: -50px;
+}

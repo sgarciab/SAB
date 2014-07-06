@@ -1,0 +1,2 @@
+codigo,descripcion,precio,iva,referencia,total,copias
+1875258672519,BlueJean XL,$ 20.20,$ 2.42,pant001,$ 22.62,1

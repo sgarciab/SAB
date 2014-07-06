@@ -1,0 +1,9 @@
+select#warehouse_id{
+	width: 148px !important;
+}
+
+#ajax_loader{
+    position: relative !important;
+    width: 100% !important;	
+	margin-left: 0px !important;
+}

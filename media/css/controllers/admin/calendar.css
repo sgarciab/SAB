@@ -1,0 +1,15 @@
+/* 
+    Document   : calendar
+    Created on : 03/07/2013, 12:14:51 PM
+    Author     : user
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#ui-datepicker-div{
+    z-index: 9999999 !important;
+}

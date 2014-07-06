@@ -1,0 +1,2 @@
+codigo,descripcion,precio,descuento,referencia,copias
+1875258672519,BlueJean XL,19.50,17.55,867251,1

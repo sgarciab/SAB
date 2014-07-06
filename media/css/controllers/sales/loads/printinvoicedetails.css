@@ -1,0 +1,22 @@
+div#print_invoice_body{
+
+	letter-spacing: 3px !important;
+	font-size: 12px !important;
+
+}
+#header_space{
+    height: 128px !important;
+}
+
+#header_details_space{
+    height: 40px !important;
+}
+
+#body_details{
+    height: 565px !important;
+}
+
+div#invoice_detail_container{
+    margin-left: 210px !important;
+	margin-top: 100px !important;
+}

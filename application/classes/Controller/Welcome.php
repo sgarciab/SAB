@@ -6,5 +6,10 @@ class Controller_Welcome extends Controller {
 	{
 		$this->response->body('hello, world!');
 	}
+        
+        public function action_hola()
+	{
+		$this->response->body('Hola 2!');
+	}
 
 } // End Welcome
