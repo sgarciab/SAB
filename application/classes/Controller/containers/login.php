@@ -141,10 +141,11 @@ class Controller_Containers_Login extends Controller_Template {
 
     protected function login($user_id)
     {
+         
         $user = ORM::factory("User", $user_id);
         if (!$user->loaded())
             return false;
-
+         
         $this->session->set('user_id', $user->id);
         return true;
     }

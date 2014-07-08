@@ -34,3 +34,9 @@
 2014-07-06 12:18:40 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Model_User::authenticate() ~ APPPATH\classes\Controller\login.php [ 28 ] in file:line
 2014-07-06 12:18:40 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
 #1 {main} in file:line
+2014-07-06 22:03:10 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Model_User::authenticate() ~ APPPATH\classes\Controller\login.php [ 28 ] in file:line
+2014-07-06 22:03:10 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in file:line
+2014-07-06 22:15:31 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Model_User::authenticate() ~ APPPATH\classes\Controller\login.php [ 28 ] in file:line
+2014-07-06 22:15:31 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in file:line

@@ -26,7 +26,7 @@ class Controller_Login extends Controller_Containers_Login {
         if (!empty($_POST))
         {
             $user = Model_User::authenticate($_POST['username'], $_POST['password']);
-
+            
             if ($user && $this->login($user->id)) 
             {
                 $this->request->redirect('/main/');
