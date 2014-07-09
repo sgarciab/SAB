@@ -41,7 +41,7 @@ class Controller_Containers_Sales extends Controller_Template {
             && $this->request->controller() != 'login'
             && $this->request->action() != 'login')
         {
-            Request::current()->redirect('login/');
+            HTTP::redirect('login/');
         }
 
 		if($this->current_user){

@@ -3,8 +3,8 @@
 defined('SYSPATH') or die('No direct script access.');
 /*
   File: login.php
-  Author: Nataly Constante
-  Creation Date: 01/10/2012
+  Author: 
+  Creation Date: 
  * Modified by :
  * Las Modification:
  */
@@ -18,7 +18,7 @@ class Controller_Login extends Controller_Containers_Login {
     public function action_index()
     {
         if($this->current_user)
-            Request::current()->redirect('/main/');
+            HTTP::redirect('/main/');
 	
         Session::instance()->delete('current_user');
         $view = View::factory('/controller/login');
@@ -29,7 +29,7 @@ class Controller_Login extends Controller_Containers_Login {
             
             if ($user && $this->login($user->id)) 
             {
-                $this->request->redirect('/main/');
+                HTTP::redirect('/main/');
             }
         }
              

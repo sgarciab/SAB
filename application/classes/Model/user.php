@@ -11,7 +11,7 @@
 class Model_User extends ORM {
 
     public $status_values = array('ACTIVE' => 'Activo', 'INACTIVE' => 'Inactivo');
-    public $_table_name="usuario";
+    public $_table_name='usuario';
 
 
     //..RELATIONSHIP WITH OTHER TABLES
@@ -41,7 +41,7 @@ class Model_User extends ORM {
     {
         $user = ORM::factory('User')->where('nickname', '=', $username)->find();
 
-        if (!$user->loaded())
+        if ($user == null)
         {
             FlashMessenger::factory()->set_message('error', 'Usuario ingresado no existe en el sistema.');
             return false;
