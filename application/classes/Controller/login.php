@@ -39,7 +39,7 @@ class Controller_Login extends Controller_Containers_Login {
     public function action_logout()
     {
         $this->logout();
-        $this->request->redirect('/login');
+        HTTP::redirect('/login');
     }
 
 }

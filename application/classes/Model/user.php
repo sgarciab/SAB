@@ -70,7 +70,7 @@ class Model_User extends ORM {
     public function has_access_permission($controller, $action)
     {
         //var_dump($this->profile->id);die();    
-        if( in_array( "admin/{$controller}/{$action}", self::$default_allowed_actions ) )
+        if( in_array( "{$controller}/{$action}", self::$default_allowed_actions ) )
                     return TRUE;
 
 			$authorized = false;

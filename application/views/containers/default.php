@@ -51,7 +51,7 @@
             <div style="position: relative;">
             <div class=" span-24  last right " style="position: absolute;top:-45px;left: 100px ">    
 				<li class="logout">
-					<b>Bienvenido <?php if(isset($current_user)): echo $current_user->firstname.' '.$current_user->lastname; endif ?></b>
+					<b>Bienvenido <?php if(isset($current_user)): echo $current_user->nombre.' '.$current_user->apellido; endif ?></b>
 					(<a href="<?php echo URL::site().'admin/user/acount'; ?>">
 						Mi cuenta
 					</a>|<a href="<?php echo URL::site().'login/logout'; ?>">

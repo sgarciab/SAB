@@ -35,7 +35,7 @@ class Controller_Containers_Login extends Controller_Template {
         if ($this->auto_render)
         {
             //Sets the "Default" title set on the container
-            $this->template->title = 'LOGIN';
+            $this->template->title = 'Inicio de Sesión';
             $this->template->content = '';
 
             $this->template->styles = array();
