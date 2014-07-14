@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
  * File: login.php
- * Author: Nataly Constante
- * Creation Date: 01/10/2012
+ * Author: Santiago García
+ * Creation Date: 13/07/2014
  * Last Modified: 
  * Modified By: 
  */
