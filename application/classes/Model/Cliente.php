@@ -3,13 +3,13 @@
 /*
   File: action.php
   Author: Santiago Garcia
-  Creation Date: 03/10/2012
+  Creation Date: 13/07/2014
  * Modified by :
- * Las Modification:
+ * Last Modification:
  */
 
-class Model_Action extends ORM {
-    public $_table_name="action";
+class Model_Cliente extends ORM {
+    public $_table_name="cliente";
     
         //RELATIONSHIP WITH OTHER TABLES
     protected $_has_many = array(
