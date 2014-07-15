@@ -539,8 +539,14 @@ table tbody tr.even td{
     
     #button_product_chooser{
        margin-bottom: 17px;
-    margin-left: 779px;
-    margin-right: 4px;
-    width: 140px;
+        margin-left: 779px;
+        margin-right: 4px;
+        width: 140px;
+    }
+    
+    #direccion{
+        height: 20px;
+        max-height: 150px;
+        max-width: 200px;
     }
 	

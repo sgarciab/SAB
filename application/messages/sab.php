@@ -12,5 +12,5 @@ return array
     (
     'cliente:create:success' => 'Cliente Creado Exitosamente',
     'user:create:success' => 'Usuario creado exitosamente',
-    
+    'proveedor:create:success' => 'Proveedor creado exitosamente',
 );

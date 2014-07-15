@@ -12,11 +12,10 @@ class Controller_Cliente extends Controller_Containers_Default {
 	$this->view = View::factory('cliente/create');
 
         $cliente = ORM::factory('Cliente');
-
        
         if (!empty($_POST)) {
+            
             try {
-             
                 if ($cliente->id) {
                     $success_message = Kohana::message('sab', 'cliente:update:success');
                 } else {
