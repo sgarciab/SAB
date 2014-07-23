@@ -1,58 +1,72 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <?php echo HTML::style('media/css/jquery-ui-1.10.3.custom.min.css'); ?>
 <?php echo HTML::style('media/css/controllers/admin/product.css'); ?>
-<?php if (!$cliente->id) { ?>
+<?php if (!$contacto->id) { ?>
     <div class="prepend-2 span-20 append-2 last">
-        <h2>Nuevo Cliente</h2>
+        <h2>Nuevo Contacto</h2>
         <div class="required-fields">* Campos obligatorios</div>
     </div>
 <?php } else { ?>
-    <center><div id="info_title">Informaci&oacute;n del Cliente</div></center>
+    <center><div id="info_title">Informaci&oacute;n del Contacto</div></center>
 <?php } ?>
 
-<?php echo Form::open(NULL, array('id' => 'frmCreateCliente')); ?>
+<?php echo Form::open(NULL, array('id' => 'frmCreateContacto')); ?>
 
 
 
 <div class="prepend-2 span-20 append-2 line last">
     <div class="span-4">
-        <?php echo Form::label("nombre", "Nombre:", array('class' => 'left')); ?>
+        <?php echo Form::label("nombreContacto", "Nombre de la Persona Contacto:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::input("nombre", $cliente->nombre, array('id' => 'nombre', 'class' => 'span-5')); ?>
+        <?php echo Form::input("nombreContacto", $contacto->nombreContacto, array('id' => 'nombreContacto', 'class' => 'span-5')); ?>
     </div>	
 
     <div class="prepend-1 span-4">
-        <?php echo Form::label("nombreComercial", "Nombre Comercial", array('class' => 'left')); ?>
+        <?php echo Form::label("documentoLegal", "Documento Legal", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("nombreComercial", $cliente->nombreComercial, array('id' => 'nombreComercial', 'class' => 'span-5')); ?>
+            <?php echo Form::input("documentoLegal", $contacto->documentoLegal, array('id' => 'documentoLegal', 'class' => 'span-5')); ?>
         </div>        
     </div>	
 
 </div>
 
 <div class="prepend-2 span-20 append-2 line last">
-    <div class="span-4">
-        <?php echo Form::label("RUC", "RUC:", array('class' => 'left')); ?>
+
+    <div class=" span-4">
+        <?php echo Form::label("empresa", "Contacto de(opcional):", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::input("RUC", $cliente->RUC, array('id' => 'RUC', 'class' => 'span-5')); ?>
+        <div class="span-5 last ">
+            <?php echo Form::input("empresa", '', array('id' => 'empresa', 'class' => 'span-5')); ?>
+             <?php echo Form::hidden("empresah", $contacto->Cliente_idCliente, array('id' => 'empresah', 'class' => 'span-5')); ?>
+        </div>        
+    </div>	
+
+</div>
+    
+<div class="prepend-2 span-20 append-2 line last">
+    <div class="span-4">
+        <?php echo Form::label("empresaActual", "Empresa Actual(opcional):", array('class' => 'left')); ?>
+    </div>	
+    <div class="span-5 last">
+        <?php echo Form::input("empresaActual", $contacto->empresaActual, array('id' => 'RUC', 'class' => 'span-5')); ?>
     </div>	
 
     <div class="prepend-1 span-4">
         <?php echo Form::label("direccion", "Direccion:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::textarea("direccion", $cliente->direccion, array('id' => 'direccion', 'class' => 'span-5')); ?>
+        <?php echo Form::textarea("direccion", $contacto->direccion, array('id' => 'direccion', 'class' => 'span-5')); ?>
     </div>	
 
 </div>
 
 
 
-<?php if (!$cliente->id) { ?>
+<?php if (!$contacto->id) { ?>
     <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
        <?php echo Form::button("save", "Guardar", array('id' => 'save')); ?>
     </div>
@@ -68,33 +82,24 @@
     $(document).ready(function(){
 	
         /*VALIDATIONS*/
-        $("#frmCreateCliente").validate({
+        $("#frmCreateContacto").validate({
             onfocusout: false,
             onkeyup: false,
             wrapper: "label",
             rules: {
-                nombre:{
+                nombreContacto:{
                     maxlength: 255,
                     required:true
                     
                 },
-                nombreComercial:{
+                documentoLegal:{
                    required:true
                 },
-                RUC:{
-                   required:true,
-                   maxlenght:16
-                },
-                direccion:{
-                   required:true,
-                   minlenght:10
-                }
-            },
-            messages: {
-                nombre: {
-                    required:'Es requerido'
+                empresah:{
+                   required:true
                 }
             }
+          
             //,
             //            submitHandler: function (form) {
             //                $('#save').attr('disabled','disabled'); 
@@ -102,13 +107,44 @@
             //            }
         });
 
-        $("#save").click(function(){
-            if($("#frmCreateCliente").valid()){
+        $("#save").click(function(e){
+            e.preventDefault();
+            if($("#frmCreateContacto").valid()){
                 $('#save').attr('disabled',true);  
-                $("#frmCreateCliente").submit();
+                $("#frmCreateContacto").submit();
                
             }
         }); 
+        
+//        $("#empresa").focusout(function(){
+//            alert('SI');
+//        });
+       
+        $("#empresa").autocomplete(document_root+"cliente/autocompletercliente",{
+            max: 16,
+            scroll: false,
+            matchContains:true,
+            minChars: 1,
+            selectFirst:false,
+            formatItem: function(row) {
+                if(row[0]!='0'){
+                    return row[0]+'  /  '+row[1]+'  /  '+row[2];
+                }
+                else{
+                    return 'No existen resultados';
+                }
+            }
+        }).result(function(event, row) {
+            if(row[1]!='0'){
+				
+                $('#empresah').val(row[0]);
+                $('#empresa').val(row[2]);
+            }else
+            {
+                $('#empresah').val('');	
+                $('#empresa').val('');
+            }
+        });
 	    
 
     });

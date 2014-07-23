@@ -77,7 +77,7 @@ class Model_User extends ORM {
 			
 			$allowed_actions = ORM::factory("Allowedactions")
 					->with('action')
-					->where("url", '=', "admin/{$controller}/{$action}")->find();
+					->where("url", '=', "{$controller}/{$action}")->find();
 					
 			if($allowed_actions->loaded()){
 				$authorized  = true;
@@ -86,7 +86,7 @@ class Model_User extends ORM {
             $profile_action = ORM::factory("Profileaction")->
                             with("action")->
                             where("profile_id", "=", $this->profile->id)->
-                            where("link", "=", "admin/{$controller}/{$action}")->find();
+                            where("link", "=", "{$controller}/{$action}")->find();
 							
             if($profile_action->action->loaded()){
 				$authorized  = true;

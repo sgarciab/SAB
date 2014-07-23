@@ -53,7 +53,7 @@ class Controller_Containers_Default extends Controller_Template {
  /*aqui debo poner la negacion para permisos */  $this->current_user->has_access_permission($this->request->controller(), $this->request->action()))
             throw new Exception_Unauthorized;
 
-        $this->params = explode('/', $this->request->param('params'));
+        $this->params = explode('/', $this->request->param('id'));
 
 
 
