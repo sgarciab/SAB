@@ -131,12 +131,11 @@ class Controller_Cliente extends Controller_Containers_Default {
             );
             $nombre = str_replace($convert_from, $convert_to, $nombre);
 
-            
-            
+         
             $clientes = ORM::factory('Cliente')
                     ->where(DB::expr("LOWER(ruc)"), 'LIKE', DB::expr("_utf8 '%" . $ruc . "%' collate utf8_bin"))
-                    ->or_where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
-                    ->or_where(DB::expr("LOWER(nombreComercial)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+//                    ->and_where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+                    ->and_where(DB::expr("LOWER(nombreComercial)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
                     ->find_all();
 
             $this->view = View::factory('cliente/loads/loadclientes');
