@@ -30,6 +30,16 @@
     </div>	
 
 </div>
+    
+<div class="prepend-2 span-20 append-2 line last">
+    <div class="span-4">
+        <?php echo Form::label("ruc", "RUC:", array('class' => 'left')); ?>
+    </div>	
+    <div class="span-5 last">
+        <?php echo Form::input("ruc", $proveedor->RUC, array('id' => 'ruc', 'class' => 'span-5')); ?>
+    </div>		
+
+</div>
 
 <div class="prepend-2 span-20 append-2 line last">
     <div class="span-4">
@@ -46,7 +56,7 @@
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("movil1", $proveedor->telefono1, array('id' => 'movil1', 'class' => 'span-5')); ?>
+            <?php echo Form::input("movil1", $proveedor->movil1, array('id' => 'movil1', 'class' => 'span-5')); ?>
         </div>        
     </div>
     
@@ -55,7 +65,7 @@
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("telefono2", $proveedor->telefono1, array('id' => 'telefono2', 'class' => 'span-5')); ?>
+            <?php echo Form::input("telefono2", $proveedor->telefono2, array('id' => 'telefono2', 'class' => 'span-5')); ?>
         </div>        
     </div>
     
@@ -64,7 +74,7 @@
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("movil2", $proveedor->telefono1, array('id' => 'movil2', 'class' => 'span-5')); ?>
+            <?php echo Form::input("movil2", $proveedor->movil2, array('id' => 'movil2', 'class' => 'span-5')); ?>
         </div>        
     </div>
 
