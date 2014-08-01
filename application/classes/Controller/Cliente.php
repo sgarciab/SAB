@@ -44,6 +44,36 @@ class Controller_Cliente extends Controller_Containers_Default {
 	}
         
         
+        public function action_loadclientes() {
+            if ($this->request->is_ajax()) {
+                $ruc = arr::get($this->request->post(), 'ruc');
+                $nombre = arr::get($this->request->post(), 'nombre');
+
+
+                 $convert_to = array(
+                    "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+                );
+                $convert_from = array(
+                    "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+                );
+                $nombre = str_replace($convert_from, $convert_to, $nombre);
+
+
+                $clientes = ORM::factory('Cliente')
+                        ->where(DB::expr("LOWER(ruc)"), 'LIKE', DB::expr("_utf8 '%" . $ruc . "%' collate utf8_bin"))
+    //                    ->and_where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+                        ->and_where(DB::expr("LOWER(nombreComercial)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+                        ->find_all();
+
+                $this->view = View::factory('cliente/loads/loadclientes');
+                $this->view->set("clientes", $clientes);
+
+                $this->auto_render = FALSE;
+                echo $this->view;
+            }
+        }
+        
+        
         
         public function action_createcontacto()
 	{
@@ -117,33 +147,16 @@ class Controller_Cliente extends Controller_Containers_Default {
              
     }
     
-    public function action_loadclientes() {
+     public function action_loadinformacion() {
         if ($this->request->is_ajax()) {
-            $ruc = arr::get($this->request->post(), 'ruc');
-            $nombre = arr::get($this->request->post(), 'nombre');
-
-
-             $convert_to = array(
-                "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-            );
-            $convert_from = array(
-                "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-            );
-            $nombre = str_replace($convert_from, $convert_to, $nombre);
-
-         
-            $clientes = ORM::factory('Cliente')
-                    ->where(DB::expr("LOWER(ruc)"), 'LIKE', DB::expr("_utf8 '%" . $ruc . "%' collate utf8_bin"))
-//                    ->and_where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
-                    ->and_where(DB::expr("LOWER(nombreComercial)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
-                    ->find_all();
-
-            $this->view = View::factory('cliente/loads/loadclientes');
-            $this->view->set("clientes", $clientes);
-           
-            $this->auto_render = FALSE;
+            $this->view = View::factory('cliente/loads/loadinformacion');
+            $cont = arr::get($this->request->post(), 'cont');
+            $tipo=ORM::factory('InformacionContacto')->tipo;
+            $this->view->set('tipo', $tipo);
+            $this->view->set('cont', $cont);
             echo $this->view;
+            $this->auto_render = FALSE;
         }
     }
-
+    
 } 

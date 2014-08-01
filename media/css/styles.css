@@ -626,3 +626,30 @@ table tbody tr.even td{
 		0px 1px 0px rgba(255,255,255,0);
         
     }
+
+    .textareaasinput{
+      
+        height: 20px;
+        max-height: 150px;
+        max-width: 200px;
+        min-width: 100px;
+    
+    }
+    
+    .subtitle{
+    font-size: 22px;
+    font-weight: bold;
+    }
+    
+    
+    div[id*="rowinformacion_"] {
+    border-radius: 15px;
+    background-color: #f3f3f3;
+    padding: 21px;
+    }
+    
+    div[id*="rowinformacion_"] img {
+     position: relative;
+    right: -16px;
+    top: -41px;
+    }

@@ -84,11 +84,11 @@
 
 <?php if (!$proveedor->id) { ?>
     <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
-       <?php echo Form::button("save", "Guardar", array('id' => 'save')); ?>
+       <?php echo Form::button("save", "Guardar", array('id' => 'save','class'=>'custom-button')); ?>
     </div>
 <?php } else { ?>
     <div class="span-20 append-2 line last center" style="margin-top:30px">
-         <?php echo Form::button("save", "Actualizar", array('id' => 'save')); ?>
+         <?php echo Form::button("save", "Actualizar", array('id' => 'save','class'=>'custom-button')); ?>
     </div>
 <?php } ?>
 

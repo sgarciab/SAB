@@ -2,14 +2,6 @@
 
 defined('SYSPATH') or die('No direct script access.');
 
-/**
- * 
- * Clase que será extendida por los controladores para manejar las vistas.
- * Usa una arquitectura de plantillas con un contenedor como base donde cada
- * vista de una acción se presenta en el atributo $content del Template.
- * @author Mario López - CRIFA CIA. LTDA.
- * 
- */
 class Controller_Containers_Default extends Controller_Template {
 
     /**
