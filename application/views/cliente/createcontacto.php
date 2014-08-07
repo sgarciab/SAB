@@ -207,6 +207,12 @@
                 $("#cont").val(parseInt($("#cont").val())+1);
                 
                 
+                //boton cerrar
+                $('#removeinformacion_'+cont).click(function(){
+                    
+                    $('#rowinformacion_'+cont).remove();
+                });
+                
             });
         };
 	    

@@ -15,30 +15,48 @@ class Controller_Proveedor extends Controller_Containers_Default {
        
         if (!empty($_POST)) {
             
+            $db = Database::instance();
+            $db ->begin();
+            
             try {
                 if ($proveedor->id) {
                     $success_message = Kohana::message('sab', 'proveedor:update:success');
                 } else {
                     $success_message = Kohana::message('sab', 'proveedor:create:success');
-                }
-                
-                $proveedor->nombre = $_POST['nombre'];
-                $proveedor->RUC = $_POST['ruc'];
-                $proveedor->direccion = $_POST['direccion'];
-                $proveedor->telefono1 = $_POST['telefono1'];
-                $proveedor->telefono2 = $_POST['telefono2'];
-                $proveedor->movil1 = $_POST['movil1'];
-                $proveedor->movil2 = $_POST['movil2'];
+                }                               
+                             
+                $proveedor->nombre = arr::get($this->request->post(), 'nombre');
+                $proveedor->identificacion = arr::get($this->request->post(), 'identificacion');
+                $proveedor->direccion = arr::get($this->request->post(), 'direccion');
               
                 $proveedor->save();
+                
+                $numReg = arr::get($this->request->post(), 'cont');
+                for($i=1; $i<=$numReg; $i++){
+                    $infoProveedor = ORM::factory('InformacionProveedor');
+                    
+                    $infoProveedor->tipo = arr::get($this->request->post(), 'tipo_'.$i);
+                    $infoProveedor->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoProveedor->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoProveedor->proveedor_id = $proveedor->id;
+                    
+                    if($infoProveedor->tipo != null || $infoProveedor->tipo != ''){
+                        $infoProveedor->save();
+                    }
+                    
+                    $infoProveedor = NULL;
+                }
+                
+                $db->commit();
                 
                 FlashMessenger::factory()->set_message('success', $success_message);
                 HTTP::redirect('proveedor/index');
                 
-            } catch (ORM_Validation_Exception $ex) {
+            } catch (Database_Exception $ex) {
                 foreach ($ex->errors('validation') as $error) {
                     FlashMessenger::factory()->set_message('error', $error);
                 }
+                $db->rollback();
             }
         }
 
@@ -48,7 +66,7 @@ class Controller_Proveedor extends Controller_Containers_Default {
         
         public function action_loadproveedores() {
         if ($this->request->is_ajax()) {
-            $ruc = arr::get($this->request->post(), 'RUC');
+            $identificacion = arr::get($this->request->post(), 'identificacion');
             $nombre = arr::get($this->request->post(), 'nombre');
             $telefono = arr::get($this->request->post(), 'telefono');
 
@@ -62,10 +80,8 @@ class Controller_Proveedor extends Controller_Containers_Default {
             $nombre = str_replace($convert_from, $convert_to, $nombre);
 
          
-            $proveedor = ORM::factory('Proveedor')
-                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
-                    ->and_where(DB::expr("LOWER(ruc)"), 'LIKE', DB::expr("_utf8 '%" . $ruc . "%' collate utf8_bin"))
-                    ->and_where(DB::expr("LOWER(telefono1)"), 'LIKE', DB::expr("_utf8 '%" . $telefono . "%' collate utf8_bin"))
+            $proveedor = ORM::factory('Proveedor')                    
+                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))                    
                     ->find_all();
 
             $this->view = View::factory('proveedor/loads/loadproveedor');
@@ -73,6 +89,18 @@ class Controller_Proveedor extends Controller_Containers_Default {
            
             $this->auto_render = FALSE;
             echo $this->view;
+        }
+    }
+    
+    public function action_loadinformacion() {
+        if ($this->request->is_ajax()) {
+            $this->view = View::factory('proveedor/loads/loadinformacion');
+            $cont = arr::get($this->request->post(), 'cont');
+            $tipo=ORM::factory('InformacionProveedor')->tipo_comunicacion;
+            $this->view->set('tipo', $tipo);
+            $this->view->set('cont', $cont);
+            echo $this->view;
+            $this->auto_render = FALSE;
         }
     }
 

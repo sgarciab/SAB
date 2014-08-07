@@ -17,18 +17,12 @@
             </div>        
         </div>	
         <div class="prepend-1 span-4">
-            <?php echo Form::label("ruc", "RUC:", array('class' => 'right')); ?>
+            <?php echo Form::label("identificacion", "Identificacion:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
-            <?php echo Form::input("ruc", null, array('id' => 'ruc', 'class' => 'span-4')); ?>
+            <?php echo Form::input("identificacion", null, array('id' => 'identificacion', 'class' => 'span-4')); ?>
         </div>	
-        </div>	
-        <div class="span-4">
-            <?php echo Form::label("telefono", "Telefono:", array('class' => 'right')); ?>
-        </div>	
-        <div class="span-5 last">
-            <?php echo Form::input("telefono", null, array('id' => 'telefono', 'class' => 'span-4')); ?>
-        </div>	
+        </div>	        
     </div>
 
     <div class="span-24 center">    
@@ -52,8 +46,7 @@
 
                     $('#container_proveedor').load(document_root + 'proveedor/loadproveedores', {
                         nombre: $("#nombre").val(),
-                        ruc: $("#ruc").val(),
-                        telefono: $("#telefono").val(),
+                        identificacion: $("#identificacion").val(),
                         async: false
                     }, function() {
 
