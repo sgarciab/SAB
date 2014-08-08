@@ -78,26 +78,29 @@
 	
         /*VALIDATIONS*/
         $("#frmCreateProveedor").validate({
-            onfocusout: false,
+            onfocusout: true,
             onkeyup: false,
             wrapper: "label",
             rules: {
                 nombre:{
                     maxlength: 255,
-                    required:true
-                    
+                    required:true                    
                 },
-                nombreComercial:{
-                   required:true
-                },
-                RUC:{
-                   required:true,
-                   maxlenght:16
-                },
-                direccion:{
-                   required:true,
-                   minlenght:10
-                }
+                
+                identificacion:{
+                   required: true,
+                   maxlenght: 13,
+                   remote:{
+                       url: document_root + 'proveedor/checkIdentificacion',
+                       type: 'post',
+                       data:{
+                           identificacion: function(){
+                               return $("#identificacion").val();
+                           }
+                       } 
+                   }
+                }                
+                
             },
             messages: {
                 nombre: {
