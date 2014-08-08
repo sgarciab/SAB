@@ -106,14 +106,15 @@ class Controller_Proveedor extends Controller_Containers_Default {
     
     public function action_checkIdentificacion() {
         if ($this->request->is_ajax()) {            
-            $identificacion = arr::get($this->request->post(), 'identificacion');
+            $identificacion = arr::get($this->request->post(), 'id');
             $proveedor = ORM::factory('Proveedor')->where('identificacion', '=', $identificacion)->find_all();
-            if($proveedor->count_all() > 0){
+            if($proveedor->count() > 0){
                 echo json_encode(false);
             }
             else{
                 echo json_encode(true);
             }
+             $this->auto_render = FALSE;
         }
     }
 

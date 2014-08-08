@@ -78,23 +78,20 @@
 	
         /*VALIDATIONS*/
         $("#frmCreateProveedor").validate({
-            onfocusout: true,
+            onfocusout: false,
             onkeyup: false,
             wrapper: "label",
             rules: {
                 nombre:{
-                    maxlength: 255,
                     required:true                    
                 },
-                
                 identificacion:{
                    required: true,
-                   maxlenght: 13,
                    remote:{
                        url: document_root + 'proveedor/checkIdentificacion',
                        type: 'post',
                        data:{
-                           identificacion: function(){
+                           id: function(){
                                return $("#identificacion").val();
                            }
                        } 
