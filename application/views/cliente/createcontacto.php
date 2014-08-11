@@ -115,10 +115,24 @@
                     
                 },
                 documentoLegal:{
-                   required:true
+                   required:true,
+                   remote:{
+                       url: document_root + 'cliente/checkIdentificacion',
+                       type: 'post',
+                       data:{
+                           documento: function(){
+                               return $("#documentoLegal").val();
+                           }
+                       } 
+                   }
                 },
                 empresah:{
                    required:true
+                }
+            },
+            messages:{
+                documentoLegal:{
+                    remote:"Número de documento ya asignado"
                 }
             }
           
@@ -167,6 +181,10 @@
                 $('#empresa').val('');
             }
         });
+        
+          $("#documentoLegal").focusout(function(){
+              $(this).valid();
+          });
         
         
         $("#addInformacionContacto").click(function(ev){

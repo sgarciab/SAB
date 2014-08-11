@@ -10,7 +10,7 @@
 
 class Model_InformacionContacto extends ORM {
     public $_table_name="informacioncontacto";
-    public $tipo=array('telefono'=>'Telefono','movil'=>'Movil','email'=>'Email','web'=>'Pagina Web');
+    public $_tipo=array('telefono'=>'Telefono','movil'=>'Movil','email'=>'Email','web'=>'Pagina Web');
     
         //RELATIONSHIP WITH OTHER TABLES
 //    protected $_has_many = array(

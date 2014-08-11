@@ -82,7 +82,9 @@ class Controller_Cliente extends Controller_Containers_Default {
         $contacto = ORM::factory('Contacto');
        
         if (!empty($_POST)) {
-            
+                  
+            $db = Database::instance();
+            $db ->begin();
             try {
                 if ($contacto->id) {
                     $success_message = Kohana::message('sab', 'contacto:update:success');
@@ -95,16 +97,36 @@ class Controller_Cliente extends Controller_Containers_Default {
                 $contacto->empresaActual = $this->request->post('empresaActual');
                 $contacto->nombreContacto = $this->request->post('nombreContacto');
                 $contacto->Cliente_idCliente = $this->request->post('empresah');
-              
+             
                 $contacto->save();
+                
+                $numReg = arr::get($this->request->post(), 'cont');
+                for($i=1; $i<=$numReg; $i++){
+                    $infoContacto = ORM::factory('InformacionContacto');
+                    
+                    $infoContacto->tipo = $this->request->post('tipo_'.$i);
+                    $infoContacto->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoContacto->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoContacto->Contacto_idContacto = $contacto->id;
+          
+                    if($infoContacto->tipo != null || $infoContacto->tipo != ''){
+                        $infoContacto->save();
+                    }
+                    
+                    $infoContacto = NULL;
+                }
+                
+                $db->commit();
+                
                 
                 FlashMessenger::factory()->set_message('success', $success_message);
                 HTTP::redirect('cliente/index');
                 
-            } catch (ORM_Validation_Exception $ex) {
+            } catch (Database_Exception $ex) {
                 foreach ($ex->errors('validation') as $error) {
                     FlashMessenger::factory()->set_message('error', $error);
                 }
+                 $db->rollback();
             }
         }
 
@@ -151,11 +173,26 @@ class Controller_Cliente extends Controller_Containers_Default {
         if ($this->request->is_ajax()) {
             $this->view = View::factory('cliente/loads/loadinformacion');
             $cont = arr::get($this->request->post(), 'cont');
-            $tipo=ORM::factory('InformacionContacto')->tipo;
-            $this->view->set('tipo', $tipo);
+            $tipo=ORM::factory('InformacionContacto')->_tipo;
+            $this->view->set('_tipo', $tipo);
             $this->view->set('cont', $cont);
             echo $this->view;
             $this->auto_render = FALSE;
+        }
+    }
+    
+    
+        public function action_checkIdentificacion() {
+        if ($this->request->is_ajax()) {            
+            $documento = arr::get($this->request->post(), 'documento');
+            $cliente = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->find_all();
+            if($cliente->count() > 0){
+                echo json_encode(false);
+            }
+            else{
+                echo json_encode(true);
+            }
+             $this->auto_render = FALSE;
         }
     }
     
