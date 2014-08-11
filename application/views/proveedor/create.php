@@ -100,9 +100,9 @@
                 
             },
             messages: {
-                nombre: {
-                    required:'Es requerido'
-                }
+               identificacion:{
+                   remote:'Esa identificación ya existe'
+               }
             }
             //,
             //            submitHandler: function (form) {
@@ -125,6 +125,10 @@
         loadinformacion(parseInt($("#cont").val())+1,"");
         });
         
+        
+        $("#identificacion").focusout(function(){
+           $(this).valid(); 
+        });
         
        function loadinformacion(cont,id){
             $("#container_place").load(document_root + "proveedor/loadinformacion", {
