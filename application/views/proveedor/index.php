@@ -2,28 +2,36 @@
 <?php echo HTML::style('media/css/jquery-ui-1.10.3.custom.min.css'); ?>
 <?php echo HTML::style('media/css/controllers/admin/calendar.css'); ?>
 <div class="prepend-2 span-20 append-2 last">
-    <h2 class="center">Administraci&oacute;n de Proveedores</h2><br>
+    <h2 class="center">Administraci&oacute;n de OLA's</h2><br>
 
 
-    <?php echo Form::open(NULL, array('id' => 'frmBusquedaProveedores')); ?>
+    <?php echo Form::open(NULL, array('id' => 'frmBusquedaOlas')); ?>
 
     <div class="span-20 line last">
         <div class="span-4">
-            <?php echo Form::label("nombre", "Nombre:", array('class' => 'right')); ?>
+            <?php echo Form::label("idOla", "Id:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <div class="span-5 last ">
-                <?php echo Form::input("nombre", null, array('id' => 'nombre', 'class' => 'span-4')); ?>
+                <?php echo Form::input("idOla", null, array('id' => 'idOla', 'class' => 'span-4')); ?>
             </div>        
         </div>	
         <div class="prepend-1 span-4">
-            <?php echo Form::label("identificacion", "Identificacion:", array('class' => 'right')); ?>
+            <?php echo Form::label("criticidad", "Criticidad:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
-            <?php echo Form::input("identificacion", null, array('id' => 'identificacion', 'class' => 'span-4')); ?>
+            <?php echo Form::input("criticidad", null, array('id' => 'criticidad', 'class' => 'span-4')); ?>
         </div>	
-        </div>	        
-    </div>
+    </div>	        
+
+    <div class="span-20 line last">        
+        <div class="prepend-1 span-4">
+            <?php echo Form::label("tiempoRespuesta", "Tiempo de Respuesta:", array('class' => 'right')); ?>
+        </div>	
+        <div class="span-5 last">
+            <?php echo Form::input("tiempoRespuesta", null, array('id' => 'tiempoRespuesta', 'class' => 'span-4')); ?>
+        </div>	
+    </div>	        
 
     <div class="span-24 center">    
         <?php echo Form::input('btnSearch', "Buscar", array('id' => 'btnSearch', 'type' => 'button', 'class' => 'custom-button')); ?>
@@ -31,6 +39,8 @@
 
     <?php echo Form::close(); ?>
 
+</div>
+    
     <div><hr class="separator" /></div>
     
     <div class="span-24 last line center" id="container_proveedor"></div>
@@ -39,19 +49,20 @@
         $(document).ready(function() {
             
             
-             $('#btnSearch').click(function(){
+            $('#btnSearch').click(function(){
                  
-                 
-                     $('#container_proveedor').html('');
+                    alert('HOLA MUDO!');
+                    $('#container_ola').html('');
 
-                    $('#container_proveedor').load(document_root + 'proveedor/loadproveedores', {
-                        nombre: $("#nombre").val(),
-                        identificacion: $("#identificacion").val(),
+                    $('#container_ola').load(document_root + 'ola/loadola', {
+                        id: $('#idOla').val(),
+                        criticidad: $("#nombre").val(),                        
+                        tiempoRespuesta: $("#tiempoRespuesta").val(),
                         async: false
                     }, function() {
 
-                        if ($('#table-proveedor').length > 0) {
-                            $('#table-proveedor').dataTable({
+                        if ($('#table-ola').length > 0) {
+                            $('#table-ola').dataTable({
                                 "sDom": '<"H"Tfr>t<"F"pi>',
                                 "oTableTools": {
                                     "sSwfPath": document_root + "media/swf/dataTables/copy_cvs_xls_pdf.swf",
@@ -59,7 +70,7 @@
                                         {
                                             "sExtends": "pdf",
                                             "mColumns": [0, 1, 2, 3, 4],
-                                            "sFileName": "Proveedores.pdf",
+                                            "sFileName": "Ola.pdf",
                                             "sPdfOrientation": "landscape",
                                             "sPdfSize": "letter",
                                             "sPdfMessage": "Proveedores"

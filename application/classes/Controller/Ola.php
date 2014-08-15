@@ -46,6 +46,7 @@ class Controller_Ola extends Controller_Containers_Default {
 
        
         $this->view->set("ola", $ola);
+        $this->view->set("opCriticidad", $ola);
 	}
         
         public function action_loadola() {

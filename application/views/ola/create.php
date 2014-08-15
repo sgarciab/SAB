@@ -19,14 +19,7 @@
         <?php echo Form::label("criticidad", "Criticidad:", array('class' => 'left')); ?>
     </div>
     <div class="span-5 last">
-        <?php 
-        
-        // Aqui como rayos le mando a guardar?
-        //$opCriticidad = array('bajo'=>'Bajo', 'medio'=>'Medio', 'alto'=>'Alto', 'ninguna'=>'Ninguna');
-        //echo Form::select("criticidad", $opCriticidad, array('id' => 'criticidad', 'class' => 'span-5'));
-        
-        echo Form::select("criticidad", $ola->criticidad, array('id' => 'criticidad', 'class' => 'span-5'));
-        ?>
+        <?php echo Form::select("criticidad", $ola->opCriticidad, null, array('id' => 'criticidad', 'class' => 'span-5')); ?>
     </div>
     
 </div>
@@ -39,7 +32,7 @@
         
         <?php
         
-        // Tiempo de respuesta deberia ser un input de tiempo?? como?
+        // Tiempo de respuesta deberia ser un input de tiempo - Queda pendiente
         
         echo Form::input("tiempoRespuesta", $ola->tiempoRespuesta, array('id' => 'tiempoRespuesta', 'class' => 'span-5')); ?>
     </div>		
@@ -51,19 +44,9 @@
         <?php echo Form::label("descripcion", "Descripci&oacute;n:", array('class' => 'span-4')); ?>
     </div>
     <div class="span-4 ">
-        <?php echo Form::button("descripcion", "Descripci&oacute;n", array('class' => 'span-4','id'=>'descripcion')); ?>
+        <?php echo Form::textarea("descripcion", "Descripci&oacute;n", array('class' => 'span-4','id'=>'descripcion')); ?>
     </div>
 </div>
-
-<div class="prepend-2 span-20 append-2">
-   <div id="table_informacion" class="span-21">
-     <div id='bodyinformacion'class="span-20"></div>
-   </div>
-</div>
-
-<div id="container_place" hidden="" ></div>
-
-
 
 <?php if (!$ola->id) { ?>
     <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
