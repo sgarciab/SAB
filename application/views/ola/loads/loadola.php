@@ -26,8 +26,8 @@
 
 <?php else: ?>
     <div class="prepend-5 span-10 append-5 line last center">
-        <div class="span-10 line last notice">
-            <?php echo Kohana::message('admin', 'ola:index:empty'); ?>
+        <div class="span-10 line center notice">
+            <?php echo Kohana::message('sab', 'ola:index:empty'); ?>
         </div>
     </div>
 <?php endif; ?>

@@ -16,5 +16,6 @@ return array
     'proveedor:create:success' => 'Proveedor creado exitosamente',
     'proveedor:update:success' => 'Proveedor actualizado exitosamente',
     'ola:create:success' => 'OLA creado exitosamente',
-    'ola:update:success' => 'OLA actualizado exitosamente'
+    'ola:update:success' => 'OLA actualizado exitosamente',
+    'ola:index:empty' => 'No se encontro ningun registro'
 );

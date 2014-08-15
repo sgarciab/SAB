@@ -63,11 +63,13 @@ class Controller_Ola extends Controller_Containers_Default {
             $convert_from = array(
                 "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
             );
-            $nombre = str_replace($convert_from, $convert_to, $nombre);
+            $criticidad = str_replace($convert_from, $convert_to, $criticidad);
+            $tiempoRespuesta = str_replace($convert_from, $convert_to, $tiempoRespuesta);
 
          
             $ola = ORM::factory('Ola')                    
-                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))                    
+                    ->where(DB::expr("LOWER(criticidad)"), 'LIKE', DB::expr("_utf8 '%" . $criticidad . "%' collate utf8_bin"))
+                    ->where(DB::expr("LOWER(tiempoRespuesta)"), 'LIKE', DB::expr("_utf8 '%" . $tiempoRespuesta . "%' collate utf8_bin"))
                     ->find_all();
 
             $this->view = View::factory('ola/loads/loadola');
