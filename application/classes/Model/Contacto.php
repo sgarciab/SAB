@@ -11,15 +11,7 @@
 class Model_Contacto extends ORM {
     public $_table_name="contacto";
     
-        //RELATIONSHIP WITH OTHER TABLES
-//    protected $_has_many = array(
-//        'profile_action' => array(
-//            'model' => 'Profile_action'
-//        ),
-//        'allowed_actions' => array(
-//            'model' => 'Allowed_actions'
-//        )		
-//    );
+    protected $_has_many = array('infocontactos' => array('model' => 'InformacionContacto', 'foreign_key' => 'Contacto_idContacto'));
 
 }
 

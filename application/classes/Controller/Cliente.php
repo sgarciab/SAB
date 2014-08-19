@@ -135,6 +135,74 @@ class Controller_Cliente extends Controller_Containers_Default {
 	}
         
         
+        
+        
+        public function action_editcontacto()
+	{
+	$this->view = View::factory('cliente/editcontacto');
+
+        $contacto = ORM::factory('Contacto', $this->params[0]);
+        
+       
+        if (!empty($_POST)) {
+                  
+            $db = Database::instance();
+            $db ->begin();
+            try {
+                if ($contacto->id) {
+                    $success_message = Kohana::message('sab', 'contacto:update:success');
+                } else {
+                    $success_message = Kohana::message('sab', 'contacto:create:success');
+                }
+                
+                $contacto->direccion = $this->request->post('direccion');
+                $contacto->documentoLegal = $this->request->post('documentoLegal');
+                $contacto->empresaActual = $this->request->post('empresaActual');
+                $contacto->nombreContacto = $this->request->post('nombreContacto');
+                $contacto->Cliente_idCliente = $this->request->post('empresah');
+             
+                $contacto->save();
+                $temp=ORM::factory('InformacionContacto')->where('Contacto_idContacto', '=', $contacto->id)->find_all();
+                foreach ($temp as $item) {
+                    $item->delete();
+                }
+                $numReg = arr::get($this->request->post(), 'cont');
+                for($i=1; $i<=$numReg; $i++){
+                    $infoContacto = ORM::factory('InformacionContacto');
+                    $infoContacto->tipo = $this->request->post('tipo_'.$i);
+                    $infoContacto->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoContacto->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoContacto->Contacto_idContacto = $contacto->id;
+          
+                    if($infoContacto->tipo != null || $infoContacto->tipo != ''){
+                        $infoContacto->save();
+                    }
+                    
+                    $infoContacto = NULL;
+                }
+                
+                $db->commit();
+                
+                
+                FlashMessenger::factory()->set_message('success', $success_message);
+                HTTP::redirect('cliente/index');
+                
+            } catch (Database_Exception $ex) {
+                foreach ($ex->errors('validation') as $error) {
+                    FlashMessenger::factory()->set_message('error', $error);
+                }
+                 $db->rollback();
+            }
+        }
+
+       
+        $this->view->set("contacto", $contacto);
+        $tipo=ORM::factory('InformacionContacto')->_tipo;
+        $this->view->set("_tipo",$tipo );
+	}
+        
+        
+        
     public function action_autocompletercliente() {
         if ($this->request->is_ajax()) {
             $data = arr::get($this->request->query(), 'q');
@@ -185,7 +253,9 @@ class Controller_Cliente extends Controller_Containers_Default {
         public function action_checkIdentificacion() {
         if ($this->request->is_ajax()) {            
             $documento = arr::get($this->request->post(), 'documento');
-            $cliente = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->find_all();
+            $id=arr::get($this->request->post(), 'id');
+            $cliente = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->where('id', '!=', $id)
+                    ->find_all();
             if($cliente->count() > 0){
                 echo json_encode(false);
             }
