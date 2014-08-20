@@ -136,9 +136,10 @@
                 },
                 documentoLegal:{
                    required:true,
+                   maxlength: 13,
                    remote:{
                        url: document_root + 'cliente/checkIdentificacion',
-                       type: 'post',
+                       type: 'post',                       
                        data:{
                            documento: function(){
                                return $("#documentoLegal").val();
