@@ -11,7 +11,7 @@
 class Model_Ola extends ORM {
     public $_table_name="ola";
     public $opCriticidad = array('bajo'=>'Bajo', 'medio'=>'Medio', 'alto'=>'Alto', 'ninguna'=>'Ninguna');
-
+    public $medida = array('m'=>'Minutos', 'h'=>'Horas', 'd'=>'Dias');
 }
 
 ?>

@@ -28,7 +28,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                 $contactoOla->documentoLegal = $this->request->post('documentoLegal');
                 $contactoOla->empresaActual = $this->request->post('empresaActual');
                 $contactoOla->nombreContacto = $this->request->post('nombreContacto');
-                $contactoOla->Ola_idOla = $this->request->post('refOla');
+                $contactoOla->OLA_idOLA = $this->request->post('refOla');                
              
                 $contactoOla->save();
                 
@@ -117,7 +117,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
         public function action_checkIdentificacion() {
         if ($this->request->is_ajax()) {            
             $documento = arr::get($this->request->post(), 'documento');
-            $contactoOla = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->find_all();
+            $contactoOla = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->where('id', '!=', $id)->find_all();                                   
             if($contactoOla->count() > 0){
                 echo json_encode(false);
             }

@@ -35,16 +35,29 @@
         // Tiempo de respuesta deberia ser un input de tiempo - Queda pendiente
         
         echo Form::input("tiempoRespuesta", $ola->tiempoRespuesta, array('id' => 'tiempoRespuesta', 'class' => 'span-5')); ?>
-    </div>		
+    </div>    	
+    <div class="span-5 last">        
+        <?php echo Form::select("medTiempo", $ola->medida, null, array('id' => 'medTiempo', 'class' => 'span-2')); ?>
+    </div>
 
+</div>
+    
+<div class="prepend-2 span-20 append-2 line last">
+    <div class="span-4">
+        <?php echo Form::label("proveedor", "Servicio Proveedor (OLA):", array('class' => 'left')); ?>
+    </div>	
+    <div class="span-5 last">        
+        <?php echo Form::input("proveedor", '', array('id' => 'proveedor', 'class' => 'span-5')); ?>
+        <?php echo Form::hidden("proveedorh", $ola->ServicioProveedor_idServicioProveedor, array('id' => 'proveedorh', 'class' => 'span-5')); ?>
+    </div>    	
 </div>
 
 <div class="prepend-2 span-20 append-2 line last">
     <div class="span-4 ">
-        <?php echo Form::label("descripcion", "Descripci&oacute;n:", array('class' => 'span-4')); ?>
+        <?php echo Form::label("descripcion", "Descripcion", array('class' => 'span-4')); ?>
     </div>
     <div class="span-4 ">
-        <?php echo Form::textarea("descripcion", "Descripci&oacute;n", array('class' => 'span-4','id'=>'descripcion')); ?>
+        <?php echo Form::textarea("descripcion", $ola->descripcion, array('class' => 'textareaastextarea','id'=>'descripcion')); ?>
     </div>
 </div>
 
@@ -89,7 +102,33 @@
                 $("#frmCreateOla").submit();
                
             }
-        }); 	       
+        });
+        
+        $("#proveedor").autocomplete(document_root+"ola/autocompleterproveedor",{
+            max: 16,
+            scroll: false,
+            matchContains:true,
+            minChars: 1,
+            selectFirst:false,
+            formatItem: function(row) {
+                if(row[0]!='0'){
+                    return row[0]+'  /  '+row[1]+'  /  '+row[2];
+                }
+                else{
+                    return 'No existen resultados';
+                }
+            }
+        }).result(function(event, row) {
+            if(row[1]!='0'){
+				
+                $('#proveedorh').val(row[0]);
+                $('#proveedor').val(row[2]);
+            }else
+            {
+                $('#proveedorh').val('');	
+                $('#proveedor').val('');
+            }
+        });
         
     });
 
