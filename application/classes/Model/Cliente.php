@@ -11,7 +11,7 @@
 class Model_Cliente extends ORM {
     public $_table_name="cliente";
     
-        //RELATIONSHIP WITH OTHER TABLES
+        protected $_has_many = array('contactos' => array('model' => 'Contacto', 'foreign_key' => 'Cliente_idCliente'));
 
 
 }

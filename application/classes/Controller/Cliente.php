@@ -7,6 +7,12 @@ class Controller_Cliente extends Controller_Containers_Default {
 		$this->view = View::factory('cliente/index');
 	}
         
+        
+        public function action_indexcontacto()
+	{
+		$this->view = View::factory('cliente/indexcontacto');
+	}
+        
         public function action_create()
 	{
 	$this->view = View::factory('cliente/create');
@@ -265,5 +271,36 @@ class Controller_Cliente extends Controller_Containers_Default {
              $this->auto_render = FALSE;
         }
     }
+    
+    
+    public function action_loadcontacto() {
+            if ($this->request->is_ajax()) {
+                $cliente = arr::get($this->request->post(), 'cliente');
+                $nombre = arr::get($this->request->post(), 'nombre');
+
+
+                 $convert_to = array(
+                    "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+                );
+                $convert_from = array(
+                    "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+                );
+                $nombre = str_replace($convert_from, $convert_to, $nombre);
+                $cliente = str_replace($convert_from, $convert_to, $cliente);
+
+
+                $contactos = ORM::factory('Contacto')
+                        ->where(DB::expr("LOWER(nombreContacto)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"));
+                if ($cliente!=null)        
+                        $contactos->and_where("Cliente_idCliente", '=', DB::expr("_utf8 '%" . $cliente . "%' collate utf8_bin"));
+                $contactos=$contactos ->find_all();
+
+                $this->view = View::factory('cliente/loads/loadcontacto');
+                $this->view->set("contactos", $contactos);
+
+                $this->auto_render = FALSE;
+                echo $this->view;
+            }
+        }
     
 } 
