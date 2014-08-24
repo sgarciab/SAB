@@ -27,7 +27,9 @@ class Controller_Ola extends Controller_Containers_Default {
                              
                 $ola->criticidad = arr::get($this->request->post(), 'criticidad');
                 $ola->tiempoRespuesta = arr::get($this->request->post(), 'tiempoRespuesta');
+                $ola->medTiempo = arr::get($this->request->post(), 'medTiempo');
                 $ola->descripcion = arr::get($this->request->post(), 'descripcion');
+                $ola->ServicioProveedor_idServicioProveedor = arr::get($this->request->post(), 'proveedorh');
               
                 $ola->save();                             
                 
@@ -55,6 +57,7 @@ class Controller_Ola extends Controller_Containers_Default {
             $id = arr::get($this->request->post(), 'id');
             $criticidad = arr::get($this->request->post(), 'criticidad');
             $tiempoRespuesta = arr::get($this->request->post(), 'tiempoRespuesta');
+            $medTiempo = arr::get($this->request->post(), 'medTiempo');
             $descripcion = arr::get($this->request->post(), 'descripcion');
             
             $convert_to = array(
@@ -69,7 +72,8 @@ class Controller_Ola extends Controller_Containers_Default {
          
             $ola = ORM::factory('Ola')                    
                     ->where(DB::expr("LOWER(criticidad)"), 'LIKE', DB::expr("_utf8 '%" . $criticidad . "%' collate utf8_bin"))
-                    ->where(DB::expr("LOWER(tiempoRespuesta)"), 'LIKE', DB::expr("_utf8 '%" . $tiempoRespuesta . "%' collate utf8_bin"))
+                    ->and_where(DB::expr("LOWER(tiempoRespuesta)"), 'LIKE', DB::expr("_utf8 '%" . $tiempoRespuesta . "%' collate utf8_bin"))
+                    ->and_where(DB::expr("LOWER(medTiempo)"), 'LIKE', DB::expr("_utf8 '%" . $medTiempo . "%' collate utf8_bin"))
                     ->find_all();
 
             $this->view = View::factory('ola/loads/loadola');
@@ -78,6 +82,39 @@ class Controller_Ola extends Controller_Containers_Default {
             $this->auto_render = FALSE;
             echo $this->view;
         }
+    }
+    
+    public function action_autocompleterproveedor() {
+        if ($this->request->is_ajax()) {
+            $data = arr::get($this->request->query(), 'q');
+
+            //GET A LIST OF SUPPLIER TO LOAD THE AUTOCOMPLETER
+
+            $convert_to = array(
+                "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+            );
+            $convert_from = array(
+                "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+            );
+            $data = str_replace($convert_from, $convert_to, $data);
+
+
+            $proveedores = ORM::factory('servicioproveedor')
+                    ->where(DB::expr("LOWER(id)"), 'LIKE', DB::expr("_utf8 '%" . $data . "%' collate utf8_bin"))                    
+                    ->or_where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $data . "%' collate utf8_bin"))
+                    ->or_where(DB::expr("LOWER(descripcion)"), 'LIKE', DB::expr("_utf8 '%" . $data . "%' collate utf8_bin"))
+                    ->find_all();
+
+            if ($proveedores->count()) {
+                foreach ($proveedores as $proveedor) {
+                    echo $proveedor->id . '|' . $proveedor->nombre . '|' . $proveedor->descripcion . "\n";
+                }
+            } else {
+                echo '0' . "\n";
+            }
+            $this->auto_render = FALSE;
+        }
+             
     }
 
 } 

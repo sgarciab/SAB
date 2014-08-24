@@ -41,7 +41,7 @@
     <div class="span-5 last">
         <div class="span-5 last ">
             <?php echo Form::input("relacionOla", '', array('id' => 'relacionOla', 'class' => 'span-5')); ?>
-             <?php echo Form::hidden("relacionOlah", $contactoOla->Ola_idOla, array('id' => 'relacionOlah', 'class' => 'span-5')); ?>
+             <?php echo Form::hidden("relacionOlah", $contactoOla->OLA_idOLA, array('id' => 'relacionOlah', 'class' => 'span-5')); ?>
         </div>        
     </div>	
 
