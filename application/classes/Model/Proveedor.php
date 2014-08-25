@@ -10,7 +10,7 @@
 
 class Model_Proveedor extends ORM {
     public $_table_name="proveedor";
-    
+    protected $_has_many = array('infoproveedores' => array('model' => 'InformacionProveedor', 'foreign_key' => 'proveedor_id'));
 
 }
 

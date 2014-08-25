@@ -15,7 +15,7 @@
                     <td><?php echo $proveedor->identificacion; ?></td>
                     <td><?php echo $proveedor->direccion; ?></td>
                     <td class="span-2">
-                        <?php echo HTML::anchor("proveedor/create/" . $proveedor->id, "Actualizar"); ?>                 
+                        <?php echo HTML::anchor("proveedor/edit/" . $proveedor->id, "Actualizar"); ?>                 
                     </td>
                 </tr>
             <?php endforeach; ?>

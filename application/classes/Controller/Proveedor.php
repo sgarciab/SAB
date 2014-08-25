@@ -64,6 +64,68 @@ class Controller_Proveedor extends Controller_Containers_Default {
         $this->view->set("proveedor", $proveedor);
 	}
         
+        public function action_edit()
+	{
+	$this->view = View::factory('proveedor/edit');
+
+        $proveedor = ORM::factory('Proveedor', $this->params[0]);
+        
+       
+        if (!empty($_POST)) {
+                  
+            $db = Database::instance();
+            $db ->begin();
+            try {
+                if ($proveedor->id) {
+                    $success_message = Kohana::message('sab', 'proveedor:update:success');
+                } else {
+                    $success_message = Kohana::message('sab', 'proveedor:create:success');
+                }
+                
+                $proveedor->nombre = $this->request->post('nombre');
+                $proveedor->identificacion = $this->request->post('identificacion');
+                $proveedor->direccion = $this->request->post('direccion');
+             
+                $proveedor->save();
+                $temp=ORM::factory('InformacionProveedor')->where('proveedor_id', '=', $proveedor->id)->find_all();
+                foreach ($temp as $item) {
+                    $item->delete();
+                }
+                $numReg = arr::get($this->request->post(), 'cont');
+                for($i=1; $i<=$numReg; $i++){
+                    $infoProveedor = ORM::factory('InformacionProveedor');
+                    $infoProveedor->tipo = $this->request->post('tipo_'.$i);
+                    $infoProveedor->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoProveedor->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoProveedor->Contacto_idContacto = $contacto->id;
+          
+                    if($infoProveedor->tipo != null || $infoProveedor->tipo != ''){
+                        $infoProveedor->save();
+                    }
+                    
+                    $infoProveedor = NULL;
+                }
+                
+                $db->commit();
+                
+                
+                FlashMessenger::factory()->set_message('success', $success_message);
+                HTTP::redirect('proveedor/index');
+                
+            } catch (Database_Exception $ex) {
+                foreach ($ex->errors('validation') as $error) {
+                    FlashMessenger::factory()->set_message('error', $error);
+                }
+                 $db->rollback();
+            }
+        }
+
+       
+        $this->view->set("proveedor", $proveedor);
+        $tipo=ORM::factory("InformacionProveedor")->tipo_comunicacion;
+        $this->view->set("_tipo",$tipo );
+	}        
+        
         public function action_loadproveedores() {
         if ($this->request->is_ajax()) {
             $identificacion = arr::get($this->request->post(), 'identificacion');

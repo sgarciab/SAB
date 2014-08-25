@@ -10,17 +10,10 @@
 
 class Model_InformacionProveedor extends ORM {
     public $_table_name="informacionproveedor";
-    public $tipo_comunicacion=array('telefono'=>'Telefono','movil'=>'Movil','email'=>'Email','web'=>'Pagina Web');
+    public $tipo_comunicacion=array('telefono'=>'Telefono','movil'=>'Movil','email'=>'Email','web'=>'Pagina Web');        
     
-        //RELATIONSHIP WITH OTHER TABLES
-//    protected $_has_many = array(
-//        'profile_action' => array(
-//            'model' => 'Profile_action'
-//        ),
-//        'allowed_actions' => array(
-//            'model' => 'Allowed_actions'
-//        )		
-//    );
+    //RELATIONSHIP WITH OTHER TABLES
+    protected $_belongs_to = array('proveedor' => array('model' => 'Proveedor', 'foreign_key' => 'proveedor_id'));
 
 }
 
