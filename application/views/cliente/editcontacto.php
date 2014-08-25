@@ -242,8 +242,9 @@
           });
           
           $("#empresa").focusout(function(){
-            var temp = $(this).trim($(this).val()) ;
-            if (temp=''){
+            var temp = $(this).val().trim() ;
+      
+            if (temp==''){
                 $('#empresah').val('');	
             }
           });
