@@ -41,7 +41,7 @@
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("empresa", '', array('id' => 'empresa', 'class' => 'span-5')); ?>
+            <?php echo Form::input("empresa", $contacto->cliente->nombre, array('id' => 'empresa', 'class' => 'span-5')); ?>
              <?php echo Form::hidden("empresah", $contacto->Cliente_idCliente, array('id' => 'empresah', 'class' => 'span-5')); ?>
         </div>        
     </div>	
@@ -215,11 +215,13 @@
             matchContains:true,
             minChars: 1,
             selectFirst:false,
+            delay:1,
             formatItem: function(row) {
                 if(row[0]!='0'){
                     return row[0]+'  /  '+row[1]+'  /  '+row[2];
                 }
                 else{
+                    $('#empresah').val('');
                     return 'No existen resultados';
                 }
             }
@@ -237,6 +239,13 @@
         
           $("#documentoLegal").focusout(function(){
               $(this).valid();
+          });
+          
+          $("#empresa").focusout(function(){
+            var temp = $(this).trim($(this).val()) ;
+            if (temp=''){
+                $('#empresah').val('');	
+            }
           });
         
         
