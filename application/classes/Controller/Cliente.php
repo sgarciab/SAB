@@ -277,7 +277,8 @@ class Controller_Cliente extends Controller_Containers_Default {
             if ($this->request->is_ajax()) {
                 $cliente = arr::get($this->request->post(), 'cliente');
                 $nombre = arr::get($this->request->post(), 'nombre');
-
+                $empresa=arr::get($this->request->post(), 'empresah');
+                 $documento=arr::get($this->request->post(), 'documentoLegal');
 
                  $convert_to = array(
                     "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
@@ -290,9 +291,13 @@ class Controller_Cliente extends Controller_Containers_Default {
 
 
                 $contactos = ORM::factory('Contacto')
-                        ->where(DB::expr("LOWER(nombreContacto)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"));
-                if ($cliente!=null)        
-                        $contactos->and_where("Cliente_idCliente", '=', DB::expr("_utf8 '%" . $cliente . "%' collate utf8_bin"));
+                        ->where(DB::expr("LOWER(nombreContacto)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+                        ->and_where(DB::expr("LOWER(documentoLegal)"), 'LIKE', DB::expr("_utf8 '%" . $documento . "%' collate utf8_bin"));
+                if ($cliente!=null)    
+                {    
+                $contactos->and_where("Cliente_idCliente", '=',$empresa.'');
+                }
+
                 $contactos=$contactos ->find_all();
 
                 $this->view = View::factory('cliente/loads/loadcontacto');

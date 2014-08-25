@@ -8,34 +8,40 @@
     <?php echo Form::open(NULL, array('id' => 'frmBusquedaClientes')); ?>
 
     <div class="span-20 line last">
-        <div class="span-4">
-            <?php echo Form::label("documentoLegal", "Documento Legal:", array('class' => 'right')); ?>
-        </div>	
-        <div class="span-5 last">
-            <div class="span-5 last ">
-                <?php echo Form::input("documentoLegal", null, array('id' => 'documentoLegal', 'class' => 'span-4')); ?>
-            </div>        
-        </div>	
+    	
         <div class="prepend-1 span-4">
             <?php echo Form::label("nombre", "Nombre:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <?php echo Form::input("nombre", null, array('id' => 'nombre', 'class' => 'span-4')); ?>
         </div>	
-    </div>
-    
-     <div class="span-20 line last">
-        <div class="span-4">
+        
+        
+          <div class="span-4">
             <?php echo Form::label("Cliente", "Cliente", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <div class="span-5 last ">
-                <?php echo Form::input("CLiente", null, array('id' => 'Cliente', 'class' => 'span-4')); ?>
+                <?php echo Form::input("cliente", null, array('id' => 'cliente', 'class' => 'span-4')); ?>
+                <?php echo Form::hidden("empresah", null, array('id' => 'empresah', 'class' => 'span-5')); ?>
             </div>        
-        </div>	
-        	
+        </div>
+        
+        
     </div>
-
+    
+    <div class="span-20 line last">
+    <div class="prepend-1 span-4">
+            <?php echo Form::label("documentoLegal", "Documento Legal", array('class' => 'right')); ?>
+        </div>	
+        <div class="span-5 last">
+            <div class="span-5 last ">
+                <?php echo Form::input("documentoLegal", null, array('id' => 'documentoLegal', 'class' => 'span-4')); ?>
+              
+            </div>        
+        </div>
+    </div>
+    
 
     <div class="span-20 center">    
         <?php echo Form::input('btnSearch', "Buscar", array('id' => 'btnSearch', 'type' => 'button', 'class' => 'custom-button')); ?>
@@ -50,6 +56,31 @@
     <script>
         $(document).ready(function() {
             
+            $("#cliente").autocomplete(document_root+"cliente/autocompletercliente",{
+            max: 16,
+            scroll: false,
+            matchContains:true,
+            minChars: 1,
+            selectFirst:false,
+            formatItem: function(row) {
+                if(row[0]!='0'){
+                    return row[0]+'  /  '+row[1]+'  /  '+row[2];
+                }
+                else{
+                    return 'No existen resultados';
+                }
+            }
+        }).result(function(event, row) {
+            if(row[1]!='0'){
+				
+                $('#empresah').val(row[0]);
+                $('#cliente').val(row[2]);
+            }else
+            {
+                $('#empresah').val('');	
+                $('#cliente').val('');
+            }
+        });
             
              $('#btnSearch').click(function(){
                  
@@ -60,6 +91,7 @@
                         documentoLegal: $("#documentoLegal").val(),
                         nombre: $("#nombre").val(),
                         cliente: $("#cliente").val(),
+                        empresah: $("#empresah").val(),
                         async: false
                     }, function() {
 
