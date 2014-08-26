@@ -16,7 +16,7 @@ class Controller_Cliente extends Controller_Containers_Default {
         public function action_create()
 	{
 	$this->view = View::factory('cliente/create');
-//        die($this->params[0]);
+
         $cliente = ORM::factory('Cliente', $this->params[0]);
        
         if (!empty($_POST)) {

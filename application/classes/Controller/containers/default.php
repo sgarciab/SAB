@@ -42,7 +42,7 @@ class Controller_Containers_Default extends Controller_Template {
 
 //		Verify if the user has access permission to the requested url
         if ($this->request->controller() != "main" && $this->request->controller() != "login" && $this->request->controller() != "rpc" &&
- /*aqui debo poner la negacion para permisos */  $this->current_user->has_access_permission($this->request->controller(), $this->request->action()))
+ /*aqui debo poner la negacion para permisos */  !$this->current_user->has_access_permission($this->request->controller(), $this->request->action()))
             throw new Exception_Unauthorized;
 
         $this->params = explode('/', $this->request->param('id'));
