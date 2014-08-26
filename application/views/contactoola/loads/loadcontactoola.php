@@ -1,5 +1,5 @@
 <?php if (count($contactosola) > 0): ?>
-    <table id="table-clientes">
+    <table id="table-contactos">
         <thead>
             <tr>
                 <th>OLA</th> 

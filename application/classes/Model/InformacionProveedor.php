@@ -1,8 +1,8 @@
 <?php
 
 /*
-  File: InformacionContacto.php
-  Author: Esteban V.
+  File: InformacionProveedor.php
+  Author: Esteban Villacis
   Creation Date: 06/08/2014
  * Modified by :
  * Last Modification: 06/08/2014

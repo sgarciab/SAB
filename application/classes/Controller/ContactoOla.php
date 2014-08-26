@@ -9,7 +9,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
         
         public function action_createcontactoola()
 	{
-	$this->view = View::factory('ola/createcontactoola');
+	$this->view = View::factory('contactoola/createcontactoola');
 
         $contactoOla = ORM::factory('ContactoOla');
        
@@ -169,7 +169,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
     
     public function action_loadinformacion() {
         if ($this->request->is_ajax()) {
-            $this->view = View::factory('ola/loads/loadinformacion');
+            $this->view = View::factory('contactoola/loads/loadinformacion');
             $cont = arr::get($this->request->post(), 'cont');
             $tipo=ORM::factory('InformacionContactoOla')->_tipo;
             $this->view->set('_tipo', $tipo);
@@ -199,31 +199,30 @@ class Controller_ContactoOla extends Controller_Containers_Default {
             if ($this->request->is_ajax()) {
                 $ola = arr::get($this->request->post(), 'ola');
                 $nombre = arr::get($this->request->post(), 'nombre');
-                $empresa = arr::get($this->request->post(), 'empresah');
+                $olah = arr::get($this->request->post(), 'olah');
                 $documento = arr::get($this->request->post(), 'documentoLegal');
 
-                 $convert_to = array(
+                $convert_to = array(
                     "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
                 );
                 $convert_from = array(
                     "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
                 );
                 $nombre = str_replace($convert_from, $convert_to, $nombre);
-                $cliente = str_replace($convert_from, $convert_to, $cliente);
+                $ola = str_replace($convert_from, $convert_to, $ola);
 
-
-                $contactos = ORM::factory('Contacto')
+                $contactos = ORM::factory('ContactoOla')
                         ->where(DB::expr("LOWER(nombreContacto)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
                         ->and_where(DB::expr("LOWER(documentoLegal)"), 'LIKE', DB::expr("_utf8 '%" . $documento . "%' collate utf8_bin"));
-                if ($cliente!=null)    
+                if ($ola!=null)    
                 {    
-                $contactos->and_where("Cliente_idCliente", '=',$empresa.'');
+                $contactos->and_where("OLA_idOLA", '=',$ola.'');
                 }
 
-                $contactos=$contactos ->find_all();
+                $contactos = $contactos->find_all();
 
-                $this->view = View::factory('cliente/loads/loadcontacto');
-                $this->view->set("contactos", $contactos);
+                $this->view = View::factory('contactoola/loads/loadcontactoola');
+                $this->view->set("contactosola", $contactos);
 
                 $this->auto_render = FALSE;
                 echo $this->view;

@@ -5,7 +5,7 @@
     <h2 class="center">Administraci&oacute;n de Contactos </h2><br>
 
 
-    <?php echo Form::open(NULL, array('id' => 'frmBusquedaClientes')); ?>
+    <?php echo Form::open(NULL, array('id' => 'frmBusquedaContactos')); ?>
 
     <div class="span-20 line last">
     	
@@ -18,12 +18,12 @@
         
         
           <div class="span-4">
-            <?php echo Form::label("Cliente", "Cliente", array('class' => 'right')); ?>
+            <?php echo Form::label("Ola", "Ola", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <div class="span-5 last ">
-                <?php echo Form::input("cliente", null, array('id' => 'cliente', 'class' => 'span-4')); ?>
-                <?php echo Form::hidden("empresah", null, array('id' => 'empresah', 'class' => 'span-5')); ?>
+                <?php echo Form::input("ola", null, array('id' => 'ola', 'class' => 'span-4')); ?>
+                <?php echo Form::hidden("olah", null, array('id' => 'olah', 'class' => 'span-5')); ?>
             </div>        
         </div>
         
@@ -51,12 +51,12 @@
 
     <div><hr class="separator" /></div>
     
-    <div class="span-20 last line" id="container_clientes"></div>
+    <div class="span-20 last line" id="container_contactos"></div>
     
     <script>
         $(document).ready(function() {
             
-            $("#cliente").autocomplete(document_root+"cliente/autocompletercliente",{
+            $("#cliente").autocomplete(document_root+"contactoola/autocompleterola",{
             max: 16,
             scroll: false,
             matchContains:true,
@@ -73,30 +73,30 @@
         }).result(function(event, row) {
             if(row[1]!='0'){
 				
-                $('#empresah').val(row[0]);
-                $('#cliente').val(row[2]);
+                $('#olah').val(row[0]);
+                $('#ola').val(row[2]);
             }else
             {
-                $('#empresah').val('');	
-                $('#cliente').val('');
+                $('#olah').val('');	
+                $('#ola').val('');
             }
         });
             
              $('#btnSearch').click(function(){
                  
                  
-                     $('#container_clientes').html('');
+                     $('#container_contactos').html('');
 
-                    $('#container_clientes').load(document_root + 'cliente/loadcontacto', {
+                    $('#container_contactos').load(document_root + 'contactoola/loadcontactoola', {
                         documentoLegal: $("#documentoLegal").val(),
                         nombre: $("#nombre").val(),
-                        cliente: $("#cliente").val(),
-                        empresah: $("#empresah").val(),
+                        ola: $("#ola").val(),
+                        olah: $("#olah").val(),
                         async: false
                     }, function() {
 
-                        if ($('#table-clientes').length > 0) {
-                            $('#table-clientes').dataTable({
+                        if ($('#table-contactos').length > 0) {
+                            $('#table-contactos').dataTable({
                                 "sDom": '<"H"Tfr>t<"F"pi>',
                                 "oTableTools": {
                                     "sSwfPath": document_root + "media/swf/dataTables/copy_cvs_xls_pdf.swf",
@@ -104,10 +104,10 @@
                                         {
                                             "sExtends": "pdf",
                                             "mColumns": [0, 1, 2, 3],
-                                            "sFileName": "Clientes.pdf",
+                                            "sFileName": "ContactosOla.pdf",
                                             "sPdfOrientation": "landscape",
                                             "sPdfSize": "letter",
-                                            "sPdfMessage": "Clientes"
+                                            "sPdfMessage": "Contactos"
                                         }
                                     ]
                                 },
