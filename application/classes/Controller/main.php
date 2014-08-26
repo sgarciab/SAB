@@ -12,9 +12,6 @@ class Controller_Main extends Controller_Containers_Default {
     {
          $view = View::factory('/controller/main');
 	 $this->template->content = $view;
-         
-       
-         
     }
    
 }
