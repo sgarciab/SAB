@@ -202,3 +202,6 @@
 #13 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
 #14 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
 #15 {main} in C:\xampp\htdocs\sab\application\views\proveedor\edit.php:88
+2014-08-24 23:19:31 --- CRITICAL: ErrorException [ 1 ]: Class 'Model_servicioproveedor' not found ~ MODPATH\orm\classes\Kohana\ORM.php [ 46 ] in file:line
+2014-08-24 23:19:31 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in file:line

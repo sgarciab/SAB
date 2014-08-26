@@ -66,6 +66,71 @@ class Controller_ContactoOla extends Controller_Containers_Default {
         $this->view->set("contactoOla", $contactoOla);
 	}
         
+    //POR CORREGIR ESTA AUN CLIENTE
+    public function action_editcontacto()
+	{
+	$this->view = View::factory('cliente/editcontacto');
+
+        $contacto = ORM::factory('Contacto', $this->params[0]);
+        
+       
+        if (!empty($_POST)) {
+                  
+            $db = Database::instance();
+            $db ->begin();
+            try {
+                if ($contacto->id) {
+                    $success_message = Kohana::message('sab', 'contacto:update:success');
+                } else {
+                    $success_message = Kohana::message('sab', 'contacto:create:success');
+                }
+                
+                $contacto->direccion = $this->request->post('direccion');
+                $contacto->documentoLegal = $this->request->post('documentoLegal');
+                $contacto->empresaActual = $this->request->post('empresaActual');
+                $contacto->nombreContacto = $this->request->post('nombreContacto');
+                $contacto->Cliente_idCliente = $this->request->post('empresah');
+             
+                $contacto->save();
+                $temp=ORM::factory('InformacionContacto')->where('Contacto_idContacto', '=', $contacto->id)->find_all();
+                foreach ($temp as $item) {
+                    $item->delete();
+                }
+                $numReg = arr::get($this->request->post(), 'cont');
+                for($i=1; $i<=$numReg; $i++){
+                    $infoContacto = ORM::factory('InformacionContacto');
+                    $infoContacto->tipo = $this->request->post('tipo_'.$i);
+                    $infoContacto->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoContacto->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoContacto->Contacto_idContacto = $contacto->id;
+          
+                    if($infoContacto->tipo != null || $infoContacto->tipo != ''){
+                        $infoContacto->save();
+                    }
+                    
+                    $infoContacto = NULL;
+                }
+                
+                $db->commit();
+                
+                
+                FlashMessenger::factory()->set_message('success', $success_message);
+                HTTP::redirect('cliente/indexcontacto');
+                
+            } catch (Database_Exception $ex) {
+                foreach ($ex->errors('validation') as $error) {
+                    FlashMessenger::factory()->set_message('error', $error);
+                }
+                 $db->rollback();
+            }
+        }
+
+       
+        $this->view->set("contacto", $contacto);
+        $tipo=ORM::factory('InformacionContacto')->_tipo;
+        $this->view->set("_tipo",$tipo );
+	}
+        
         
     public function action_autocompleterola() {
         if ($this->request->is_ajax()) {
@@ -101,7 +166,8 @@ class Controller_ContactoOla extends Controller_Containers_Default {
              
     }
     
-     public function action_loadinformacion() {
+    
+    public function action_loadinformacion() {
         if ($this->request->is_ajax()) {
             $this->view = View::factory('ola/loads/loadinformacion');
             $cont = arr::get($this->request->post(), 'cont');
@@ -114,7 +180,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
     }
     
     
-        public function action_checkIdentificacion() {
+    public function action_checkIdentificacion() {
         if ($this->request->is_ajax()) {            
             $documento = arr::get($this->request->post(), 'documento');
             $contactoOla = ORM::factory('Contacto')->where('documentoLegal', '=', $documento)->where('id', '!=', $id)->find_all();                                   
@@ -127,5 +193,41 @@ class Controller_ContactoOla extends Controller_Containers_Default {
              $this->auto_render = FALSE;
         }
     }
+    
+    //Por corregir
+    public function action_loadcontactoola() {
+            if ($this->request->is_ajax()) {
+                $ola = arr::get($this->request->post(), 'ola');
+                $nombre = arr::get($this->request->post(), 'nombre');
+                $empresa = arr::get($this->request->post(), 'empresah');
+                $documento = arr::get($this->request->post(), 'documentoLegal');
+
+                 $convert_to = array(
+                    "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+                );
+                $convert_from = array(
+                    "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+                );
+                $nombre = str_replace($convert_from, $convert_to, $nombre);
+                $cliente = str_replace($convert_from, $convert_to, $cliente);
+
+
+                $contactos = ORM::factory('Contacto')
+                        ->where(DB::expr("LOWER(nombreContacto)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))
+                        ->and_where(DB::expr("LOWER(documentoLegal)"), 'LIKE', DB::expr("_utf8 '%" . $documento . "%' collate utf8_bin"));
+                if ($cliente!=null)    
+                {    
+                $contactos->and_where("Cliente_idCliente", '=',$empresa.'');
+                }
+
+                $contactos=$contactos ->find_all();
+
+                $this->view = View::factory('cliente/loads/loadcontacto');
+                $this->view->set("contactos", $contactos);
+
+                $this->auto_render = FALSE;
+                echo $this->view;
+            }
+        }
     
 } 
