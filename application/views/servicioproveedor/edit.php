@@ -3,14 +3,14 @@
 <?php echo HTML::style('media/css/controllers/admin/product.css'); ?>
 <?php if (!$servicio->id) { ?>
     <div class="prepend-2 span-20 append-2 last">
-        <h2>Nuevo Servicio</h2>
+        <h2>Editar Servicio</h2>
         <div class="required-fields">* Campos obligatorios</div>
     </div>
 <?php } else { ?>
     <center><div id="info_title">Informaci&oacute;n del Servicio</div></center>
 <?php } ?>
 
-<?php echo Form::open(NULL, array('id' => 'frmCreateServicio')); ?>
+<?php echo Form::open(NULL, array('id' => 'frmEditServicio')); ?>
 
 
 
@@ -62,7 +62,7 @@
     $(document).ready(function(){
 	
         /*VALIDATIONS*/
-        $("#frmCreateServicio").validate({
+        $("#frmEditServicio").validate({
             onfocusout: false,
             onkeyup: false,
             wrapper: "label",
@@ -118,9 +118,9 @@
         });                
 
         $("#save").click(function(){
-            if($("#frmCreateServicio").valid()){
+            if($("#frmEditServicio").valid()){
                 $('#save').attr('disabled',true);  
-                $("#frmCreateServicio").submit();
+                $("#frmEditServicio").submit();
                
             }
         }); 

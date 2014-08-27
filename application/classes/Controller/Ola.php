@@ -55,7 +55,7 @@ class Controller_Ola extends Controller_Containers_Default {
 	{
 	$this->view = View::factory('ola/edit');
 
-        $proveedor = ORM::factory('Ola', $this->params[0]);
+        $ola = ORM::factory('Ola', $this->params[0]);
         
        
         if (!empty($_POST)) {
@@ -89,6 +89,9 @@ class Controller_Ola extends Controller_Containers_Default {
                  $db->rollback();
             }
         }
+        
+        $this->view->set('ola', $ola);
+        $this->view->set("opCriticidad", $ola); 
         
         }
         

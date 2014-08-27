@@ -7,7 +7,7 @@
         <div class="required-fields">* Campos obligatorios</div>
     </div>
 <?php } else { ?>
-    <center><div id="info_title">Informaci&oacute;n del Proveedor</div></center>
+    <center><div id="info_title">Informaci&oacute;n del Servicio</div></center>
 <?php } ?>
 
 <?php echo Form::open(NULL, array('id' => 'frmEditProveedor')); ?>

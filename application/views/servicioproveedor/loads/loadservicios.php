@@ -12,7 +12,7 @@
                 <tr>
                    <td><?php echo $servicio->nombre; ?></td>
                     <td class="span-2">
-                        <?php echo HTML::anchor("servicio/create/" . $servicio->id, "Actualizar"); ?>
+                        <?php echo HTML::anchor("servicioproveedor/edit/" . $servicio->id, "Actualizar"); ?>
                  
                     </td>
                 </tr>
@@ -23,7 +23,7 @@
 <?php else: ?>
     <div class="prepend-5 span-10 append-5 line last center">
         <div class="span-10 line last notice">
-            <?php echo Kohana::message('admin', 'servicio:index:empty'); ?>
+            <?php echo Kohana::message('admin', 'servicioproveedor:index:empty'); ?>
         </div>
     </div>
 <?php endif; ?>

@@ -48,7 +48,7 @@
         <?php echo Form::label("proveedor", "Servicio Proveedor (OLA):", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">        
-        <?php echo Form::input("proveedor", '', array('id' => 'proveedor', 'class' => 'span-5')); ?>
+        <?php echo Form::input("proveedor", $ola->servicioproveedor->nombre, array('id' => 'proveedor', 'class' => 'span-5')); ?>
         <?php echo Form::hidden("proveedorh", $ola->ServicioProveedor_idServicioProveedor, array('id' => 'proveedorh', 'class' => 'span-5')); ?>
     </div>    	
 </div>

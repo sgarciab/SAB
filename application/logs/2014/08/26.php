@@ -296,3 +296,242 @@
 #13 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
 #14 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
 #15 {main} in C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php:4
+2014-08-26 21:39:01 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: servicio ~ APPPATH\views\servicioproveedor\create.php [ 4 ] in C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php:4
+2014-08-26 21:39:01 --- DEBUG: #0 C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php(4): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#4 C:\xampp\htdocs\sab\application\views\containers\default.php(75): Kohana_View->__toString()
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#7 C:\xampp\htdocs\sab\system\classes\Kohana\Controller\Template.php(44): Kohana_View->render()
+#8 C:\xampp\htdocs\sab\application\classes\Controller\containers\default.php(152): Kohana_Controller_Template->after()
+#9 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(87): Controller_Containers_Default->after()
+#10 [internal function]: Kohana_Controller->execute()
+#11 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_ServicioProveedor))
+#12 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#14 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#15 {main} in C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php:4
+2014-08-26 21:40:20 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: contacto ~ APPPATH\views\servicioproveedor\create.php [ 31 ] in C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php:31
+2014-08-26 21:40:20 --- DEBUG: #0 C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php(31): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 31, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#4 C:\xampp\htdocs\sab\application\views\containers\default.php(75): Kohana_View->__toString()
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#7 C:\xampp\htdocs\sab\system\classes\Kohana\Controller\Template.php(44): Kohana_View->render()
+#8 C:\xampp\htdocs\sab\application\classes\Controller\containers\default.php(152): Kohana_Controller_Template->after()
+#9 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(87): Controller_Containers_Default->after()
+#10 [internal function]: Kohana_Controller->execute()
+#11 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_ServicioProveedor))
+#12 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#14 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#15 {main} in C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php:31
+2014-08-26 21:41:06 --- CRITICAL: Kohana_Exception [ 0 ]: The Cliente_idCliente property does not exist in the Model_ServicioProveedor class ~ MODPATH\orm\classes\Kohana\ORM.php [ 687 ] in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 21:41:06 --- DEBUG: #0 C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php(603): Kohana_ORM->get('Cliente_idClien...')
+#1 C:\xampp\htdocs\sab\application\views\servicioproveedor\create.php(31): Kohana_ORM->__get('Cliente_idClien...')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#5 C:\xampp\htdocs\sab\application\views\containers\default.php(75): Kohana_View->__toString()
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#8 C:\xampp\htdocs\sab\system\classes\Kohana\Controller\Template.php(44): Kohana_View->render()
+#9 C:\xampp\htdocs\sab\application\classes\Controller\containers\default.php(152): Kohana_Controller_Template->after()
+#10 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(87): Controller_Containers_Default->after()
+#11 [internal function]: Kohana_Controller->execute()
+#12 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_ServicioProveedor))
+#13 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#14 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#15 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#16 {main} in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 21:44:30 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 21:44:30 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_ServicioProveedor))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 21:51:15 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Database_Exception::errors() ~ APPPATH\classes\Controller\ServicioProveedor.php [ 41 ] in file:line
+2014-08-26 21:51:15 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in file:line
+2014-08-26 22:00:44 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:00:44 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:02:24 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:02:24 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:02:56 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:02:56 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:09 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:09 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:51 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:51 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:53 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:21:53 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:19 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:19 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:22 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:22 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:34 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:26:34 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:30:31 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:30:31 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:31:44 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:31:44 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:31:50 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:31:50 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Servicio))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:31:55 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: servicio ~ APPPATH\views\servicioproveedor\edit.php [ 4 ] in C:\xampp\htdocs\sab\application\views\servicioproveedor\edit.php:4
+2014-08-26 22:31:55 --- DEBUG: #0 C:\xampp\htdocs\sab\application\views\servicioproveedor\edit.php(4): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#4 C:\xampp\htdocs\sab\application\views\containers\default.php(75): Kohana_View->__toString()
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#7 C:\xampp\htdocs\sab\system\classes\Kohana\Controller\Template.php(44): Kohana_View->render()
+#8 C:\xampp\htdocs\sab\application\classes\Controller\containers\default.php(152): Kohana_Controller_Template->after()
+#9 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(87): Controller_Containers_Default->after()
+#10 [internal function]: Kohana_Controller->execute()
+#11 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_ServicioProveedor))
+#12 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#14 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#15 {main} in C:\xampp\htdocs\sab\application\views\servicioproveedor\edit.php:4
+2014-08-26 22:34:50 --- CRITICAL: Kohana_Exception [ 0 ]: The Descripción property does not exist in the Model_Ola class ~ MODPATH\orm\classes\Kohana\ORM.php [ 687 ] in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 22:34:50 --- DEBUG: #0 C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php(603): Kohana_ORM->get('Descripci\xC3\xB3n')
+#1 C:\xampp\htdocs\sab\application\views\ola\loads\loadola.php(18): Kohana_ORM->__get('Descripci\xC3\xB3n')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#5 C:\xampp\htdocs\sab\application\classes\Controller\Ola.php(127): Kohana_View->__toString()
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(84): Controller_Ola->action_loadola()
+#7 [internal function]: Kohana_Controller->execute()
+#8 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#9 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#10 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#11 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#12 {main} in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 22:36:32 --- CRITICAL: Kohana_Exception [ 0 ]: The Descripción property does not exist in the Model_Ola class ~ MODPATH\orm\classes\Kohana\ORM.php [ 687 ] in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 22:36:32 --- DEBUG: #0 C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php(603): Kohana_ORM->get('Descripci\xC3\xB3n')
+#1 C:\xampp\htdocs\sab\application\views\ola\loads\loadola.php(18): Kohana_ORM->__get('Descripci\xC3\xB3n')
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(61): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\View.php(228): Kohana_View->render()
+#5 C:\xampp\htdocs\sab\application\classes\Controller\Ola.php(127): Kohana_View->__toString()
+#6 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(84): Controller_Ola->action_loadola()
+#7 [internal function]: Kohana_Controller->execute()
+#8 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#9 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#10 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#11 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#12 {main} in C:\xampp\htdocs\sab\modules\orm\classes\Kohana\ORM.php:603
+2014-08-26 22:37:30 --- CRITICAL: Exception_Unauthorized [ 0 ]:  ~ APPPATH\classes\Controller\containers\default.php [ 46 ] in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:37:30 --- DEBUG: #0 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(69): Controller_Containers_Default->before()
+#1 [internal function]: Kohana_Controller->execute()
+#2 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#5 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#6 {main} in C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php:69
+2014-08-26 22:38:50 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: ola ~ APPPATH\classes\Controller\Ola.php [ 93 ] in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93
+2014-08-26 22:38:50 --- DEBUG: #0 C:\xampp\htdocs\sab\application\classes\Controller\Ola.php(93): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 93, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(84): Controller_Ola->action_edit()
+#2 [internal function]: Kohana_Controller->execute()
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#6 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#7 {main} in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93
+2014-08-26 22:40:14 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: ola ~ APPPATH\classes\Controller\Ola.php [ 93 ] in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93
+2014-08-26 22:40:14 --- DEBUG: #0 C:\xampp\htdocs\sab\application\classes\Controller\Ola.php(93): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 93, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(84): Controller_Ola->action_edit()
+#2 [internal function]: Kohana_Controller->execute()
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#6 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#7 {main} in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93
+2014-08-26 22:41:12 --- CRITICAL: ErrorException [ 8 ]: Undefined variable: ola ~ APPPATH\classes\Controller\Ola.php [ 93 ] in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93
+2014-08-26 22:41:12 --- DEBUG: #0 C:\xampp\htdocs\sab\application\classes\Controller\Ola.php(93): Kohana_Core::error_handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 93, Array)
+#1 C:\xampp\htdocs\sab\system\classes\Kohana\Controller.php(84): Controller_Ola->action_edit()
+#2 [internal function]: Kohana_Controller->execute()
+#3 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Ola))
+#4 C:\xampp\htdocs\sab\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 C:\xampp\htdocs\sab\system\classes\Kohana\Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#6 C:\xampp\htdocs\sab\index.php(118): Kohana_Request->execute()
+#7 {main} in C:\xampp\htdocs\sab\application\classes\Controller\Ola.php:93

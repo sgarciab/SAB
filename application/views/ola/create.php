@@ -122,7 +122,7 @@
             if(row[1]!='0'){
 				
                 $('#proveedorh').val(row[0]);
-                $('#proveedor').val(row[2]);
+                $('#proveedor').val(row[1]);
             }else
             {
                 $('#proveedorh').val('');	

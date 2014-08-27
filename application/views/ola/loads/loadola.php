@@ -15,9 +15,9 @@
                     <td><?php echo $ola->id; ?></td>
                     <td><?php echo $ola->criticidad; ?></td>
                     <td><?php echo $ola->tiempoRespuesta; ?></td>
-                    <td><?php echo $ola->Descripción; ?></td>
+                    <td><?php echo $ola->descripcion; ?></td>
                     <td class="span-2">
-                        <?php echo HTML::anchor("ola/create/" . $ola->id, "Actualizar"); ?>                 
+                        <?php echo HTML::anchor("ola/edit/" . $ola->id, "Actualizar"); ?>                 
                     </td>
                 </tr>
             <?php endforeach; ?>
