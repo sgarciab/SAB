@@ -49,14 +49,10 @@ class Controller_ServicioProveedor extends Controller_Containers_Default {
         $this->view->set("servicioproveedor", $servicio);        
 	}
         
-        public function action_loadola() {
+        public function action_loadservicios() {
         if ($this->request->is_ajax()) {
             
-            $id = arr::get($this->request->post(), 'id');
-            $criticidad = arr::get($this->request->post(), 'criticidad');
-            $tiempoRespuesta = arr::get($this->request->post(), 'tiempoRespuesta');
-            $medTiempo = arr::get($this->request->post(), 'medTiempo');
-            $descripcion = arr::get($this->request->post(), 'descripcion');
+            $nombre = arr::get($this->request->post(), 'nombre');            
             
             $convert_to = array(
                 "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
@@ -64,29 +60,24 @@ class Controller_ServicioProveedor extends Controller_Containers_Default {
             $convert_from = array(
                 "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
             );
-            $criticidad = str_replace($convert_from, $convert_to, $criticidad);
-            $tiempoRespuesta = str_replace($convert_from, $convert_to, $tiempoRespuesta);
-
+            
+            $nombre = str_replace($convert_from, $convert_to, $nombre);
          
-            $ola = ORM::factory('Ola')                    
-                    ->where(DB::expr("LOWER(criticidad)"), 'LIKE', DB::expr("_utf8 '%" . $criticidad . "%' collate utf8_bin"))
-                    ->and_where(DB::expr("LOWER(tiempoRespuesta)"), 'LIKE', DB::expr("_utf8 '%" . $tiempoRespuesta . "%' collate utf8_bin"))
-                    ->and_where(DB::expr("LOWER(medTiempo)"), 'LIKE', DB::expr("_utf8 '%" . $medTiempo . "%' collate utf8_bin"))
+            $servicios = ORM::factory('ServicioProveedor')                    
+                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))                   
                     ->find_all();
 
-            $this->view = View::factory('ola/loads/loadola');
-            $this->view->set('ola', $ola);
+            $this->view = View::factory('servicioproveedor/loads/loadservicios');
+            $this->view->set('servicios', $servicios);
            
             $this->auto_render = FALSE;
             echo $this->view;
         }
     }
     
-    public function action_autocompleterproveedor() {
+    public function action_autocompleterservicio() {
         if ($this->request->is_ajax()) {
             $data = arr::get($this->request->query(), 'q');
-
-            //GET A LIST OF SUPPLIER TO LOAD THE AUTOCOMPLETER
 
             $convert_to = array(
                 "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"

@@ -87,12 +87,40 @@
                    remote:'Identificación ya existe'
                }
             }
-            //,
-            //            submitHandler: function (form) {
-            //                $('#save').attr('disabled','disabled'); 
-            //                form.submit();
-            //            }
         });
+        
+        $("#proveedor").autocomplete(document_root+"servicioproveedor/autocompleterservicio",{
+            max: 16,
+            scroll: false,
+            matchContains:true,
+            minChars: 1,
+            selectFirst:false,
+            formatItem: function(row) {
+                if(row[0]!='0'){
+                    return row[0]+'  /  '+row[1]+'  /  '+row[2];
+                }
+                else{
+                    return 'No existen resultados';
+                }
+            }
+        }).result(function(event, row) {
+            if(row[1]!='0'){
+				
+                $('#proveedorh').val(row[0]);
+                $('#proveedorh').val(row[2]);
+            }else
+            {
+                $('#proveedorh').val('');	
+                $('#proveedorh').val('');
+            }
+        });
+        
+        $("#addInformacionContactoOla").click(function(ev){
+        ev.preventDefault();
+        var val= parseInt($("#cont").val())+1;
+        loadinformacion(parseInt($("#cont").val())+1,"");
+        });
+        
 
         $("#save").click(function(){
             if($("#frmCreateServicio").valid()){

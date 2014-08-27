@@ -18,7 +18,7 @@
         
         
           <div class="span-4">
-            <?php echo Form::label("Ola", "Ola", array('class' => 'right')); ?>
+            <?php echo Form::label("Ola", "OLA:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <div class="span-5 last ">
@@ -32,7 +32,7 @@
     
     <div class="span-20 line last">
     <div class="prepend-1 span-4">
-            <?php echo Form::label("documentoLegal", "Documento Legal", array('class' => 'right')); ?>
+            <?php echo Form::label("documentoLegal", "Documento Legal:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <div class="span-5 last ">

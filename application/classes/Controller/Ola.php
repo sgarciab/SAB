@@ -51,6 +51,47 @@ class Controller_Ola extends Controller_Containers_Default {
         $this->view->set("opCriticidad", $ola);
 	}
         
+        public function action_edit()
+	{
+	$this->view = View::factory('ola/edit');
+
+        $proveedor = ORM::factory('Ola', $this->params[0]);
+        
+       
+        if (!empty($_POST)) {
+                  
+            $db = Database::instance();
+            $db ->begin();
+            try {
+                if ($ola->id) {
+                    $success_message = Kohana::message('sab', 'ola:update:success');
+                } else {
+                    $success_message = Kohana::message('sab', 'ola:create:success');
+                }
+                
+                $ola->criticidad = arr::get($this->request->post(), 'criticidad');
+                $ola->tiempoRespuesta = arr::get($this->request->post(), 'tiempoRespuesta');
+                $ola->medTiempo = arr::get($this->request->post(), 'medTiempo');
+                $ola->descripcion = arr::get($this->request->post(), 'descripcion');
+                $ola->ServicioProveedor_idServicioProveedor = arr::get($this->request->post(), 'proveedorh');
+             
+                $ola->save();                
+                
+                $db->commit();                
+                
+                FlashMessenger::factory()->set_message('success', $success_message);
+                HTTP::redirect('ola/index');
+                
+            } catch (Database_Exception $ex) {
+                foreach ($ex->errors('validation') as $error) {
+                    FlashMessenger::factory()->set_message('error', $error);
+                }
+                 $db->rollback();
+            }
+        }
+        
+        }
+        
         public function action_loadola() {
         if ($this->request->is_ajax()) {
             

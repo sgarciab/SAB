@@ -34,11 +34,11 @@
              $('#btnSearch').click(function(){
                  
                  
-                     $('#container_clientes').html('');
+                     $('#container_servicios').html('');
 
-                    $('#container_servicios').load(document_root + 'servicio/loadservicios', {
+                    $('#container_servicios').load(document_root + 'servicioproveedor/loadservicios', {
                         nombre: $("#nombre").val()
-                        async: false
+                        //async: false
                     }, function() {
 
                         if ($('#table-servicios').length > 0) {
@@ -50,10 +50,10 @@
                                         {
                                             "sExtends": "pdf",
                                             "mColumns": [0, 1, 2],
-                                            "sFileName": "Clientes.pdf",
+                                            "sFileName": "ServiciosProveedores.pdf",
                                             "sPdfOrientation": "landscape",
                                             "sPdfSize": "letter",
-                                            "sPdfMessage": "Clientes"
+                                            "sPdfMessage": "Servicio_Proveedores"
                                         }
                                     ]
                                 },
