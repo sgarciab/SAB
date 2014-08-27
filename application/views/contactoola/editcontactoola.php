@@ -17,7 +17,7 @@
 <div class="prepend-2 span-20 append-2 line last">
     <?php echo Form::hidden('id', $contacto->id, array('id'=>'id')); ?>
     <div class="span-4">
-        <?php echo Form::label("nombreContacto", "Nombre de la Persona Contacto:", array('class' => 'left')); ?>
+        <?php echo Form::label("nombreContacto", "Nombre Contacto:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
         <?php echo Form::input("nombreContacto", $contacto->nombreContacto, array('id' => 'nombreContacto', 'class' => 'span-5')); ?>
@@ -37,12 +37,12 @@
 <div class="prepend-2 span-20 append-2 line last">
 
     <div class=" span-4">
-        <?php echo Form::label("empresa", "Contacto de(opcional):", array('class' => 'left')); ?>
+        <?php echo Form::label("ola", "OLA relacionado:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
         <div class="span-5 last ">
-            <?php echo Form::input("empresa", '', array('id' => 'empresa', 'class' => 'span-5')); ?>
-             <?php echo Form::hidden("empresah", $contacto->Cliente_idCliente, array('id' => 'empresah', 'class' => 'span-5')); ?>
+            <?php echo Form::input("ola", '', array('id' => 'ola', 'class' => 'span-5')); ?>
+             <?php echo Form::hidden("olah", $contacto->OLA_idOLA, array('id' => 'olah', 'class' => 'span-5')); ?>
         </div>        
     </div>	
 
@@ -50,17 +50,17 @@
     
 <div class="prepend-2 span-20 append-2 line last">
     <div class="span-4">
-        <?php echo Form::label("empresaActual", "Empresa Actual(opcional):", array('class' => 'left')); ?>
+        <?php echo Form::label("empresaActual", "Empresa Actual:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::input("empresaActual", $contacto->empresaActual, array('id' => 'RUC', 'class' => 'span-5')); ?>
+        <?php echo Form::input("empresaActual", $contacto->empresaActual, array('id' => 'empresaActual', 'class' => 'span-5')); ?>
     </div>	
 
     <div class="prepend-1 span-4">
         <?php echo Form::label("direccion", "Direccion:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::textarea("direccion", $contacto->direccion, array('id' => 'direccion', 'class' => 'span-5')); ?>
+        <?php echo Form::textarea("direccion", $contacto->direccion, array('id' => 'direccion', 'class' => 'textareaastextarea')); ?>
     </div>	
 
 </div>
@@ -150,8 +150,11 @@
                        } 
                    }
                 },
-                empresah:{
+                olah:{
                    required:true
+                },
+                empresaActual:{
+                    requiered:true
                 }
             },
             messages:{
@@ -209,7 +212,7 @@
 //            alert('SI');
 //        });
        
-        $("#empresa").autocomplete(document_root+"cliente/autocompletercliente",{
+        $("#ola").autocomplete(document_root+"contactoola/autocompletercontactoola",{
             max: 16,
             scroll: false,
             matchContains:true,
@@ -226,12 +229,12 @@
         }).result(function(event, row) {
             if(row[1]!='0'){
 				
-                $('#empresah').val(row[0]);
-                $('#empresa').val(row[2]);
+                $('#olah').val(row[0]);
+                $('#ola').val(row[2]);
             }else
             {
-                $('#empresah').val('');	
-                $('#empresa').val('');
+                $('#olah').val('');	
+                $('#ola').val('');
             }
         });
         
@@ -248,7 +251,7 @@
         
         
        function loadinformacion(cont,id){
-            $("#container_place").load(document_root + "cliente/loadinformacion", {
+            $("#container_place").load(document_root + "contactoola/loadinformacion", {
                 cont: cont
             }, function() {
                 

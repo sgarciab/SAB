@@ -10,7 +10,7 @@
     <center><div id="info_title">Informaci&oacute;n del Proveedor</div></center>
 <?php } ?>
 
-<?php echo Form::open(NULL, array('id' => 'frmCreateProveedor')); ?>
+<?php echo Form::open(NULL, array('id' => 'frmCreateServicio')); ?>
 
 
 
@@ -20,7 +20,17 @@
     </div>	
     <div class="span-5 last">
         <?php echo Form::input("nombre", $servicio->nombre, array('id' => 'nombre', 'class' => 'span-5')); ?>
-    </div>		
+    </div>
+    
+    <div class=" span-4">
+        <?php echo Form::label("proveedor", "Proveedor (relacionado):", array('class' => 'left')); ?>
+    </div>	
+    <div class="span-5 last">
+        <div class="span-5 last ">
+            <?php echo Form::input("proveedor", '', array('id' => 'proveedor', 'class' => 'span-5')); ?>
+             <?php echo Form::hidden("proveedorh", $contacto->Cliente_idCliente, array('id' => 'proveedorh', 'class' => 'span-5')); ?>
+        </div>        
+    </div>
 
 </div>
     
@@ -29,7 +39,7 @@
         <?php echo Form::label("descripcion", "Descripcion:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
-        <?php echo Form::textarea("descripcion", $servicio->descripcion, array('id' => 'direccion', 'class' => 'span-5')); ?>
+        <?php echo Form::textarea("descripcion", $servicio->descripcion, array('id' => 'direccion', 'class' => 'textareaastextarea')); ?>
     </div>		
 
 </div>
@@ -50,7 +60,7 @@
     $(document).ready(function(){
 	
         /*VALIDATIONS*/
-        $("#frmCreateProveedor").validate({
+        $("#frmCreateServicio").validate({
             onfocusout: false,
             onkeyup: false,
             wrapper: "label",
@@ -61,7 +71,7 @@
                 identificacion:{
                    required: true,
                    remote:{
-                       url: document_root + 'proveedor/checkIdentificacion',
+                       url: document_root + 'ServicioProveedor/checkIdentificacion',
                        type: 'post',
                        data:{
                            id: function(){
@@ -74,7 +84,7 @@
             },
             messages: {
                identificacion:{
-                   remote:'Esa identificación ya existe'
+                   remote:'Identificación ya existe'
                }
             }
             //,
@@ -85,69 +95,17 @@
         });
 
         $("#save").click(function(){
-            if($("#frmCreateProveedor").valid()){
+            if($("#frmCreateServicio").valid()){
                 $('#save').attr('disabled',true);  
-                $("#frmCreateProveedor").submit();
+                $("#frmCreateServicio").submit();
                
             }
         }); 
-	
-        $("#addInformacionProveedor").click(function(ev){
-        ev.preventDefault();
-        var val= parseInt($("#cont").val())+1;
-        loadinformacion(parseInt($("#cont").val())+1,"");
-        });
-        
         
         $("#identificacion").focusout(function(){
            $(this).valid(); 
         });
         
-       function loadinformacion(cont,id){
-            $("#container_place").load(document_root + "proveedor/loadinformacion", {
-                cont: cont
-            }, function() {
-                
-                $('input[id*="contenido_"]').each(function(){
-                    $(this).rules("add", {
-                        required: true
-
-                    });
-                });
-
-                
-
-                $('select[id*="tipo_"]').each(function(){
-                    $(this).rules("add", {
-                        required: true
-
-                    });
-                });
-
-
-                //fin validaciones 2
-
-
-
-                $("#bodyinformacion").append($("#rowinformacion_"+cont));
-                $("#container_place").html('');
-                $("#cont").val(parseInt($("#cont").val())+1);
-                
-                
-                //boton cerrar
-                $('#removeinformacion_'+cont).click(function(){
-                    
-                    $('#rowinformacion_'+cont).remove();
-                });
-                
-                
-            });
-        };
-	   
-        
-        
-        
-
     });
 
 

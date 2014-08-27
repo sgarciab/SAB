@@ -25,6 +25,7 @@ class Controller_ServicioProveedor extends Controller_Containers_Default {
                     $success_message = Kohana::message('sab', 'servicioproveedor:create:success');
                 }                               
                              
+                //$servicio->id = arr::get($this->request->post(), 'id');
                 $servicio->nombre = arr::get($this->request->post(), 'nombre');
                 $servicio->descripcion = arr::get($this->request->post(), 'descripcion');
                 $servicio->Proveedor_idProveedor = arr::get($this->request->post(), 'proveedorh');

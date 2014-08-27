@@ -82,10 +82,10 @@
             }
         });
             
-             $('#btnSearch').click(function(){
+            $('#btnSearch').click(function(){
                  
                  
-                     $('#container_clientes').html('');
+                    $('#container_clientes').html('');
 
                     $('#container_clientes').load(document_root + 'cliente/loadcontacto', {
                         documentoLegal: $("#documentoLegal").val(),

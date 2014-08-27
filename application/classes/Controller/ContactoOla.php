@@ -2,9 +2,9 @@
 
 class Controller_ContactoOla extends Controller_Containers_Default {
 
-	public function action_index()
+	public function action_indexcontactoola()
 	{
-		$this->view = View::factory('ola/index');
+		$this->view = View::factory('contactoola/indexcontactoola');
 	}                
         
         public function action_createcontactoola()
@@ -66,12 +66,11 @@ class Controller_ContactoOla extends Controller_Containers_Default {
         $this->view->set("contactoOla", $contactoOla);
 	}
         
-    //POR CORREGIR ESTA AUN CLIENTE
-    public function action_editcontacto()
+    public function action_editcontactoola()
 	{
-	$this->view = View::factory('cliente/editcontacto');
+	$this->view = View::factory('contactoola/editcontactoola');
 
-        $contacto = ORM::factory('Contacto', $this->params[0]);
+        $contacto = ORM::factory('ContactoOla', $this->params[0]);
         
        
         if (!empty($_POST)) {
@@ -89,10 +88,10 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                 $contacto->documentoLegal = $this->request->post('documentoLegal');
                 $contacto->empresaActual = $this->request->post('empresaActual');
                 $contacto->nombreContacto = $this->request->post('nombreContacto');
-                $contacto->Cliente_idCliente = $this->request->post('empresah');
+                $contacto->OLA_idOLA = $this->request->post('olah');
              
                 $contacto->save();
-                $temp=ORM::factory('InformacionContacto')->where('Contacto_idContacto', '=', $contacto->id)->find_all();
+                $temp = ORM::factory('InformacionContacto')->where('OLA_idOLA', '=', $contacto->id)->find_all();
                 foreach ($temp as $item) {
                     $item->delete();
                 }
@@ -115,7 +114,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                 
                 
                 FlashMessenger::factory()->set_message('success', $success_message);
-                HTTP::redirect('cliente/indexcontacto');
+                HTTP::redirect('contactoola/indexcontactoola');
                 
             } catch (Database_Exception $ex) {
                 foreach ($ex->errors('validation') as $error) {
