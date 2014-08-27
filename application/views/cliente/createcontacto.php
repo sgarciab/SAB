@@ -162,6 +162,7 @@
             matchContains:true,
             minChars: 1,
             selectFirst:false,
+            delay:1,
             formatItem: function(row) {
                 if(row[0]!='0'){
                     return row[0]+'  /  '+row[1]+'  /  '+row[2];
@@ -186,6 +187,14 @@
               $(this).valid();
           });
         
+        
+          $("#empresa").focusout(function(){
+            var temp = $(this).val().trim() ;
+      
+            if (temp==''){
+                $('#empresah').val('');	
+            }
+          });
         
         $("#addInformacionContacto").click(function(ev){
         ev.preventDefault();

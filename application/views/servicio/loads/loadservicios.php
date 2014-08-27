@@ -4,13 +4,16 @@
             <tr>
                 
                 <th>Nombre</th>
+                <th>Cliente</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($servicios as $servicio): ?>
                 <tr>
-                   <td><?php echo $servicio->nombre; ?></td>
+                   <td><?php echo $servicio->Nombre; ?></td>
+                   
+                   <td><?php echo $servicio->cliente->nombre ; ?></td>
                     <td class="span-2">
                         <?php echo HTML::anchor("servicio/create/" . $servicio->id, "Actualizar"); ?>
                  

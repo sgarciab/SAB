@@ -37,7 +37,7 @@
                      $('#container_clientes').html('');
 
                     $('#container_servicios').load(document_root + 'servicio/loadservicios', {
-                        nombre: $("#nombre").val()
+                        nombre: $("#nombre").val(),
                         async: false
                     }, function() {
 
