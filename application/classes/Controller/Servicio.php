@@ -26,7 +26,7 @@ class Controller_Servicio extends Controller_Containers_Default {
                     $success_message = Kohana::message('sab', 'servicio:create:success');
                 }
                 
-                $servicio->nombre = $this->request->post('nombre');
+                $servicio->Nombre = $this->request->post('nombre');
                 $servicio->Cliente_idCliente = $this->request->post('empresah');
                 
                 $servicio->save();
@@ -65,7 +65,7 @@ class Controller_Servicio extends Controller_Containers_Default {
                     ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))                    
                     ->find_all();
 
-            $this->view = View::factory('servicios/loads/loadservicios');
+            $this->view = View::factory('servicio/loads/loadservicios');
             $this->view->set("servicios", $servicios);
            
             $this->auto_render = FALSE;
