@@ -87,7 +87,7 @@
         }); 
         
         
-        $("#empresa").autocomplete(document_root+"cliente/autocompletercliente",{
+        $("#empresa").autocomplete(document_root+"generic/autocompletercliente",{
             max: 16,
             scroll: false,
             matchContains:true,

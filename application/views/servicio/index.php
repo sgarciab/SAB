@@ -15,6 +15,16 @@
         <div class="span-5 last">
             <?php echo Form::input("nombre", null, array('id' => 'nombre', 'class' => 'span-4')); ?>
         </div>	
+        
+         <div class="prepend-1 span-4">
+        <?php echo Form::label("empresa", "Cliente:", array('class' => 'left')); ?>
+        </div>	
+        <div class="span-5 last">
+            <div class="span-5 last ">
+             <?php echo Form::input("empresa",  null, array('id' => 'empresa', 'class' => 'span-5')); ?>
+                 <?php echo Form::hidden("empresah", null, array('id' => 'empresah', 'class' => 'span-5')); ?>
+            </div>        
+        </div>
     </div>
 
     <div class="span-20 center">    
@@ -38,6 +48,8 @@
 
                     $('#container_servicios').load(document_root + 'servicio/loadservicios', {
                         nombre: $("#nombre").val(),
+                        empresa: $("#empresa").val(),
+                        empresah: $("#empresah").val(),
                         async: false
                     }, function() {
 
@@ -85,5 +97,43 @@
                  
              });
             
+            
+            $("#empresa").autocomplete(document_root+"generic/autocompletercliente",{
+            max: 16,
+            scroll: false,
+            matchContains:true,
+            minChars: 1,
+            selectFirst:false,
+            delay:1,
+            formatItem: function(row) {
+                if(row[0]!='0'){
+                    return row[0]+'  /  '+row[1]+'  /  '+row[2];
+                }
+                else{
+                    return 'No existen resultados';
+                }
+            }
+        }).result(function(event, row) {
+            if(row[1]!='0'){
+				
+                $('#empresah').val(row[0]);
+                $('#empresa').val(row[2]);
+            }else
+            {
+                $('#empresah').val('');	
+                $('#empresa').val('');
+            }
+        });
+        
+        
+          $("#empresa").focusout(function(){
+            var temp = $(this).val().trim() ;
+      
+            if (temp==''){
+                $('#empresah').val('');	
+            }
+          });
+          
+          
              });
     </script>

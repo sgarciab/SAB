@@ -39,7 +39,7 @@ class Controller_Containers_Default extends Controller_Template {
         if ($this->current_user) {
             $this->template->current_user = $this->current_user;
         }
-
+//        die($this->request->controller() );
 //		Verify if the user has access permission to the requested url
         if ($this->request->controller() != "main" && $this->request->controller() != "login" && $this->request->controller() != "rpc" &&
  /*aqui debo poner la negacion para permisos */  !$this->current_user->has_access_permission($this->request->controller(), $this->request->action()))

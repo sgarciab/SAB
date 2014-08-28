@@ -22,7 +22,7 @@ class Model_User extends ORM {
     );
 	
     private static $default_allowed_actions = array(
-            'admin/user/acount',
+            'user/account','main/index'
 
     );
 	
@@ -82,7 +82,7 @@ class Model_User extends ORM {
 			if($allowed_actions->loaded()){
 				$authorized  = true;
 			}		
-			
+
             $profile_action = ORM::factory("Profileaction")->
                             with("action")->
                             where("profile_id", "=", $this->profile->id)->
@@ -94,38 +94,7 @@ class Model_User extends ORM {
 			
 			return $authorized;
 	}
-    /**
-        * Verifies if a User has access permission to the requested url
-        * @param (string) $path
-        * @return (boolean)
-        */
-    public function has_access_permission_sales($controller, $action)
-    {
-        //var_dump($this->profile->id);die();    
-        if( in_array( "sales/{$controller}/{$action}", self::$default_allowed_actions ) )
-                    return TRUE;
-
-			$authorized = false;
-			
-			$allowed_actions = ORM::factory("Allowedactions")
-					->with('action')
-					->where("url", '=', "sales/{$controller}/{$action}")->find();
-					
-			if($allowed_actions->loaded()){
-				$authorized  = true;
-			}		
-			
-            $profile_action = ORM::factory("Profileaction")->
-                            with("action")->
-                            where("profile_id", "=", $this->profile->id)->
-                            where("link", "=", "sales/{$controller}/{$action}")->find();
-							
-            if($profile_action->action->loaded()){
-				$authorized  = true;
-			}
-			
-			return $authorized;
-	}
+  
 }
 
 ?>

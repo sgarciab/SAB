@@ -13,7 +13,7 @@ class Controller_Servicio extends Controller_Containers_Default {
     public function action_create()
 	{
 	$this->view = View::factory('servicio/create');
-
+        
         $servicio = ORM::factory('Servicio', $this->params[0]);  
         
         
@@ -51,6 +51,8 @@ class Controller_Servicio extends Controller_Containers_Default {
         if ($this->request->is_ajax()) {
           
             $nombre = arr::get($this->request->post(), 'nombre');
+             $empresa = arr::get($this->request->post(), 'empresa');
+              $empresah = arr::get($this->request->post(), 'empresah');
           
              $convert_to = array(
                 "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
@@ -62,8 +64,11 @@ class Controller_Servicio extends Controller_Containers_Default {
 
          
             $servicios = ORM::factory('Servicio')                    
-                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"))                    
-                    ->find_all();
+                    ->where(DB::expr("LOWER(nombre)"), 'LIKE', DB::expr("_utf8 '%" . $nombre . "%' collate utf8_bin"));
+           if ($empresah!=null)
+            $servicios->and_where('Cliente_idCliente', 'LIKE', $empresah);
+           
+                   $servicios=$servicios->find_all();
 
             $this->view = View::factory('servicio/loads/loadservicios');
             $this->view->set("servicios", $servicios);
