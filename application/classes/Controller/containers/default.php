@@ -41,9 +41,15 @@ class Controller_Containers_Default extends Controller_Template {
         }
 //        die($this->request->controller() );
 //		Verify if the user has access permission to the requested url
+       try{
         if ($this->request->controller() != "main" && $this->request->controller() != "login" && $this->request->controller() != "rpc" &&
- /*aqui debo poner la negacion para permisos */  !$this->current_user->has_access_permission($this->request->controller(), $this->request->action()))
+                /* aqui debo poner la negacion para permisos */!$this->current_user->has_access_permission($this->request->controller(), $this->request->action())) {
             throw new Exception_Unauthorized;
+        }
+       }catch(Exception_Unauthorized $e){
+           Exception_Unauthorized::handler($e);
+           die;
+       }
 
         $this->params = explode('/', $this->request->param('id'));
 

@@ -3,11 +3,11 @@
 <?php echo HTML::style('media/css/controllers/admin/product.css'); ?>
 <?php if (!$sla->id) { ?>
     <div class="prepend-2 span-20 append-2 last">
-        <h2>Nuevo OLA</h2>
+        <h2>Nuevo SLA</h2>
         <div class="required-fields">* Campos obligatorios</div>
     </div>
 <?php } else { ?>
-    <center><div id="info_title">Informaci&oacute;n OLA</div></center>
+    <center><div id="info_title">Informaci&oacute;n SLA</div></center>
 <?php } ?>
 
 <?php echo Form::open(NULL, array('id' => 'frmCreateSla')); ?>
@@ -53,7 +53,7 @@
         <?php echo Form::label("proveedor", "Servicio:", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">        
-        <?php echo Form::input("servicio", '', array('id' => 'servicio', 'class' => 'span-5')); ?>
+        <?php echo Form::input("servicio", $sla->servicio->Nombre, array('id' => 'servicio', 'class' => 'span-5')); ?>
         <?php echo Form::hidden("servicioh", $sla->Servicio_idServicio, array('id' => 'servicioh', 'class' => 'span-5')); ?>
     </div>    	
     
@@ -105,6 +105,9 @@
                 tiempoRespuesta:{
                     required:true                    
                 },
+                servicioh:{
+                    required:true                    
+                },
                 descripcion:{
                     required:true                    
                 }
@@ -126,11 +129,13 @@
             matchContains:true,
             minChars: 1,
             selectFirst:false,
+            delay:1,
             formatItem: function(row) {
                 if(row[0]!='0'){
                     return row[0]+'  /  '+row[1];
                 }
                 else{
+                       $('#servicioh').val('');
                     return 'No existen resultados';
                 }
             }
@@ -146,6 +151,14 @@
             }
         });
         
+        
+        $("#servicio").focusout(function(){
+            var temp = $(this).val().trim() ;
+      
+            if (temp==''){
+                $('#empresah').val('');	
+            }
+          });
     });
 
 

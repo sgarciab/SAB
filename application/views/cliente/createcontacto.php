@@ -168,6 +168,7 @@
                     return row[0]+'  /  '+row[1]+'  /  '+row[2];
                 }
                 else{
+                       $('#empresah').val('');
                     return 'No existen resultados';
                 }
             }

@@ -2,32 +2,24 @@
 <?php echo HTML::style('media/css/jquery-ui-1.10.3.custom.min.css'); ?>
 <?php echo HTML::style('media/css/controllers/admin/calendar.css'); ?>
 <div class="prepend-2 span-20 append-2 last">
-    <h2 class="center">Administraci&oacute;n de OLA's</h2><br>
+    <h2 class="center">Administraci&oacute;n de SLA's</h2><br>
 
 
-    <?php echo Form::open(NULL, array('id' => 'frmBusquedaOlas')); ?>
+    <?php echo Form::open(NULL, array('id' => 'frmBusquedaSlas')); ?>
 
     <div class="span-20 line last">
-        <div class="span-4">
-            <?php echo Form::label("idOla", "Id:", array('class' => 'right')); ?>
+       <div class="span-4">
+            <?php echo Form::label("tiempoRespuesta", "Tiempo de Respuesta:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
-            <?php echo Form::input("idOla", null, array('id' => 'idOla', 'class' => 'span-4')); ?>      
-        </div>	
+            <?php echo Form::input("tiempoRespuesta", null, array('id' => 'tiempoRespuesta', 'class' => 'span-4')); ?>
+        </div>
+        
         <div class="prepend-1 span-4">
             <?php echo Form::label("criticidad", "Criticidad:", array('class' => 'right')); ?>
         </div>	
         <div class="span-5 last">
             <?php echo Form::input("criticidad", null, array('id' => 'criticidad', 'class' => 'span-4')); ?>
-        </div>	
-    </div>	        
-
-    <div class="span-20 line last">        
-        <div class="span-4">
-            <?php echo Form::label("tiempoRespuesta", "Tiempo de Respuesta:", array('class' => 'right')); ?>
-        </div>	
-        <div class="span-5 last">
-            <?php echo Form::input("tiempoRespuesta", null, array('id' => 'tiempoRespuesta', 'class' => 'span-4')); ?>
         </div>	
     </div>	        
 
@@ -52,7 +44,6 @@
                     $('#container_ola').html('');
 
                     $('#container_ola').load(document_root + 'ola/loadola', {
-                        id: $('#idOla').val(),
                         criticidad: $("#criticidad").val(),                        
                         tiempoRespuesta: $("#tiempoRespuesta").val(),
                         async: false
