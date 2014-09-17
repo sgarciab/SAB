@@ -43,7 +43,7 @@
                  
                     $('#container_ola').html('');
 
-                    $('#container_ola').load(document_root + 'ola/loadola', {
+                    $('#container_ola').load(document_root + 'sla/loadsla', {
                         criticidad: $("#criticidad").val(),                        
                         tiempoRespuesta: $("#tiempoRespuesta").val(),
                         async: false
