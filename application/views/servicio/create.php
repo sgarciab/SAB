@@ -34,7 +34,29 @@
 
 </div>
 
+  
+     <div class="prepend-2 span-20 append-2 line last">
+                 <div class="span-4 ">
+                     <?php echo Form::label("addAgregarRespaldo", "Añadir Pol&iacute;tica de Respaldo:", array('class' => 'span-4')); ?>
+                 </div>
+                 <div class="span-4 ">
+                     <?php echo Form::button("addAgregarRespaldo", "Añadir", array('class' => 'span-4 button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only','id'=>'addAgregarRespaldo')); ?>
+                 </div>
+     </div>
+             <?php echo Form::hidden("cont", "0", array('id' => 'cont', 'class' => 'span-4')); ?>
 
+    <div class="prepend-2 span-20 append-2">
+        <div id="table_respaldo" class="span-21">
+          <div id='bodyrespaldo'class="span-20">
+          </div>
+        </div>
+    </div>
+    
+    <div id="container_place" hidden="" >
+
+    </div>
+    
+    
 
 <?php if (!$servicio->id) { ?>
     <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
@@ -123,6 +145,54 @@
             }
           });
 	    
+        $("#addAgregarRespaldo").click(function(ev){
+        ev.preventDefault();
+        var val= parseInt($("#cont").val())+1;
+        loadrespaldo(parseInt($("#cont").val())+1,"");
+        });
+        
+        
+       function loadrespaldo(cont,id){
+            $("#container_place").load(document_root + "servico/loadrespaldo", {
+                cont: cont
+            }, function() {
+                
+                $('input[id*="contenido_"]').each(function(){
+                    $(this).rules("add", {
+                        required: true
+
+                    });
+                });
+
+                
+
+                $('select[id*="tipo_"]').each(function(){
+                    $(this).rules("add", {
+                        required: true
+
+                    });
+                });
+
+
+                //fin validaciones 2
+
+
+
+                $("#bodyrespaldo").append($("#rowrespaldo_"+cont));
+                $("#container_place").html('');
+                $("#cont").val(parseInt($("#cont").val())+1);
+                
+                
+                //boton cerrar
+                $('#removerespaldo_'+cont).click(function(){
+                    
+                    $('#rowrespaldo_'+cont).remove();
+                });
+                
+            });
+        };   
+            
+            
 
     });
 

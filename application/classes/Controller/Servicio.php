@@ -77,4 +77,16 @@ class Controller_Servicio extends Controller_Containers_Default {
             echo $this->view;
         }
     }
+    
+    public function action_loadirespaldo() {
+        if ($this->request->is_ajax()) {
+            $this->view = View::factory('servicio/loads/loadrespaldo');
+            $cont = arr::get($this->request->post(), 'cont');
+            $tipo=ORM::factory('InformacionContacto')->_tipo;
+            $this->view->set('_tipo', $tipo);
+            $this->view->set('cont', $cont);
+            echo $this->view;
+            $this->auto_render = FALSE;
+        }
+    }
 }
