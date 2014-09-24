@@ -47,7 +47,7 @@
 
     <div class="prepend-2 span-20 append-2">
         <div id="table_respaldo" class="span-21">
-          <div id='bodyrespaldo'class="span-20">
+          <div id="bodyrespaldo" class="span-20">
           </div>
         </div>
     </div>
@@ -153,7 +153,7 @@
         
         
        function loadrespaldo(cont,id){
-            $("#container_place").load(document_root + "servico/loadrespaldo", {
+            $("#container_place").load(document_root + "servicio/loadrespaldo", {
                 cont: cont
             }, function() {
                 
@@ -178,7 +178,7 @@
 
 
 
-                $("#bodyrespaldo").append($("#rowrespaldo_"+cont));
+                $("#bodyrespaldo").append($("#rowinformacion_"+cont));
                 $("#container_place").html('');
                 $("#cont").val(parseInt($("#cont").val())+1);
                 

@@ -10,7 +10,7 @@
 
 class Model_Respaldo extends ORM {
     public $_table_name="respaldo";
-    public $frecuencia = array('m'=>'Minutos', 'h'=>'Horas', 'd'=>'Dias');
+    public $_frecuencia = array('diario'=>'Diario','semanal'=>'Semanal','mensual'=>'Mensual');
     
     protected $_belongs_to = array('servicio' => array('model' => 'Servicio', 'foreign_key' => 'Servicio_idServicio'));
 }

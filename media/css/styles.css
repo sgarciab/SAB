@@ -659,7 +659,7 @@ table tbody tr.even td{
     }
     
     div[id*="rowinformacion_"] img {
-     position: relative;
+    position: relative;
     right: -16px;
     top: -41px;
     }

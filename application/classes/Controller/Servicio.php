@@ -78,12 +78,12 @@ class Controller_Servicio extends Controller_Containers_Default {
         }
     }
     
-    public function action_loadirespaldo() {
+    public function action_loadrespaldo() {
         if ($this->request->is_ajax()) {
             $this->view = View::factory('servicio/loads/loadrespaldo');
             $cont = arr::get($this->request->post(), 'cont');
-            $tipo=ORM::factory('InformacionContacto')->_tipo;
-            $this->view->set('_tipo', $tipo);
+            $_frecuencia=ORM::factory('Respaldo')->_frecuencia;
+            $this->view->set('_frecuencia', $_frecuencia);
             $this->view->set('cont', $cont);
             echo $this->view;
             $this->auto_render = FALSE;
