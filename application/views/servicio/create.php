@@ -10,7 +10,7 @@
     <center><div id="info_title">Informaci&oacute;n del Servicio</div></center>
 <?php } ?>
 
-<?php echo Form::open(NULL, array('id' => 'frmCreateServicio')); ?>
+<?php echo Form::open(NULL, array('id' => 'frmCreateServicio','enctype' => 'multipart/form-data')); ?>
 
 
 
@@ -189,9 +189,41 @@
                     $('#rowrespaldo_'+cont).remove();
                 });
                 
+                
+                $("#addarchivo_"+cont).click(function(ev){
+                ev.preventDefault();
+                loadarchivo(cont,parseInt($("#counter_"+cont).val())+1);
+                });
+                
+                
             });
         };   
             
+            
+            
+        function loadarchivo(cont,innercount){
+            $("#container_place").load(document_root + "servicio/loadarchivo", {
+                cont: cont,
+                innercount: innercount
+            }, function() {
+                
+                //fin validaciones 2
+
+
+                alert(cont+'   '+innercount);
+                $("#archivoadded_"+cont).append($("#rowarchivo_"+cont+'_'+innercount));
+                $("#container_place").html('');
+                $("#counter_"+cont).val(parseInt($("#counter_"+cont).val())+1);
+                
+                
+                //boton cerrar
+                $('#removearchivo_'+cont).click(function(){
+                    
+                    $('#rowarchivo_'+cont).remove();
+                });
+                
+            });
+        };     
             
 
     });

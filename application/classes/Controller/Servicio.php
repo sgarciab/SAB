@@ -89,4 +89,17 @@ class Controller_Servicio extends Controller_Containers_Default {
             $this->auto_render = FALSE;
         }
     }
+    
+    
+     public function action_loadarchivo() {
+        if ($this->request->is_ajax()) {
+            $this->view = View::factory('servicio/loads/loadarchivo');
+            $cont = arr::get($this->request->post(), 'cont');
+            $innercount = arr::get($this->request->post(), 'innercount');
+            $this->view->set('innercount', $innercount);
+            $this->view->set('cont', $cont);
+            echo $this->view;
+            $this->auto_render = FALSE;
+        }
+    }
 }
