@@ -87,11 +87,6 @@
                 empresah:{
                    required:true
                 }
-            },
-            messages: {
-                nombre: {
-                    required:'Es requerido'
-                }
             }
             //,
             //            submitHandler: function (form) {
@@ -157,7 +152,7 @@
                 cont: cont
             }, function() {
                 
-                $('input[id*="contenido_"]').each(function(){
+                $('input[id*="fechainicio_"]').each(function(){
                     $(this).rules("add", {
                         required: true
 
@@ -166,7 +161,7 @@
 
                 
 
-                $('select[id*="tipo_"]').each(function(){
+                $('input[id*="fechafin_"]').each(function(){
                     $(this).rules("add", {
                         required: true
 
@@ -179,7 +174,7 @@
                     changeYear: true,
                     minDate:"0", 
                    // yearRange: "-70+0",
-                    dateFormat: "dd/mm/yy",
+                    dateFormat: "yy-mm-dd",
                     dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
                     monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
                     onClose: function( selectedDate ) {
@@ -193,7 +188,7 @@
                     changeYear: true,
                     minDate: "0",
                   //  yearRange: "-70+0",
-                    dateFormat: "dd/mm/yy",
+                    dateFormat: "yy-mm-dd",
                     dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
                     monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
                     onClose: function( selectedDate ) {
@@ -232,6 +227,20 @@
                 cont: cont,
                 innercount: innercount
             }, function() {
+                
+                $('input[id*="autor_"]').each(function(){
+                    $(this).rules("add", {
+                        required: true
+
+                    });
+                });
+                
+                $('input[id*="archivo_"]').each(function(){
+                    $(this).rules("add", {
+                        required: true
+
+                    });
+                });
                 
                 //fin validaciones 2
 

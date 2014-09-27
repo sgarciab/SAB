@@ -14,7 +14,7 @@ class Controller_Servicio extends Controller_Containers_Default {
 	{
 	$this->view = View::factory('servicio/create');
         
-        $servicio = ORM::factory('Servicio', $this->params[0]);  
+        $servicio = ORM::factory('Servicio');  
         
         
         if (!empty($_POST)) {
@@ -57,12 +57,16 @@ class Controller_Servicio extends Controller_Containers_Default {
                     for($j=1; $j<=$numArc; $j++){
                         $archivo = ORM::factory('ArchivoRespaldo');
 
-                        $archivo->tipo = $this->request->post('tipo_'.$j);
-                        $archivo->contenido = arr::get($this->request->post(), 'contenido_'.$j);
-                        $archivo->observacion = arr::get($this->request->post(), 'observacion_'.$j);
-                        $archivo->Contacto_idContacto = $contacto->id;
-
-                        if($archivo->tipo != null || $archivo->tipo != ''){
+                        $archivo->autor = $this->request->post('autor_'.$i.'_'.$j);
+                        
+                        $fh = fopen($_FILES['archivo_'.$i.'_'.$j]['tmp_name'],'r');
+                        $archivo->archivo = fread($fh, filesize($_FILES['archivo_'.$i.'_'.$j]['tmp_name']));
+                        fclose($fh);
+                        
+                        $archivo->nombreArchivo = $_FILES['archivo_'.$i.'_'.$j]['name'];
+                        
+                        $archivo->Respaldo_idRespaldo=$respaldo->id;
+                        if($archivo->archivo != null || $archivo->archivo != ''){
                             $archivo->save();
                         }
 
@@ -79,10 +83,12 @@ class Controller_Servicio extends Controller_Containers_Default {
                 HTTP::redirect('servicio/index');
                 
             } catch (Database_Exception $ex) {
-                foreach ($ex->errors('validation') as $error) {
-                    FlashMessenger::factory()->set_message('error', $error);
-                }
+                    
+                    FlashMessenger::factory()->set_message('error', $ex->getMessage());
+          
                  $db->rollback();
+                 var_dump($ex->getCode());
+                 die($ex->getLine());
             }
         }
 
