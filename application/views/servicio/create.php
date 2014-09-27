@@ -99,7 +99,7 @@
             //                form.submit();
             //            }
         });
-
+        
         $("#save").click(function(){
             if($("#frmCreateServicio").valid()){
                 $('#save').attr('disabled',true);  
@@ -173,7 +173,33 @@
                     });
                 });
 
+                
+                $("#fechainicio_"+cont).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    minDate:"0", 
+                   // yearRange: "-70+0",
+                    dateFormat: "dd/mm/yy",
+                    dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                    monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
+                    onClose: function( selectedDate ) {
+                        $( "#fechafin_"+cont ).datepicker( "option", "minDate", selectedDate );
+                    }
+                }); 
 
+                //Date picker
+                $("#fechafin_"+cont).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    minDate: "0",
+                  //  yearRange: "-70+0",
+                    dateFormat: "dd/mm/yy",
+                    dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                    monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
+                    onClose: function( selectedDate ) {
+                        $( "#fechainicio_"+cont ).datepicker( "option", "maxDate", selectedDate );
+                    }
+                });
                 //fin validaciones 2
 
 
@@ -209,17 +235,15 @@
                 
                 //fin validaciones 2
 
-
-                alert(cont+'   '+innercount);
                 $("#archivoadded_"+cont).append($("#rowarchivo_"+cont+'_'+innercount));
                 $("#container_place").html('');
                 $("#counter_"+cont).val(parseInt($("#counter_"+cont).val())+1);
                 
                 
                 //boton cerrar
-                $('#removearchivo_'+cont).click(function(){
+                $('#removearchivo_'+cont+'_'+innercount).click(function(){
                     
-                    $('#rowarchivo_'+cont).remove();
+                    $('#rowarchivo_'+cont+'_'+innercount).remove();
                 });
                 
             });

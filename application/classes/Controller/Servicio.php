@@ -19,7 +19,11 @@ class Controller_Servicio extends Controller_Containers_Default {
         
         if (!empty($_POST)) {
             
+            
+            $db = Database::instance();
+            $db ->begin();
             try {
+                 
                 if ($servicio->id) {
                     $success_message = Kohana::message('sab', 'servicio:update:success');
                 } else {
@@ -31,13 +35,54 @@ class Controller_Servicio extends Controller_Containers_Default {
                 
                 $servicio->save();
                 
+                $numReg = arr::get($this->request->post(), 'cont');
+                
+                for($i=1; $i<=$numReg; $i++){
+                    $respaldo = ORM::factory('Respaldo');
+                    
+                    $respaldo->frecuencia = $this->request->post('frecuencia_'.$i);
+                    $respaldo->fechaInicio = arr::get($this->request->post(), 'fechainicio_'.$i);
+                    $respaldo->fechafin = arr::get($this->request->post(), 'fechafin_'.$i);
+                    if ($i==$numReg)
+                       $respaldo->estado='A';
+                    else
+                       $respaldo->estado='I'; 
+                    $respaldo->Servicio_idServicio = $servicio->id;
+          
+                    if($respaldo->frecuencia != null || $respaldo->frecuencia != ''){
+                        $respaldo->save();
+                    }
+                    
+                    $numArc = arr::get($this->request->post(), 'counter_'.$i);
+                    for($j=1; $j<=$numArc; $j++){
+                        $archivo = ORM::factory('ArchivoRespaldo');
+
+                        $archivo->tipo = $this->request->post('tipo_'.$j);
+                        $archivo->contenido = arr::get($this->request->post(), 'contenido_'.$j);
+                        $archivo->observacion = arr::get($this->request->post(), 'observacion_'.$j);
+                        $archivo->Contacto_idContacto = $contacto->id;
+
+                        if($archivo->tipo != null || $archivo->tipo != ''){
+                            $archivo->save();
+                        }
+
+                         $archivo=null;
+                    }
+                    
+                    
+                    $respaldo = NULL;
+                }
+                
+                
+                $db->commit();
                 FlashMessenger::factory()->set_message('success', $success_message);
                 HTTP::redirect('servicio/index');
                 
-            } catch (ORM_Validation_Exception $ex) {
+            } catch (Database_Exception $ex) {
                 foreach ($ex->errors('validation') as $error) {
                     FlashMessenger::factory()->set_message('error', $error);
                 }
+                 $db->rollback();
             }
         }
 

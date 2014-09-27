@@ -658,7 +658,20 @@ table tbody tr.even td{
     padding: 21px;
     }
     
-    div[id*="rowinformacion_"] img {
+    div[id*="rowinformacion_"] img[id*="remove"] {
+    position: relative;
+    right: -16px;
+    top: -41px;
+    }
+    
+    
+     div[id*="rowarchivo_"] {
+    border-radius: 15px;
+    background-color: #fdfdfd;
+    padding: 21px;
+    }
+    
+    div[id*="rowarchivo_"] img[id*="remove"] {
     position: relative;
     right: -16px;
     top: -41px;
