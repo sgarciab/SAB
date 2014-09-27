@@ -43,12 +43,12 @@ $(document).ready(function(){
             autoOpen: true,
             title: $(this).attr('opt')+' Usuario',
             close: function(error, element) {
-                window.top.location.href = document_root + 'admin/user/index';
+                window.top.location.href = document_root + 'user/index';
             },
             buttons: {
                 'Aceptar': function() {
                     $.ajax({
-					url: document_root+'admin/user/deactivate',
+					url: document_root+'user/deactivate',
 					type: "post",
 					dataType: 'json',
 					data: {						
@@ -56,13 +56,13 @@ $(document).ready(function(){
 					},
 					success: function(data){
 						if(data['saved']){
-							window.top.location.href = document_root + 'admin/user/index';
+							window.top.location.href = document_root + 'user/index';
 						}
 					}
                     });
                 },
                 'Cancelar': function() {
-                    window.top.location.href = document_root + 'admin/user/index';
+                    window.top.location.href = document_root + 'user/index';
                 }
             }
         });
@@ -71,7 +71,7 @@ $(document).ready(function(){
 //			var answer = confirm("Desea "+$(this).attr('opt')+" el Usuario?")
 //			if (answer){				
 //				$.ajax({
-//					url: document_root+'admin/user/deactivate',
+//					url: document_root+'user/deactivate',
 //					type: "post",
 //					dataType: 'json',
 //					data: {						
@@ -79,7 +79,7 @@ $(document).ready(function(){
 //					},
 //					success: function(data){
 //						if(data['saved']){
-//							window.location = document_root+"admin/user/"
+//							window.location = document_root+"user/"
 //						}
 //					}
 //				});

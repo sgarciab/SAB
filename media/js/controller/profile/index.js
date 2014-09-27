@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	if($('#table-warehouses').length>0){        
-		$('#table-warehouses').dataTable( {
+	if($('#table-profiles').length>0){        
+		$('#table-profiles').dataTable( {
 			"bPaginate": true,
                         "bLengthChange": false,
 			"bInfo": true,
@@ -20,21 +20,18 @@ $(document).ready(function(){
 				"sProcessing": "Filtrando.."
 			},
 			"aoColumns": [
+						{"sWidth":"55%", "bSortable":true},
 						{"sWidth":"20%", "bSortable":true},
-						{"sWidth":"10%", "bSortable":true},
-						{"sWidth":"20%", "bSortable":true},
-						{"sWidth":"10%", "bSortable":true},
-						{"sWidth":"10%", "bSortable":true},
-						{"sWidth":"20%", "bSortable":false}
+						{"sWidth":"25%", "bSortable":false}
 					]
 		});	
 	}
 	
 	$('[id^="deactivate_"]').live('click',function(){
-			var answer = confirm("Desea "+$(this).attr('opt')+" la Bodega?")
+			var answer = confirm("Desea "+$(this).attr('opt')+" el Perfil?")
 			if (answer){				
 				$.ajax({
-					url: document_root+'admin/warehouse/deactivate',
+					url: document_root+'profile/deactivate',
 					type: "post",
 					dataType: 'json',
 					data: {						
@@ -42,7 +39,7 @@ $(document).ready(function(){
 					},
 					success: function(data){
 						if(data['saved']){
-							window.location = document_root+"admin/warehouse/"
+							window.location = document_root+"profile/"
 						}
 					}
 				});

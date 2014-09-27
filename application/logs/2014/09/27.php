@@ -16,3 +16,6 @@
 2014-09-27 14:20:43 --- CRITICAL: ErrorException [ 1 ]: Call to undefined method Database_Exception::errors() ~ APPPATH\classes\Controller\Servicio.php [ 85 ] in file:line
 2014-09-27 14:20:43 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
 #1 {main} in file:line
+2014-09-27 16:14:38 --- CRITICAL: ErrorException [ 1 ]: Class 'Model_Globalfunctions' not found ~ APPPATH\classes\Controller\profile.php [ 88 ] in file:line
+2014-09-27 16:14:38 --- DEBUG: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in file:line

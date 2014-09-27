@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <?php echo HTML::style('media/css/jquery-ui-1.10.3.custom.min.css'); ?>
-<?php echo HTML::style('media/css/controllers/admin/product.css'); ?>
+
 <?php if (!$proveedor->id) { ?>
     <div class="prepend-2 span-20 append-2 last">
         <h2>Editar Proveedor</h2>

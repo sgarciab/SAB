@@ -19,7 +19,7 @@ $(document).ready(function(){
 				required:true,
 				digits:true,
 				remote: {
-					url: document_root+"admin/rpc/check_useridentification",
+					url: document_root+"rpc/check_useridentification",
 						type: "POST",
 						data:{
 							document: function(){
@@ -34,7 +34,7 @@ $(document).ready(function(){
             username:{
 				required:true,
                 remote: {
-						url: document_root+"admin/rpc/check_username",
+						url: document_root+"rpc/check_username",
 						type: "POST",
 						data:{
 							username: function(){

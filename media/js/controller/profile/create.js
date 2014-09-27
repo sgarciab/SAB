@@ -13,7 +13,7 @@ $(document).ready(function(){
                 maxlength: 50,
                // minlength: 3,
                 remote: {
-                    url: document_root+"admin/rpc/check_profilename",
+                    url: document_root+"rpc/check_profilename",
                     type: "POST",
                     data:{
                         username: function(){

@@ -79,7 +79,7 @@ class Controller_Containers_Default extends Controller_Template {
             $controller = $this->request->controller();
 
             //Build the styles array
-            $css_file = 'media/css/controllers/admin/' . $controller . '/' . $action . '.css';
+            $css_file = 'media/css/controllers/' . $controller . '/' . $action . '.css';
             $styles = array(
                 'media/css/blueprint/screen.css' => 'screen, projection',
                 'media/css/blueprint/print.css' => 'print',
@@ -102,7 +102,7 @@ class Controller_Containers_Default extends Controller_Template {
             }
 
             //Build the scripts array
-            $js_file = 'media/js/controller/admin/' . $controller . '/' . $action . '.js';
+            $js_file = 'media/js/controller/' . $controller . '/' . $action . '.js';
             $scripts = array(
                 //'media/js/jqueryLibrary/jquery-1.6.2.min.js',
                 'media/js/jqueryLibrary/jquery-1.8.2.js',
