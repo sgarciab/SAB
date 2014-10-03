@@ -24,8 +24,8 @@
 
 </div>
 
-<div class="prepend-2 span-20 append-2 line last">
-    <div class=" span-4">
+<?php if (!$servicio->id) { ?>
+    <div class="prepend-2 span-4">
         <?php echo Form::label("proveedor", "Proveedor (relacionado):", array('class' => 'left')); ?>
     </div>	
     <div class="span-5 last">
@@ -34,7 +34,17 @@
              <?php echo Form::hidden("proveedorh", $servicio->Proveedor_idProveedor, array('id' => 'proveedorh', 'class' => 'span-5')); ?>
         </div>        
     </div>
-</div>
+<?php } else { ?>
+    <div class="prepend-2 span-4">
+        <?php echo Form::label("proveedor", "Proveedor (relacionado):", array('class' => 'left')); ?>
+    </div>	
+    <div class="span-5 last">
+        <div class="span-5 last ">
+            <?php echo Form::input("proveedor", $servicio->proveedor->nombre, array('id' => 'proveedor', 'class' => 'span-5')); ?>
+             <?php echo Form::hidden("proveedorh", $servicio->Proveedor_idProveedor, array('id' => 'proveedorh', 'class' => 'span-5')); ?>
+        </div>        
+    </div>
+<?php } ?>    
     
 <div class="prepend-2 span-20 append-2 line last">
     <div class="span-4">

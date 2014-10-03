@@ -86,6 +86,53 @@ class Controller_Sla extends Controller_Containers_Default {
             echo $this->view;
         }
     }
-        
+    
+    
+    public function action_edit()
+    {
+    $this->view = View::factory('sla/edit');
+
+    $sla = ORM::factory('Sla', $this->params[0]);
+
+
+    if (!empty($_POST)) {
+
+        $db = Database::instance();
+        $db ->begin();
+        try {
+            if ($sla->id) {
+                $success_message = Kohana::message('sab', 'sla:update:success');
+            } else {
+                $success_message = Kohana::message('sab', 'sla:create:success');
+            }
+
+            $sla->criticidad = arr::get($this->request->post(), 'criticidad');
+            $sla->responsable = arr::get($this->request->post(), 'responsable');
+            $sla->tiempoRespuesta = arr::get($this->request->post(), 'tiempoRespuesta');
+            $sla->medTiempo = arr::get($this->request->post(), 'medTiempo');
+            $sla->descripcion = arr::get($this->request->post(), 'descripcion');
+            $sla->disponibilidad = floatval(arr::get($this->request->post(), 'disponibilidad'));
+            $sla->Servicio_idServicio = arr::get($this->request->post(), 'servicioh');
+
+            $sla->save();                
+
+            $db->commit();                
+
+            FlashMessenger::factory()->set_message('success', $success_message);
+            HTTP::redirect('sla/index');
+
+        } catch (Database_Exception $ex) {
+            foreach ($ex->errors('validation') as $error) {
+                FlashMessenger::factory()->set_message('error', $error);
+            }
+             $db->rollback();
+        }
+    }
+
+    $this->view->set('sla', $sla);
+    $this->view->set("opCriticidad", $sla); 
+
+    }
+    
 
 } 

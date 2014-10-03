@@ -5,7 +5,7 @@
 	<div class="required-fields">* Campos obligatorios</div>
 </div>
 
-<?php echo Form::open(NULL, array('id'=>'frmAcountUser')); ?>
+<?php echo Form::open(NULL, array('id'=>'frmAccountUser')); ?>
 
 
 <div class="prepend-2 span-20 append-2 line last">

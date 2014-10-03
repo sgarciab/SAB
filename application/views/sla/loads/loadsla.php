@@ -1,5 +1,5 @@
 <?php if (count($sla) > 0): ?>
-    <table id="table-ola">
+    <table id="table-sla">
         <thead>
             <tr>
                 <th>id</th> 
@@ -17,7 +17,7 @@
                     <td><?php echo $sla->tiempoRespuesta; ?></td>
                     <td><?php echo $sla->descripcion; ?></td>
                     <td class="span-2">
-                        <?php echo HTML::anchor("ola/edit/" . $sla->id, "Actualizar"); ?>                 
+                        <?php echo HTML::anchor("sla/edit/" . $sla->id, "Actualizar"); ?>                 
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -27,7 +27,7 @@
 <?php else: ?>
     <div class="prepend-5 span-10 append-5 line last center">
         <div class="span-10 line center notice">
-            <?php echo Kohana::message('sab', 'ola:index:empty'); ?>
+            <?php echo Kohana::message('sab', 'sla:index:empty'); ?>
         </div>
     </div>
 <?php endif; ?>
