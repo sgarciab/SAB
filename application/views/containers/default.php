@@ -52,7 +52,7 @@
             <div class=" span-24  last right " style="position: absolute;top:-45px;left: 100px ">    
 				<li class="logout">
 					<b>Bienvenido <?php if(isset($current_user)): echo $current_user->nombre.' '.$current_user->apellido; endif ?></b>
-					(<a href="<?php echo URL::site().'user/acount'; ?>">
+					(<a href="<?php echo URL::site().'user/account'; ?>">
 						Mi cuenta
 					</a>|<a href="<?php echo URL::site().'login/logout'; ?>">
 						Cerrar Sesi&oacute;n
