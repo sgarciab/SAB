@@ -24,14 +24,14 @@
                 </thead>
                 <tbody>
                     <?php foreach ($users as $user): ?>
-                    <tr>
-                        <td><?php echo $user->firstname.' '.$user->lastname; ?></td>
-                        <td><?php echo $user->document?></td>
-                        <td id="username<?php echo $user->id; ?>"><?php echo $user->username; ?></td>
+                    <tr>                       
+                        <td><?php echo $user->nombre.' '.$user->apellido; ?></td>
+                        <td><?php echo $user->cedula?></td>
+                        <td id="nickname<?php echo $user->id; ?>"><?php echo $user->nickname; ?></td>
                         <td><?php echo $profiles_array[$user->profile_id]; ?></td>
                         <td class="span-2"><?php echo $status_values[$user->status]; ?></td>
                         <td class="span-2">
-                            <?php if($user->username!='admin'){ ?>
+                            <?php if($user->nickname!='admin'){ ?>
                             <?php echo HTML::anchor("user/edit/" . $user->id, "Actualizar"); ?> 
 							<?php if($current_user->id != $user->id): ?>
 								|

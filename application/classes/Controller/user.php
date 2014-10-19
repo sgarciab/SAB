@@ -40,7 +40,7 @@ class Controller_User extends Controller_Containers_Default {
 
     public function action_create() 
     {
-		$this->view = View::factory( 'user/create' );
+        $this->view = View::factory( 'user/create' );
 
         $user = ORM::factory('User', $this->params[0]);
         $current_user = Session::instance()->get('current_user', false);

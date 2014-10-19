@@ -21,7 +21,8 @@ $(document).ready(function(){
 				"sProcessing": "Filtrando.."
 			},
 			"aoColumns": [
-						{"sWidth":"30%", "bSortable":true},
+                                                {"sWidth":"10%", "bSortable":true},				
+                                                {"sWidth":"20%", "bSortable":true},
 						{"sWidth":"10%", "bSortable":false},
 						{"sWidth":"10%", "bSortable":true},
 						{"sWidth":"15%", "bSortable":true},
@@ -32,7 +33,7 @@ $(document).ready(function(){
 	}
     
 	
-	$('[id^="deactivate_"]').live('click',function(){
+	$('[id^="deactivate_"]').click(function(){
          var prueba = this.id.split('_');
             count = prueba[1];
         $('#user_namel').text($('#username'+count).text());
