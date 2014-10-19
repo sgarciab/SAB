@@ -54,9 +54,9 @@
                    <div id="rowinformacion_<?php echo $count; ?>" class="span-19 last line" >
                     
                     <div class="span-21 last line subtitle ">Informaci&oacute;n <?php echo $count ?></div>
-                    <div class="span-5  line"> <?php echo Form::label('frecuencia_'.$count,'Frecuencia:',array('class'=>'span-3')); echo  Form::select('frecuencia_'.$count,$_frecuencia,null,array('id'=>'frecuencia_'.$count,'class'=>'span-4'));  ?></div>
-                    <div class="span-5  line"><?php echo Form::label('fechainicio_'.$count,'Fecha Inicio:',array('class'=>'span-3')); echo  Form::input('fechainicio_'.$count,null,array('id'=>'fechainicio_'.$count,'class'=>'span-4','readonly')); ?></div>
-                    <div class="span-5  line"><?php echo Form::label('fechafin_'.$count,'Fecha Fin:',array('class'=>'span-3')); echo  Form::input('fechafin_'.$count,null,array('id'=>'fechafin_'.$count,'class'=>'span-4','readonly')); ?></div>
+                    <div class="span-5  line"> <?php echo Form::label('frecuencia_'.$count,'Frecuencia:',array('class'=>'span-3')); echo  Form::select('frecuencia_'.$count,$_frecuencia,$item->frecuencia,array('id'=>'frecuencia_'.$count,'class'=>'span-4'));  ?></div>
+                    <div class="span-5  line"><?php echo Form::label('fechainicio_'.$count,'Fecha Inicio:',array('class'=>'span-3')); echo  Form::input('fechainicio_'.$count,$item->fechaInicio,array('id'=>'fechainicio_'.$count,'class'=>'span-4','readonly')); ?></div>
+                    <div class="span-5  line"><?php echo Form::label('fechafin_'.$count,'Fecha Fin:',array('class'=>'span-3')); echo  Form::input('fechafin_'.$count,$item->fechafin,array('id'=>'fechafin_'.$count,'class'=>'span-4','readonly')); ?></div>
                     <div id="wadd_<?php echo $count; ?>"> <?php echo Form::button('addarchivo_'.$count, 'Añadir Archivo', array('id'=>'addarchivo_'.$count,'class'=>'span-3 button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only')) ?>  </div>
                     <div id="archivoadded_<?php echo $count; ?>" class="span-21 last line">
                         
