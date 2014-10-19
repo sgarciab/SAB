@@ -64,9 +64,18 @@
                            <?php foreach ($item->archivo->find_all() as $archivo): ?>
                                     <div id="rowarchivo_<?php echo $count.'_'.$innercount; ?>" class="span-18 last line" >
                                     <div class="span-18 last line subtitle ">Archivo de Respaldo <?php echo $innercount; ?></div>
-                                    <div class="span-4  line"><?php echo Form::label('fechacreacion_'.$count.'_'.$innercount,'Fecha Creación:',array('class'=>'span-3')); echo  Form::input('fechacreacion_'.$count.'_'.$innercount,date('d-m-Y H:i:s'),array('id'=>'fechacreacion_'.$count.'_'.$innercount,'class'=>'span-4','readonly')); ?></div>
-                                    <div class="span-4  line"><?php echo Form::label('autor_'.$count.'_'.$innercount,'Autor:',array('class'=>'span-3')); echo  Form::input('autor_'.$count.'_'.$innercount,null,array('id'=>'autor_'.$count.'_'.$innercount,'class'=>'span-4')); ?></div>
-                                    <div class="span-9  line"><?php echo Form::label('archivo_'.$count.'_'.$innercount,'Archivo:',array('class'=>'span-3')); echo  Form::file('archivo_'.$count.'_'.$innercount,array('id'=>'archivo_'.$count.'_'.$innercount,'class'=>'span-9')); ?></div>
+                                    <div class="span-4  line"><?php echo Form::label('fechacreacion_'.$count.'_'.$innercount,'Fecha Creación:',array('class'=>'span-3')); echo  Form::input('fechacreacion_'.$count.'_'.$innercount,$archivo->fecha,array('id'=>'fechacreacion_'.$count.'_'.$innercount,'class'=>'span-4','readonly')); ?></div>
+                                    <div class="span-4  line"><?php echo Form::label('autor_'.$count.'_'.$innercount,'Autor:',array('class'=>'span-3')); echo  Form::input('autor_'.$count.'_'.$innercount,$archivo->autor,array('id'=>'autor_'.$count.'_'.$innercount,'class'=>'span-4')); ?></div>
+                                    <div class="span-9  line"><?php 
+                                    
+                                    echo Form::label('archivo_'.$count.'_'.$innercount,'Archivo:',array('class'=>'span-3')); 
+                                    if (!$archivo->id)
+                                    echo  Form::file('archivo_'.$count.'_'.$innercount,array('id'=>'archivo_'.$count.'_'.$innercount,'class'=>'span-9')); 
+                                    else
+                                    echo HTML::anchor('/servicio/descargarRespaldo/'.$archivo->id, $archivo->nombreArchivo, array('target'=>'_blanket'));   
+                                        
+                                    ?> 
+                                    </div>
                                     <div class="edit" ><img id="removearchivo_<?php echo $count.'_'.$innercount; ?>" src="<?php echo URL::site('media/images/remove.png') ?>"> </div>
                                     </div>
                         

@@ -247,4 +247,13 @@ class Controller_Servicio extends Controller_Containers_Default {
             $this->auto_render = FALSE;
         }
     }
+    
+    
+     public function action_descargarRespaldo() {
+            
+         $archivo = ORM::factory('ArchivoRespaldo', $this->params[0]); 
+          header("Content-type: text/plain");
+          header("Content-Disposition: attachment; filename=".$archivo->nombreArchivo);    
+          echo $archivo->archivo; 
+    }
 }
