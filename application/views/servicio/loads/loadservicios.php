@@ -15,7 +15,7 @@
                    
                    <td><?php echo $servicio->cliente->nombre ; ?></td>
                     <td class="span-2">
-                        <?php echo HTML::anchor("servicio/create/" . $servicio->id, "Actualizar"); ?>
+                        <?php echo HTML::anchor("servicio/edit/" . $servicio->id, "Actualizar"); ?>
                  
                     </td>
                 </tr>
