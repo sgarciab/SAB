@@ -55,20 +55,22 @@
                   ?>
                <?php foreach ($respaldos as $item): ?>
                    <div id="rowinformacion_<?php echo $count; ?>" class="span-19 last line" >
-                     <?php echo Form::hidden("identifier_$count", $item->id) ;   ?>
+                     <?php echo Form::hidden("informacion_id_$count", $item->id) ;   ?>
+                     <?php echo Form::hidden("informacion_estado_$count", $item->estado) ;   ?>  
                     <div class="span-21 last line subtitle ">Informaci&oacute;n <?php echo $count ?></div>
-                    <div class="span-5  line"> <?php echo Form::label('frecuencia_'.$count,'Frecuencia:',array('class'=>'span-3')); echo  Form::select('frecuencia_'.$count,$_frecuencia,$item->frecuencia,array('id'=>'frecuencia_'.$count,'class'=>'span-4'));  ?></div>
+                    <div class="span-5  line"> <?php echo Form::label('frecuencia_'.$count,'Frecuencia:',array('class'=>'span-3')); echo  Form::select('frecuencia_'.$count,$_frecuencia,$item->frecuencia,array('id'=>'frecuencia_'.$count,'class'=>'span-4','readonly','disabled'));  ?></div>
                     <div class="span-5  line"><?php echo Form::label('fechainicio_'.$count,'Fecha Inicio:',array('class'=>'span-3')); echo  Form::input('fechainicio_'.$count,$item->fechaInicio,array('id'=>'fechainicio_'.$count,'class'=>'span-4','readonly')); ?></div>
                     <div class="span-5  line"><?php echo Form::label('fechafin_'.$count,'Fecha Fin:',array('class'=>'span-3')); echo  Form::input('fechafin_'.$count,$item->fechafin,array('id'=>'fechafin_'.$count,'class'=>'span-4','readonly')); ?></div>
-                    <div id="wadd_<?php echo $count; ?>"> <?php echo Form::button('addarchivo_'.$count, 'Añadir Archivo', array('id'=>'addarchivo_'.$count,'class'=>'span-3 button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only')) ?>  </div>
+                    <div id="wadd_<?php echo $count; ?>"> <?php  if ($item->estado=='A')echo Form::button('addarchivo_'.$count, 'Añadir Archivo', array('id'=>'addarchivo_'.$count,'class'=>'span-3 button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only')) ?>  </div>
                     <div id="archivoadded_<?php echo $count; ?>" class="span-21 last line">
                         
                              <?php $innercount=1; ?>
                            <?php foreach ($item->archivo->find_all() as $archivo): ?>
+                                    <?php echo Form::hidden("archivo_id_$count"."_$innercount",  $archivo->id) ;   ?>
                                     <div id="rowarchivo_<?php echo $count.'_'.$innercount; ?>" class="span-18 last line" >
                                     <div class="span-18 last line subtitle ">Archivo de Respaldo <?php echo $innercount; ?></div>
                                     <div class="span-4  line"><?php echo Form::label('fechacreacion_'.$count.'_'.$innercount,'Fecha Creación:',array('class'=>'span-3')); echo  Form::input('fechacreacion_'.$count.'_'.$innercount,$archivo->fecha,array('id'=>'fechacreacion_'.$count.'_'.$innercount,'class'=>'span-4','readonly')); ?></div>
-                                    <div class="span-4  line"><?php echo Form::label('autor_'.$count.'_'.$innercount,'Autor:',array('class'=>'span-3')); echo  Form::input('autor_'.$count.'_'.$innercount,$archivo->autor,array('id'=>'autor_'.$count.'_'.$innercount,'class'=>'span-4')); ?></div>
+                                    <div class="span-4  line"><?php echo Form::label('autor_'.$count.'_'.$innercount,'Autor:',array('class'=>'span-3')); echo  Form::input('autor_'.$count.'_'.$innercount,$archivo->autor,array('id'=>'autor_'.$count.'_'.$innercount,'class'=>'span-4','readonly')); ?></div>
                                     <div class="span-9  line"><?php 
                                     
                                     echo Form::label('archivo_'.$count.'_'.$innercount,'Archivo:',array('class'=>'span-3')); 
