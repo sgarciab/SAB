@@ -76,7 +76,7 @@
                                         
                                     ?> 
                                     </div>
-                                    <div class="edit" ><img id="removearchivo_<?php echo $count.'_'.$innercount; ?>" src="<?php echo URL::site('media/images/remove.png') ?>"> </div>
+                                   
                                     </div>
                         
                             <?php $innercount++; ?>
@@ -84,7 +84,7 @@
                         
                     </div>
                     <div id="wcounter_<?php echo $count; ?>"> <?php echo Form::hidden('counter_'.$count,--$innercount,array('id'=>'counter_'.$count)) ?>  </div>
-                    <div class="edit" ><img id="removeinformacion_<?php echo $count; ?>" src="<?php echo URL::site('media/images/remove.png') ?>"> </div>    
+                   
 
                    </div>
                     <?php $count++ ?>
