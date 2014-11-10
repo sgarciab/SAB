@@ -49,10 +49,13 @@
         <div id="table_respaldo" class="span-21">
           <div id="bodyrespaldo" class="span-20">
               
-                  <?php $count=1; ?>
-               <?php foreach ($servicio->respaldo->find_all() as $item): ?>
+                  <?php $count=1; 
+                  $respaldos=$servicio->respaldo->find_all();
+                  
+                  ?>
+               <?php foreach ($respaldos as $item): ?>
                    <div id="rowinformacion_<?php echo $count; ?>" class="span-19 last line" >
-                    
+                     <?php echo Form::hidden("identifier_$count", $item->id) ;   ?>
                     <div class="span-21 last line subtitle ">Informaci&oacute;n <?php echo $count ?></div>
                     <div class="span-5  line"> <?php echo Form::label('frecuencia_'.$count,'Frecuencia:',array('class'=>'span-3')); echo  Form::select('frecuencia_'.$count,$_frecuencia,$item->frecuencia,array('id'=>'frecuencia_'.$count,'class'=>'span-4'));  ?></div>
                     <div class="span-5  line"><?php echo Form::label('fechainicio_'.$count,'Fecha Inicio:',array('class'=>'span-3')); echo  Form::input('fechainicio_'.$count,$item->fechaInicio,array('id'=>'fechainicio_'.$count,'class'=>'span-4','readonly')); ?></div>
@@ -216,6 +219,19 @@
             if (temp==''){
                 $('#empresah').val('');	
             }
+          });
+          
+          
+          $('div[id*="rowinformacion_"]').each(function(){
+              var item=$(this).attr('id');
+              var content=item.split('_');
+              if (content[1]!=$('#cont').val())
+                $(':input',this).each(function(){
+                      $(this).attr("disabled", true);
+                    
+                });
+   
+                
           });
 	    
         $("#addAgregarRespaldo").click(function(ev){
