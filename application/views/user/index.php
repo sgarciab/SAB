@@ -17,17 +17,19 @@
 						<th>Nombres y Apellidos</th>
 						<th>Identificaci&oacute;n</th>
 						<th>Usuario</th>
+                                                <th>Email</th>
 						<th>Perfil</th>
 						<th>Estado</th>
 						<th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>                    
                     <?php foreach ($users as $user): ?>
                     <tr>                       
                         <td><?php echo $user->nombre.' '.$user->apellido; ?></td>
                         <td><?php echo $user->cedula?></td>
                         <td id="nickname<?php echo $user->id; ?>"><?php echo $user->nickname; ?></td>
+                        <td><?php echo $user->email?></td>
                         <td><?php echo $profiles_array[$user->profile_id]; ?></td>
                         <td class="span-2"><?php echo $status_values[$user->status]; ?></td>
                         <td class="span-2">

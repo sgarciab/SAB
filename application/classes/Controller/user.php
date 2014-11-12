@@ -19,7 +19,7 @@ class Controller_User extends Controller_Containers_Default {
         if ($this->current_user->id != 1) 
         {
             //SUPER-ADMIN HAS ID 1
-            $users = ORM::factory('User')->where('id', '=', $this->current_user->id)->find_all();
+            $users = ORM::factory('User')->find_all();
         }
         
 	          
@@ -71,13 +71,21 @@ class Controller_User extends Controller_Containers_Default {
                 if ($_POST['password'] == '_pass_flag_') 
                 {
                     unset($_POST['password']);
-                }
-
-                $user->values($_POST);
+                }             
+                
+                $user->nickname = arr::get($this->request->post(), 'nickname');
+                $user->nombre = arr::get($this->request->post(), 'nombre');
+                $user->apellido = arr::get($this->request->post(), 'apellido');
+                $user->cedula = arr::get($this->request->post(), 'cedula');
+                $user->telefono = arr::get($this->request->post(), 'telefono');
+                $user->email = arr::get($this->request->post(), 'email');
+                $user->fechaNacimiento = arr::get($this->request->post(), 'fecNac');
+                $user->profile_id = arr::get($this->request->post(), 'profile_id');
+                $user->password = arr::get($this->request->post(), 'password');
                 $user->save();
 
                 FlashMessenger::factory()->set_message('success', $success_message);
-                $this->request->redirect('user/index');
+                HTTP::redirect('user/index');
             } 
             catch (ORM_Validation_Exception $ex) 
             {
@@ -89,9 +97,9 @@ class Controller_User extends Controller_Containers_Default {
         }
 
         $this->view->set("current_user", $this->current_user);
-        $this->view->set('status_values', Model_Globalfunctions::unshift_select_item(ORM::factory('User')->status_values));
+        $this->view->set('status_values', ORM::factory('User')->status_values);
         $this->view->set("user", $user);
-		$this->view->set("profiles_array",Model_Globalfunctions::unshift_select_item($profiles_array));
+		$this->view->set("profiles_array",$profiles_array);
     }
 
     public function action_edit() 
@@ -100,7 +108,7 @@ class Controller_User extends Controller_Containers_Default {
 
         if ($user->loaded()) 
         {
-            $this->request->redirect('user/create/' . $user->id);
+            HTTP::redirect('user/create/' . $user->id);
         }
 
         throw new Exception_ContentNotFound;
