@@ -36,11 +36,11 @@ class Controller_Rpc extends Controller{
         $this->auto_render = FALSE;
         if ($this->request->is_ajax()) {
             $id = $this->request->post('id');
-            $name = $this->request->post('username');
+            $name = $this->request->post('nickname');
             $name = trim($name);
 
             $users = ORM::factory('User')
-                    ->where(DB::expr("LOWER(username)"), 'LIKE', DB::expr("LOWER('" . $name . "')"));
+                    ->where(DB::expr("LOWER(nickname)"), 'LIKE', DB::expr("LOWER('" . $name . "')"));
 
             if ($id) {
                 $users->and_where('id', '!=', $id);
@@ -57,11 +57,11 @@ class Controller_Rpc extends Controller{
     public function action_check_useridentification() {
         if ($this->request->is_ajax()) {
             $id = $this->request->post('id');
-            $name = utf8_decode($this->request->post('document'));
+            $name = utf8_decode($this->request->post('cedula'));
             $name = trim($name);
 
             $users = ORM::factory('User')
-                    ->where(DB::expr("document"), '=', $name);
+                    ->where(DB::expr("cedula"), '=', $name);
 
             if ($id) {
                 $users->and_where('id', '!=', $id);

@@ -1,32 +1,45 @@
 $(document).ready(function(){
 	$('#save').button();
+        
+        //Date picker
+        $("#fecNac").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            //minDate: "0",
+            yearRange: "-80+0",
+            dateFormat: "yy-mm-dd",
+            dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+            monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],          
+        });
+        
     /*VALIDATIONS*/
     $("#frmCreateUser").validate({
         onfocusout: false,
         onkeyup: false,
 		wrapper: "label",
 		rules: {
-			firstname:{
+			nombre:{
 				required:true,
 				textOnly: true,
                 maxlength: 50
 			},
-			lastname:{
+			apellido:{
 				required:true,
 				textOnly: true,
                 maxlength: 50 
                
 			},
-			document:{
+			cedula:{
 				required:true,
                 digits:true,
                 minlength: 5,
 				remote: {
+                                        //Santiago añadirá
 					url: document_root+"rpc/check_useridentification",
 						type: "POST",
 						data:{
-							document: function(){
-								return $('#document').val();
+							cedula: function(){
+								return $('#cedula').val();
 							},
 							id: function(){
 								return $('#id').val();
@@ -34,15 +47,16 @@ $(document).ready(function(){
 					}
 				}
 			},
-            username:{
+            nickname:{
                 maxlength: 50,
                 required:true,
                 remote: {
-						url: document_root+"rpc/check_username",
+						
+                                                url: document_root+"rpc/check_username",
 						type: "POST",
 						data:{
-							username: function(){
-								return $('#username').val();
+							nickname: function(){
+								return $('#nickname').val();
 							},
 							id: function(){
 								return $('#id').val();
@@ -58,7 +72,7 @@ $(document).ready(function(){
             },
             password:{
                 required:true,
-				maxlength: 50
+                maxlength: 50
             },
             confirmPassword:{
                 required:true,
@@ -68,38 +82,38 @@ $(document).ready(function(){
 
 		},
 		messages: {
-			firstname:{
+			nombre:{
 				required:'Nombre obligatorio'
 				//textOnly:'Ingrese solo letras'
 			},
-			lastname:{
+			apellido:{
 				required:'Apellido obligatorio'
 				//textOnly:'Ingrese solo letras'
 			},
-			document:{
-                required:'Identificaci&oacute;n obligatoria',
-                //digits: "Este campo admite solo d&iacute;gitos",
+			cedula:{
+                                required:'Identificaci&oacute;n obligatoria',
+                                //digits: "Este campo admite solo d&iacute;gitos",
 				remote:'Identificaci&oacute;n se encuentra en uso'
-               },
-            username:{
+                        },
+                        nickname:{
 				required:'Nombre de usuario obligatorio',
-                remote: 'Usuario se encuentra en uso'
+                                remote: 'Usuario se encuentra en uso'
 			},
-            profile_id:{
-				required:'Perfil obligatorio'
-			},
-            status:{
-                required:'Estado obligatorio'
-            },
-            password:{
-                required:'Contrase&ntilde;a obligatoria'
-            },
-            confirmPassword:{
-                required:'Confirmar contrase&ntilde;a obligatorio',
-                equalTo:'Contrase&ntilde;as no coinciden'
-            }
-		},
-			submitHandler: function (form) {
+                        profile_id:{
+                                            required:'Perfil obligatorio'
+                                    },
+                        status:{
+                            required:'Estado obligatorio'
+                        },
+                        password:{
+                            required:'Contrase&ntilde;a obligatoria'
+                        },
+                        confirmPassword:{
+                            required:'Confirmar contrase&ntilde;a obligatorio',
+                            equalTo:'Contrase&ntilde;as no coinciden'
+                        }
+                },
+            submitHandler: function (form) {
                $('#save').attr('disabled','disabled'); 
                form.submit();
             }

@@ -20,15 +20,15 @@ $(document).ready(function(){
 				"sSearch": "Buscar:",
 				"sProcessing": "Filtrando.."
 			},
-			"aoColumns": [
-                                                {"sWidth":"10%", "bSortable":true},				
-                                                {"sWidth":"20%", "bSortable":true},
-						{"sWidth":"10%", "bSortable":false},
-						{"sWidth":"10%", "bSortable":true},
-						{"sWidth":"15%", "bSortable":true},
-						{"sWidth":"10%", "bSortable":true},
-						{"sWidth":"25%", "bSortable":false}
-					]
+//			"aoColumns": [
+//                                                {"sWidth":"10%", "bSortable":true},				
+//                                                {"sWidth":"20%", "bSortable":true},
+//						{"sWidth":"10%", "bSortable":false},
+//						{"sWidth":"10%", "bSortable":true},
+//						{"sWidth":"15%", "bSortable":true},
+//						{"sWidth":"10%", "bSortable":true},
+//						{"sWidth":"25%", "bSortable":false}
+//					]
 		});	
 	}
     
