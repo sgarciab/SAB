@@ -8,10 +8,15 @@
  * Modified By: 
  */
 class Controller_Main extends Controller_Containers_Default {
-    public function action_index() 
+    public function action_index()
     {
-         $view = View::factory('/controller/main');
-	 $this->template->content = $view;
+
+        $this->view = View::factory('/controller/main');
+
+        $servicios = ORM::factory('Servicio')->find_all();
+
+        $this->view->set("servicios", $servicios);
+
     }
    
 }
