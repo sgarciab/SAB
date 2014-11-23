@@ -2,18 +2,18 @@
 
 /*
   File: action.php
-  Author: Santiago Garcia
-  Creation Date: 13/07/2014
+  Author: Esteban Villacis
+  Creation Date: *
  * Modified by :
  * Last Modification:
  */
 
-class Model_Cliente extends ORM {
-    public $_table_name="cliente";
+class Model_Bug_logs extends ORM {
     
-        protected $_has_many = array('contactos' => array('model' => 'Contacto', 'foreign_key' => 'Cliente_idCliente'));
-
-
+    public $_table_name="bug_logs";
+    
+    protected $_belongs_to = array('bug' => array('model' => 'Bug', 'foreign_key' => 'bug_id'));
+    
 }
 
 ?>

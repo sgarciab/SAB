@@ -20,6 +20,8 @@ class Model_User extends ORM {
             'model' => 'Profile'
         )
     );
+    
+    protected $_has_many = array('responsabilidad' => array('responsabilidad' => 'Responsabilidad', 'foreign_key' => 'Usuario_idUsuario'));
 	
     private static $default_allowed_actions = array(
             'user/account','main/index'
