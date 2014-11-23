@@ -16,6 +16,10 @@ class Controller_Main extends Controller_Containers_Default {
         $servicios = ORM::factory('Servicio')->find_all();
 
         $this->view->set("servicios", $servicios);
+        
+        $bug = ORM::factory('Bug');
+        
+        $this->view->set("bug", $bug);
 
     }
    

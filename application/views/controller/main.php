@@ -2,7 +2,7 @@
 <!---
 /**
  * File: main.php
- * Author: Santiago García
+ * Author: Santiago García, Esteban Villacis
  * Creation Date:  20-11-2014
  * Last Modified: 
  * Modified By: 
@@ -21,7 +21,10 @@
        
 </div>
 
+
 <div class="formBugs" >
+
+    <?php echo Form::open(NULL, array('id' => 'formBugs')); ?>
     
     <div class="prepend-2 span-20 append-2 line last">
     
@@ -37,7 +40,7 @@
             <?php echo Form::label("descripcion", "Descripci&oacute;n:", array('class' => 'left')); ?>
         </div>
         <div class="span-5 last">
-            <?php echo Form::input("descripcion", $bug->descripcion, null, array('id' => 'descripcion', 'class' => 'span-5')); ?>
+            <?php echo Form::input("descripcion", $bug->descripcion, array('id' => 'descripcion', 'class' => 'span-5')); ?>
         </div>
     
     </div>
@@ -53,13 +56,14 @@
         </div>
 
         <div class=" prepend-1 span-4">
-            <?php echo Form::label("fechaReporte", "Fecha de Reporte:", array('class' => 'left')); ?>
+            <?php echo Form::label("fechaRep", "Fecha de Reporte:", array('class' => 'left')); ?>
         </div>
         <div class="span-5 last">
-            <?php echo Form::input("fechaReporte", $bug->fechaReporte, null, array('id' => 'fechaReporte', 'class' => 'span-5')); ?>
+            <?php echo Form::input("fechaRep", $bug->fechaReporte,  array('id' => 'fechaRep', 'class' => 'span-5')); ?>
         </div>
     
     </div>
+    
     
     <div class="prepend-2 span-20 append-2 line last">
     
@@ -67,10 +71,22 @@
         <div class="span-4">
             <?php echo Form::label("imagen", "Imagen:", array('class' => 'left')); ?>
         </div>
+        
         <div class="span-5 last">
-            <?php echo Form::input("imagen", $bug->imagen, array('id' => 'imagen', 'class' => 'span-5')); ?>
+            <?php echo Form::image("imagen", $bug->imagen, array('id' => 'imagen')); ?>
         </div>
     
     </div>
     
+    <?php if (!$bug->id) { ?>
+        <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
+           <?php echo Form::button("save", "Guardar", array('id' => 'save','class'=>'custom-button')); ?>
+        </div>
+    <?php } else { ?>
+        <div class="span-20 append-2 line last center" style="margin-top:30px">
+             <?php echo Form::button("save", "Actualizar", array('id' => 'save','class'=>'custom-button')); ?>
+        </div>
+    <?php } ?>
+    
+    <?php echo Form::close(); ?>
 </div>
