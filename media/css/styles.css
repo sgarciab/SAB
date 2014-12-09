@@ -17,7 +17,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 #header_separator{
 /*        position: relative;
         top:40px; */
-	width: 1349px;
+	/*width: 1349px;*/
 	height: 20px;
 	background: url('../images/menu_bar.png') repeat-x;
 }
