@@ -6,7 +6,15 @@
  */
 
 $(document).ready(function(){
-	$('#save').button();
+        $('.formBugs').hide();
+        $('.menuBugs').hide();
+        $('.menuBugs').show('slow');
+
+
+    
+    
+    
+        $('#save').button();
         
         //Date pickers
         $("#fechaAparicion").datepicker({
@@ -65,5 +73,22 @@ $(document).ready(function(){
                form.submit();
             }
 	});
+        
+        
+        $('.proyectoMenu').click(function(){
+            var id= $(this).attr('id');
+            $('#proyectoid').val(id);
+            $('.menuBugs').hide('slow',function(){
+                $('.formBugs').show('slow');
+            });
+        });
+        
+        $('#backButton').click(function(){
+            $('.formBugs').hide('slow',function(){
+                $('.menuBugs').show('slow');
+            });
+        });
+        
+       
 
 });

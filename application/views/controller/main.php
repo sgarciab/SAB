@@ -10,7 +10,11 @@
 -->
 
 
-<h2>Proyectos</h2>
+<h2>Proyectos</h2> 
+<div id="menuAction">
+    <input type="radio" id="crear" name="radio" checked="checked"><label for="radio1">Crear</label>
+    <input type="radio" id="editar" name="radio" ><label for="radio2">Editar</label>
+</div>
 <div class="menuBugs" >
 
     <?php foreach ($servicios as $item): ?>
@@ -23,12 +27,12 @@
 
 
 <div class="formBugs" >
-
+    <div id="backButton"> </div>
     <?php echo Form::open(NULL, array('id' => 'formBugs')); ?>
     
     <div class="prepend-2 span-20 append-2 line last">
     
-    
+      <?php echo Form::hidden("proyectoid", null,  array('id' => 'proyectoid')); ?>
         <div class="span-4">
             <?php echo Form::label("nombre", "Nombre:", array('class' => 'left')); ?>
         </div>
