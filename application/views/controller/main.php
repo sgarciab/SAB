@@ -9,7 +9,7 @@
  */
 -->
 
-
+<?php echo Form::open(NULL, array('id' => 'formBugs','enctype' => 'multipart/form-data')); ?>
 <h2>Proyectos</h2> 
 <div id="menuAction">
     <input type="radio" id="crear" name="radio" checked="checked"><label for="radio1">Crear</label>
@@ -26,9 +26,9 @@
 </div>
 
 
-<div class="formBugs" >
+<div class="divformBugs" >
     <div id="backButton"> </div>
-    <?php echo Form::open(NULL, array('id' => 'formBugs')); ?>
+    
     
     <div class="prepend-2 span-20 append-2 line last">
     
@@ -77,7 +77,7 @@
         </div>
         
         <div class="span-5 last">
-            <?php echo Form::image("imagen", $bug->imagen, array('id' => 'imagen')); ?>
+            <?php echo Form::file("imagen", array('id' => 'imagen','class'=>'cancel')); ?>
         </div>
     
     </div>
@@ -88,9 +88,11 @@
         </div>
     <?php } else { ?>
         <div class="span-20 append-2 line last center" style="margin-top:30px">
-             <?php echo Form::button("save", "Actualizar", array('id' => 'save','class'=>'custom-button')); ?>
+             <?php echo Form::button("save", "Actualizar", array('id' => 'save','class'=>'custom-button ')); ?>
         </div>
     <?php } ?>
     
-    <?php echo Form::close(); ?>
+
 </div>
+
+    <?php echo Form::close(); ?>

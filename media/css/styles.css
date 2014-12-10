@@ -701,7 +701,7 @@ table tbody tr.even td{
         
     }
 
-    .menuBugs, .formBugs{
+    .menuBugs, .divformBugs{
         background-color: white;
         min-height: 440px;
         width: 100%;
@@ -740,4 +740,8 @@ table tbody tr.even td{
         height: 48px;
         cursor: pointer;
 
+    }
+    
+    #save{
+        cursor:pointer;
     }

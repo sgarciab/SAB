@@ -6,7 +6,7 @@
  */
 
 $(document).ready(function(){
-        $('.formBugs').hide();
+        $('.divformBugs').hide();
         $('.menuBugs').hide();
         $('.menuBugs').show('slow');
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
     
     
     
-        $('#save').button();
+
         
         //Date pickers
         $("#fechaAparicion").datepicker({
@@ -61,33 +61,39 @@ $(document).ready(function(){
 				required:true
                							
 			},
-                        Imagen:{
-				required:true
-               							
-			}
+                        imagen:{
+                                required:true
+                        }
             
-                },
-                
-            submitHandler: function (form) {
-               $('#save').attr('disabled','disabled'); 
-               form.submit();
-            }
+                }
 	});
         
+        
+        $("#save").click(function(){
+            
+            if($("#formBugs").valid()){
+                $('#save').attr('disabled',true);  
+                $("#formBugs").submit(); 
+
+            }
+        }); 
         
         $('.proyectoMenu').click(function(){
             var id= $(this).attr('id');
             $('#proyectoid').val(id);
             $('.menuBugs').hide('slow',function(){
-                $('.formBugs').show('slow');
+                $('.divformBugs').show('slow');
             });
         });
         
         $('#backButton').click(function(){
-            $('.formBugs').hide('slow',function(){
+            $('.divformBugs').hide('slow',function(){
                 $('.menuBugs').show('slow');
             });
         });
+        
+        
+        
         
        
 
