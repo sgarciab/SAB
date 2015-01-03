@@ -74,6 +74,19 @@ class Controller_Main extends Controller_Containers_Default {
        
 
     }
+
+
+    public function action_loadbugs()
+    {
+        if ($this->request->is_ajax()) {
+            $this->view = View::factory('controller/loads/bugs');
+            $servicioid = arr::get($this->request->post(), 'servicioid');
+            $bugs=ORM::factory('Bug')->where('servicio_id','=',$servicioid)->find_all();
+            $this->view->set('bugs', $bugs);
+            echo $this->view;
+            $this->auto_render = FALSE;
+        }
+    }
     
     protected function _save_image($image)
     {

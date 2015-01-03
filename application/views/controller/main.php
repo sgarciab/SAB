@@ -12,8 +12,8 @@
 <?php echo Form::open(NULL, array('id' => 'formBugs','enctype' => 'multipart/form-data')); ?>
 <h2>Proyectos</h2> 
 <div id="menuAction">
-    <input type="radio" id="crear" name="radio" checked="checked"><label for="radio1">Crear</label>
-    <input type="radio" id="editar" name="radio" ><label for="radio2">Editar</label>
+    <input type="radio" value="create" id="crear" name="action" checked="checked"><label >Crear</label>
+    <input type="radio" value="edit" id="editar" name="action" ><label >Editar</label>
 </div>
 <div class="menuBugs" >
 
@@ -91,6 +91,12 @@
              <?php echo Form::button("save", "Actualizar", array('id' => 'save','class'=>'custom-button ')); ?>
         </div>
     <?php } ?>
+    
+
+</div>
+
+<div id="chooseBug" class="chooseBug" hidden="hidden" >
+
     
 
 </div>

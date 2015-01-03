@@ -80,13 +80,41 @@ $(document).ready(function(){
         
         $('.proyectoMenu').click(function(){
             var id= $(this).attr('id');
-            $('#proyectoid').val(id);
-            $('.menuBugs').hide('slow',function(){
-                $('.divformBugs').show('slow');
-            });
+            $('#menuAction').hide('slow');
+
+            if ($('input[name=action]:checked').val()=='create') {
+
+                $('#proyectoid').val(id);
+
+                $('.menuBugs').hide('slow', function () {
+                    $('.divformBugs').show('slow');
+                });
+            }
+            else{
+
+                $('#chooseBug').load(document_root + 'main/loadbugs', {
+                    servicioid: id
+                },function (){
+
+                    $('.menuBugs').hide('slow', function () {
+                        $('#chooseBug').show('slow');
+                    });
+                    $('#backButtonE').click(function(){
+                        $('#menuAction').show('slow');
+                       $('#chooseBug').hide('slow',function(){
+                            $('.menuBugs').show('slow');
+                        });
+                    });
+
+                });
+
+            }
+
+
         });
         
         $('#backButton').click(function(){
+            $('#menuAction').show('slow');
             $('.divformBugs').hide('slow',function(){
                 $('.menuBugs').show('slow');
             });

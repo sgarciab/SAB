@@ -14,7 +14,7 @@ class Model_Bug extends ORM {
     
     protected $_belongs_to = array('servicio' => array('model' => 'Servicio', 'foreign_key' => 'servicio_id'));
     
-    protected $_has_many = array('bug_logs' => array('model' => 'Bug_logs', 'foreign_key' => 'bug_id'));
+    protected $_has_many = array('buglogs' => array('model' => 'Buglogs', 'foreign_key' => 'bug_id'));
 
 }
 

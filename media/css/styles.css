@@ -701,7 +701,7 @@ table tbody tr.even td{
         
     }
 
-    .menuBugs, .divformBugs{
+    .menuBugs, .divformBugs, .chooseBug{
         background-color: white;
         min-height: 440px;
         width: 100%;
@@ -734,7 +734,7 @@ table tbody tr.even td{
 
     }
     
-    #backButton{
+    .backButton,#backButton{
         background-image: url('../images/back.png');
         width: 48px;
         height: 48px;
