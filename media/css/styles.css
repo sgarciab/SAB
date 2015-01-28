@@ -716,7 +716,7 @@ table tbody tr.even td{
     }
 
 
-    .proyectoMenu{
+    .proyectoMenu , .bugsMenu {
         font-family: 'Open Sans', sans-serif;
         color: #fff;
         height: 50px;
@@ -745,3 +745,7 @@ table tbody tr.even td{
     #save{
         cursor:pointer;
     }
+
+.bugsMenu p{
+    margin: 2px;
+}

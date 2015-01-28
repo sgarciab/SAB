@@ -106,6 +106,15 @@ $(document).ready(function(){
                         });
                     });
 
+                    $('.bugsMenu').each(function(){
+                            $(this).click(function(){
+                                var id=$(this).attr('id');
+                                $.get(document_root+'main/loadbug',{id:id},function (data){
+
+                                });
+                            });
+                    });
+
                 });
 
             }

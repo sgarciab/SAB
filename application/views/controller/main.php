@@ -32,7 +32,7 @@
     
     <div class="prepend-2 span-20 append-2 line last">
     
-      <?php echo Form::hidden("proyectoid", null,  array('id' => 'proyectoid')); ?>
+      <?php echo Form::hidden("proyectoid", $bug->id,  array('id' => 'proyectoid')); ?>
         <div class="span-4">
             <?php echo Form::label("nombre", "Nombre:", array('class' => 'left')); ?>
         </div>

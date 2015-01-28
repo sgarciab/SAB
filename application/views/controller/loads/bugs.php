@@ -11,6 +11,7 @@
 <div class="backButton" id="backButtonE"> </div>
 <?php foreach ($bugs as $item): ?>
     <div id="<?= $item->id?>" class="bugsMenu" >
-        <?= $item->nombre; ?>
+        <p><?= $item->nombre; ?></p>
+        <p><?= $item->descripcion; ?> </p>
     </div>
 <?php endforeach; ?>
