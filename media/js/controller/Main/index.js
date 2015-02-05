@@ -109,8 +109,16 @@ $(document).ready(function(){
                     $('.bugsMenu').each(function(){
                             $(this).click(function(){
                                 var id=$(this).attr('id');
-                                $.get(document_root+'main/loadbug',{id:id},function (data){
 
+                                $.ajax({
+                                    url:  document_root+'main/loadbug',
+                                    type: "POST",
+                                    data: { id : id },
+                                    success:function(data){
+                                        data=$.parseJSON(data);
+                                        $('#nombre').val(data.nombre);
+                                        $('#descripcion').val(data.descripcion);
+                                    }
                                 });
                             });
                     });

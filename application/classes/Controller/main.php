@@ -87,6 +87,17 @@ class Controller_Main extends Controller_Containers_Default {
             $this->auto_render = FALSE;
         }
     }
+
+    public function action_loadbug()
+    {
+        if ($this->request->is_ajax()) {
+
+            $id = arr::get($this->request->post(), 'id');
+            $bugs=ORM::factory('Bug',$id);
+            echo json_encode($bugs->as_array());
+            $this->auto_render = FALSE;
+        }
+    }
     
     protected function _save_image($image)
     {
