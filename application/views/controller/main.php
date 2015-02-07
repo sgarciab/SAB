@@ -31,8 +31,8 @@
     
     
     <div class="prepend-2 span-20 append-2 line last">
-    
-      <?php echo Form::hidden("proyectoid", $bug->id,  array('id' => 'proyectoid')); ?>
+        <?php echo Form::hidden("bugid", null,  array('id' => 'bugid')); ?>
+      <?php echo Form::hidden("proyectoid", null,  array('id' => 'proyectoid')); ?>
         <div class="span-4">
             <?php echo Form::label("nombre", "Nombre:", array('class' => 'left')); ?>
         </div>
@@ -75,13 +75,18 @@
         <div class="span-4">
             <?php echo Form::label("imagen", "Imagen:", array('class' => 'left')); ?>
         </div>
-        
+
         <div class="span-5 last">
             <?php echo Form::file("imagen", array('id' => 'imagen','class'=>'cancel')); ?>
         </div>
-    
+
     </div>
-    
+
+    <div class="prepend-2 span-20 append-2 line last">
+    <div class="span-5 last">
+        <?php echo Form::image('mostrarimagen', NULL, array('id' => 'mostrarimagen','src' => '','hidden'));?>
+    </div>
+    </div>
     <?php if (!$bug->id) { ?>
         <div class="prepend-2 span-20 append-2 line last center" style="margin-top:30px">
            <?php echo Form::button("save", "Guardar", array('id' => 'save','class'=>'custom-button')); ?>

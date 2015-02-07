@@ -116,8 +116,18 @@ $(document).ready(function(){
                                     data: { id : id },
                                     success:function(data){
                                         data=$.parseJSON(data);
+                                        $('#bugid').val(data.id);
                                         $('#nombre').val(data.nombre);
                                         $('#descripcion').val(data.descripcion);
+                                        $('#fechaAparicion').val(data.fechaAparicion);
+                                        $('#fechaRep').val(data.fechaReporte);
+                                        $('#mostrarimagen').attr('src',data.imagen);
+                                        $('#mostrarimagen').show();
+
+                                        $('.chooseBug').hide('slow', function () {
+                                            $('.divformBugs').show('slow');
+                                        });
+
                                     }
                                 });
                             });
@@ -135,6 +145,13 @@ $(document).ready(function(){
             $('.divformBugs').hide('slow',function(){
                 $('.menuBugs').show('slow');
             });
+            $('#bugid').val('');
+            $('#nombre').val('');
+            $('#descripcion').val('');
+            $('#fechaAparicion').val('');
+            $('#fechaRep').val('');
+            $('#mostrarimagen').attr('src','');
+            $('#mostrarimagen').hide();
         });
         
         

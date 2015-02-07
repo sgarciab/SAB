@@ -749,3 +749,7 @@ table tbody tr.even td{
 .bugsMenu p{
     margin: 2px;
 }
+
+#mostrarimagen{
+    width: 500px;
+}
