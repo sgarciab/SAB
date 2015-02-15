@@ -60,14 +60,13 @@ $(document).ready(function(){
                         fechaRep:{
 				required:true
                							
-			},
-                        imagen:{
-                                required:true
-                        }
-            
+			}
+
                 }
 	});
-        
+
+
+
         
         $("#save").click(function(){
             
@@ -89,6 +88,9 @@ $(document).ready(function(){
                 $('.menuBugs').hide('slow', function () {
                     $('.divformBugs').show('slow');
                 });
+                $( "#imagen" ).rules( "add", {
+                    required: true
+                });
             }
             else{
 
@@ -109,24 +111,27 @@ $(document).ready(function(){
                     $('.bugsMenu').each(function(){
                             $(this).click(function(){
                                 var id=$(this).attr('id');
-
+                                $( "#imagen" ).rules( "remove");
                                 $.ajax({
                                     url:  document_root+'main/loadbug',
                                     type: "POST",
                                     data: { id : id },
                                     success:function(data){
                                         data=$.parseJSON(data);
-                                        $('#bugid').val(data.id);
-                                        $('#nombre').val(data.nombre);
-                                        $('#descripcion').val(data.descripcion);
-                                        $('#fechaAparicion').val(data.fechaAparicion);
-                                        $('#fechaRep').val(data.fechaReporte);
-                                        $('#mostrarimagen').attr('src',data.imagen);
+                                        console.log(data);
+                                        $('#bugid').val(data.bug.id);
+                                        $('#nombre').val(data.bug.nombre);
+                                        $('#descripcion').val(data.bug.descripcion);
+                                        $('#fechaAparicion').val(data.bug.fechaAparicion);
+                                        $('#fechaRep').val(data.bug.fechaReporte);
+                                        $('#status').val(data.buglog.status);
+                                        $('#mostrarimagen').attr('src',data.bug.imagen);
                                         $('#mostrarimagen').show();
 
                                         $('.chooseBug').hide('slow', function () {
                                             $('.divformBugs').show('slow');
                                         });
+
 
                                     }
                                 });

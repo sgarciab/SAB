@@ -67,6 +67,19 @@
         </div>
     
     </div>
+
+
+    <div class="prepend-2 span-20 append-2 line last">
+
+
+        <div class=" span-4">
+            <?php echo Form::label("status", "Estado:", array('class' => 'left')); ?>
+        </div>
+        <div class="span-5 last">
+            <?php echo Form::select("status", $bugstatus, null, array('id' => 'status', 'class' => 'span-5')); ?>
+        </div>
+
+    </div>
     
     
     <div class="prepend-2 span-20 append-2 line last">

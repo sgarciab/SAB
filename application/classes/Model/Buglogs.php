@@ -14,7 +14,7 @@ class Model_Buglogs extends ORM {
     
     protected $_belongs_to = array('bug' => array('model' => 'Bug', 'foreign_key' => 'bug_id'));
 
-    public $statusOptions=array('opened'=>'Abierto','reopened'=>'Reabierto','fixed'=>'Arreglado','closed'=>'Cerrado',);
+    public $statusOptions=array('opened'=>'Abierto','fixed'=>'Arreglado','reopened'=>'Reabierto','closed'=>'Cerrado',);
 
 
 
