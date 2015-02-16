@@ -91,6 +91,15 @@ $(document).ready(function(){
                 $( "#imagen" ).rules( "add", {
                     required: true
                 });
+
+                $('#bugid').val('');
+                $('#nombre').val('');
+                $('#descripcion').val('');
+                $('#fechaAparicion').val('');
+                $('#fechaRep').val('');
+                $('#status').val('opened');
+                $('#mostrarimagen').attr('src','');
+                $('#mostrarimagen').hide();
             }
             else{
 
