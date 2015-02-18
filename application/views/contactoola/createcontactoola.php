@@ -166,7 +166,7 @@
             if(row[1]!='0'){
 				
                 $('#relacionOlah').val(row[0]);
-                $('#relacionOla').val(row[0]);
+                $('#relacionOla').val(row[1]);
             }else
             {
                 $('#relacionOlah').val('');	

@@ -128,7 +128,7 @@ class Controller_Main extends Controller_Containers_Default {
     private function enviarMail($bug){
         $mgClient = new Mailgun('key-f8f7f76ce5fee385b6f474945a01d61b');
         $domain = "sandbox451fc61742dd49ef9caa89d80ff8cde9.mailgun.org";
-   
+
         $subject="";
         $html="<html>
                 <body>

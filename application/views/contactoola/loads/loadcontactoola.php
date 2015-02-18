@@ -2,7 +2,7 @@
     <table id="table-contactos">
         <thead>
             <tr>
-                <th>OLA</th> 
+                <th>OLA</th>
                 <th>Nombre Contacto</th>
                 <th>Documento Legal</th>
                 <th>Acciones</th>
@@ -11,12 +11,12 @@
         <tbody>
             <?php foreach ($contactosola as $contactoOla): ?>
                 <tr>
-                   <td><?php echo $contactoOla->OLA->descripcion; ?></td>
+                   <td><?php echo $contactoOla->ola->descripcion; ?></td>
                     <td><?php echo $contactoOla->nombreContacto; ?></td>
                     <td><?php echo $contactoOla->documentoLegal; ?></td>
                    
                     <td class="span-2">
-                        <?php echo HTML::anchor("ola/editcontactoola/" . $contacto->id, "Actualizar"); ?>
+                        <?php echo HTML::anchor("contactoola/editcontactoola/" . $contactoOla->id, "Actualizar"); ?>
                  
                     </td>
                 </tr>

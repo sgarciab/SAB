@@ -26,45 +26,43 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                 
                 $contactoOla->direccion = $this->request->post('direccionOla');
                 $contactoOla->documentoLegal = $this->request->post('documentoLegalOla');
-//                $contactoOla->empresaActual = $this->request->post('empresaActual');
                 $contactoOla->nombreContacto = $this->request->post('nombreContactoOla');
                 $contactoOla->OLA_idOLA = $this->request->post('relacionOlah');
                 
-//                var_dump($this->request->post());
-//                die;
+
                 
                 $contactoOla->save();
                 
                 $numReg = arr::get($this->request->post(), 'cont');
-//                for($i=1; $i<=$numReg; $i++){
-//                    $infoContactoOla = ORM::factory('InformacionContactoOla');
-//                    
-//                    $infoContactoOla->tipo = $this->request->post('tipo_'.$i);
-//                    $infoContactoOla->contenido = arr::get($this->request->post(), 'contenido_'.$i);
-//                    $infoContactoOla->observacion = arr::get($this->request->post(), 'observacion_'.$i);
-//                    $infoContactoOla->Contacto_idContacto = $contacto->id;
-//          
-//                    if($infoContactoOla->tipo != null || $infoContactoOla->tipo != ''){
-//                        $infoContactoOla->save();
-//                    }
-//                    
-//                    $infoContactoOla = NULL;
-//                }
+                for($i=1; $i<=$numReg; $i++){
+                    $infoContactoOla = ORM::factory('InformacionContactoOla');
+
+                    $infoContactoOla->tipo = $this->request->post('tipo_'.$i);
+                    $infoContactoOla->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+                    $infoContactoOla->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+                    $infoContactoOla->ContactoOLA_idContactoOLA = $contactoOla->id;
+
+                    if($infoContactoOla->tipo != null || $infoContactoOla->tipo != ''){
+                        $infoContactoOla->save();
+                    }
+
+                    $infoContactoOla = NULL;
+                }
                 
                 $db->commit();
                 
                 
                 FlashMessenger::factory()->set_message('success', $success_message);
-                HTTP::redirect('ola/index');
+                HTTP::redirect('contactoola/indexcontactoola');
                 
-            } catch (Exception $ex) {
-//                foreach ($ex->errors('validation') as $error) {
-//                    FlashMessenger::factory()->set_message('error', $error);
-//                }
-//                var_dump($ex->getMessage());
-                
+            } catch (Database_Exception $ex) {
+                var_dump($ex);
                 $db->rollback();
-                throw new Exception($ex->getMessage());
+                die;
+                FlashMessenger::factory()->set_message('error', 'Error');
+                HTTP::redirect('contactoola/indexcontactoola');
+
+
             }
         }
 
@@ -176,7 +174,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
         if ($this->request->is_ajax()) {
             $this->view = View::factory('contactoola/loads/loadinformacion');
             $cont = arr::get($this->request->post(), 'cont');
-            $tipo=ORM::factory('InformacionContactoOla')->_tipo;
+            $tipo=ORM::factory('ContactoOla')->_tipo;
             $this->view->set('_tipo', $tipo);
             $this->view->set('cont', $cont);
             echo $this->view;
