@@ -128,8 +128,7 @@ class Controller_Main extends Controller_Containers_Default {
     private function enviarMail($bug){
         $mgClient = new Mailgun('key-f8f7f76ce5fee385b6f474945a01d61b');
         $domain = "sandbox451fc61742dd49ef9caa89d80ff8cde9.mailgun.org";
-        # Make the call to the client.
-
+   
         $subject="";
         $html="<html>
                 <body>
@@ -140,8 +139,8 @@ class Controller_Main extends Controller_Containers_Default {
         $result = $mgClient->sendMessage($domain, array(
             'from'    => 'SAB <fabiansgb@hotmail.com>',
             'to'      => "$bug->nombreDesarrollador <$bug->emailDesarrollador>",
-            'subject' => 'Hello',
-            'text'    => 'Testing some Mailgun awesomness!'
+            'subject' => $subject,
+            'html'    => $html
         ));
 
     }
