@@ -24,29 +24,32 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                     $success_message = Kohana::message('sab', 'contacto:create:success');
                 }
                 
-                $contactoOla->direccion = $this->request->post('direccion');
-                $contactoOla->documentoLegal = $this->request->post('documentoLegal');
-                $contactoOla->empresaActual = $this->request->post('empresaActual');
-                $contactoOla->nombreContacto = $this->request->post('nombreContacto');
-                $contactoOla->OLA_idOLA = $this->request->post('refOla');                
-             
+                $contactoOla->direccion = $this->request->post('direccionOla');
+                $contactoOla->documentoLegal = $this->request->post('documentoLegalOla');
+//                $contactoOla->empresaActual = $this->request->post('empresaActual');
+                $contactoOla->nombreContacto = $this->request->post('nombreContactoOla');
+                $contactoOla->OLA_idOLA = $this->request->post('relacionOlah');
+                
+//                var_dump($this->request->post());
+//                die;
+                
                 $contactoOla->save();
                 
                 $numReg = arr::get($this->request->post(), 'cont');
-                for($i=1; $i<=$numReg; $i++){
-                    $infoContactoOla = ORM::factory('InformacionContactoOla');
-                    
-                    $infoContactoOla->tipo = $this->request->post('tipo_'.$i);
-                    $infoContactoOla->contenido = arr::get($this->request->post(), 'contenido_'.$i);
-                    $infoContactoOla->observacion = arr::get($this->request->post(), 'observacion_'.$i);
-                    $infoContactoOla->Contacto_idContacto = $contacto->id;
-          
-                    if($infoContactoOla->tipo != null || $infoContactoOla->tipo != ''){
-                        $infoContactoOla->save();
-                    }
-                    
-                    $infoContactoOla = NULL;
-                }
+//                for($i=1; $i<=$numReg; $i++){
+//                    $infoContactoOla = ORM::factory('InformacionContactoOla');
+//                    
+//                    $infoContactoOla->tipo = $this->request->post('tipo_'.$i);
+//                    $infoContactoOla->contenido = arr::get($this->request->post(), 'contenido_'.$i);
+//                    $infoContactoOla->observacion = arr::get($this->request->post(), 'observacion_'.$i);
+//                    $infoContactoOla->Contacto_idContacto = $contacto->id;
+//          
+//                    if($infoContactoOla->tipo != null || $infoContactoOla->tipo != ''){
+//                        $infoContactoOla->save();
+//                    }
+//                    
+//                    $infoContactoOla = NULL;
+//                }
                 
                 $db->commit();
                 
@@ -54,11 +57,14 @@ class Controller_ContactoOla extends Controller_Containers_Default {
                 FlashMessenger::factory()->set_message('success', $success_message);
                 HTTP::redirect('ola/index');
                 
-            } catch (Database_Exception $ex) {
-                foreach ($ex->errors('validation') as $error) {
-                    FlashMessenger::factory()->set_message('error', $error);
-                }
-                 $db->rollback();
+            } catch (Exception $ex) {
+//                foreach ($ex->errors('validation') as $error) {
+//                    FlashMessenger::factory()->set_message('error', $error);
+//                }
+//                var_dump($ex->getMessage());
+                
+                $db->rollback();
+                throw new Exception($ex->getMessage());
             }
         }
 
@@ -155,7 +161,7 @@ class Controller_ContactoOla extends Controller_Containers_Default {
 
             if ($olas->count()) {
                 foreach ($olas as $ola) {
-                    echo $ola->id . '|' . $ola->criticidad . '|' . $ola->tiempoRespuesta . '|' . $ola->decripcion . "\n";
+                    echo $ola->id . '|' . $ola->criticidad . '|' . $ola->tiempoRespuesta . '|' . $ola->descripcion . "\n";
                 }
             } else {
                 echo '0' . "\n";
