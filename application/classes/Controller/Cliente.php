@@ -81,7 +81,7 @@ class Controller_Cliente extends Controller_Containers_Default {
         
         
         
-        public function action_createcontacto()
+    public function action_createcontacto()
 	{
 	$this->view = View::factory('cliente/createcontacto');
 
@@ -126,7 +126,7 @@ class Controller_Cliente extends Controller_Containers_Default {
                 
                 
                 FlashMessenger::factory()->set_message('success', $success_message);
-                HTTP::redirect('cliente/index');
+                HTTP::redirect('cliente/indexcontacto');
                 
             } catch (Database_Exception $ex) {
                 foreach ($ex->errors('validation') as $error) {

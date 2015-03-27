@@ -27,5 +27,7 @@ return array
     'contactoola:indexcontactoola:empty' => 'No se encontro ningun registro',
     'servicioproveedor:create:success' => 'Servicio creado exitosamente',
     'servicioproveedor:update:success' => 'Servicio actualizado exitosamente',
-    'servicioproveedor:index:empty' => 'No se encontro ningun registro'
+    'servicioproveedor:index:empty' => 'No se encontro ningun registro',
+    'contacto:update:success'=>'Contacto actualizado Exitosamente',
+    'contacto:create:success'=>'Contacto creado Exitosamente',
 );
